@@ -1,0 +1,18 @@
+Drop setup_requires=['pytest-runner'].
+
+setuptools treats setup_requires as an implicit dependency to be fetched before
+the build starts. Inside the Nix sandbox there is no network access, so the
+build fails while trying to download pytest-runner. The requirement only drives
+`python setup.py test`, which this package never runs: the wheel is built with
+bdist_wheel and installed with `installer`, neither of which touches it.
+
+--- a/setup.py
++++ b/setup.py
+@@ -305,7 +305,6 @@ def get_version():
+     url='https://github.com/open-mmlab/mmcv',
+     author='MMCV Authors',
+     author_email='openmmlab@gmail.com',
+-    setup_requires=['pytest-runner'],
+     tests_require=['pytest'],
+     install_requires=install_requires,
+     ext_modules=get_extensions(),

@@ -1,0 +1,43 @@
+dataset,source,id,file,bytes,md5,license,downloaded
+myceliumseg,zenodo,15224240,labeled-GS_PO_TS.zip,127132914,dc7b89e8853911bc8a7dda12c0ac230f,cc-by-4.0,2026-10-01
+myceliumseg,zenodo,15224240,labeled-MYG_PDA_TEMP.zip,107963748,57a2de079dcb6b45ab825d68ce5d67bb,cc-by-4.0,2026-10-01
+myceliumseg,zenodo,15224240,labeled-GL.zip,1547682076,1bf2703f74f03bcfdbc81fb93be5fd38,cc-by-4.0,2026-10-01
+myceliumseg,zenodo,15224240,unlabeled-GL2.zip,6169536689,2b282f20c64aae982574228ff1c9fb4b,cc-by-4.0,2026-10-01
+fricker_grazers,zenodo,14931953,Pi.zip,1977765648,9e369edcf51669271d19b3c133af51cb,cc-by-4.0,2026-10-02
+fricker_grazers,zenodo,14931953,Hf.zip,4047600131,c8869530f550e304bc556f4761e5005a,cc-by-4.0,2026-10-02
+fricker_grazers,zenodo,14931953,Pv.zip,2695517333,14a6d67535c7bb23807fabf97e964caa,cc-by-4.0,2026-10-02
+fricker_grazers,zenodo,14931953,coded network.png,4837396,58ad35e8966501257747c2cfcfdbdf9f,cc-by-4.0,2026-10-02
+fricker_grazers,zenodo,14931953,Rb.zip,1436215035,b9abe74ce04c022a226b904aefc25f27,cc-by-4.0,2026-10-02
+podospora_thallus,figshare,22666138,M0_1.avi,361221590,e1032588a0d771c9757ab3223e98bdd0,CC BY 4.0,2026-10-02
+podospora_thallus,figshare,22666138,M0_2.avi,456877348,c6a8647d736d69bd958142dff4caa6ca,CC BY 4.0,2026-10-02
+podospora_thallus,figshare,22666138,M0_3.avi,475744180,3b335f31596a4c140c80b0fb9722fbcc,CC BY 4.0,2026-10-02
+podospora_thallus,figshare,22666138,M2_1.avi,376739576,3eae4b1860cd79594deff1a8291478ed,CC BY 4.0,2026-10-02
+podospora_thallus,figshare,22666138,M2_2.avi,367944572,4f3eb986d77f6cd846b0473848262d61,CC BY 4.0,2026-10-02
+podospora_thallus,figshare,22666138,M2_3.avi,353379264,181b9409aff798377338da4761fce25b,CC BY 4.0,2026-10-02
+podospora_m0_raw,figshare,22140692,M0_1.tif,4261178698,bf4023ae0441e91f4975285b8e8f5fee,CC BY 4.0,2026-10-02
+podospora_net2019a,figshare,9897056,experiment_a_downsized.avi,33615844,8b372c75cd949ee19565dfe333ce9bfc,CC BY 4.0,2026-10-02
+podospora_net2019b,figshare,10626968,superpose_50-60_raw.tif,165419683,9f2c186f9704ac7478ef1519f6e68b7a,CC BY 4.0,2026-10-02
+fricker_networks,zenodo,5725751,Zygomycetous3.zip,578527419,22e89b73ef285d7920590e920cbb0002,cc-by-4.0,2026-10-02
+fricker_networks,zenodo,5725751,basidiomycota.zip,14890244,e7446b970edd05df37f4492563f11c53,cc-by-4.0,2026-10-02
+fricker_networks,zenodo,5725751,ascomycota.zip,258140478,3e45b4de9a6e87836d6519974c3776a7,cc-by-4.0,2026-10-02
+fricker_networks,zenodo,5725751,analysis example.png,3204490,586b68d81fdcfb0e7026a4c3409d1699,cc-by-4.0,2026-10-02
+fricker_networks,zenodo,5725751,Zygomycetous2.zip,1280282102,8c24551cb37f95db777b88cab2320447,cc-by-4.0,2026-10-02
+fricker_networks,zenodo,5725751,Zygomycetous1.zip,1028012566,0f89be810f50dccfb6be8f2cf05697b2,cc-by-4.0,2026-10-02
+fricker_networks,zenodo,5725751,parameters.zip,3326586,77c44b632dbf72b638bcb5149cab2f87,cc-by-4.0,2026-10-02
+fricker_networks,zenodo,5725751,names_key.xlsx,12025,311813d2fb262151398bf6a3e598f5f0,cc-by-4.0,2026-10-02
+aureobasidium,zenodo,14001310,22_IRIC23_Gubensek.pdf,1086639,d4e735e7bd2705f50de4ce438729557f,cc-by-4.0,2026-10-02
+physarum,zenodo,22868368,QC-NOTES.md,2937,566266037c7674d2a5f5d444f159a3be,cc-by-4.0,2026-10-02
+physarum,zenodo,22868368,manifests.zip,2972068,dbd483e4f45f17dd039b85f33d816e0e,cc-by-4.0,2026-10-02
+physarum,zenodo,22868368,SHA256SUMS-release-documents,3376,ac7142b5b0b03dea7e47f001dbcf83d7,cc-by-4.0,2026-10-02
+physarum,zenodo,22868368,CITATION.cff,1103,38fb07c680ea8c6b1b7f20afcd43551c,cc-by-4.0,2026-10-02
+physarum,zenodo,22868368,physarum-001-dish0-r0c0.ome.zarr.zip,4530582127,e090797b24402a486189ed19863520c8,cc-by-4.0,2026-10-02
+physarum,zenodo,22868368,SHA256SUMS,2472,ec113cb8a5dd26c7a8a4380f4dfe16f5,cc-by-4.0,2026-10-02
+physarum,zenodo,22868368,README.md,8901,bbc78a540f4f6ff6c77dd123c116f5d1,cc-by-4.0,2026-10-02
+physarum,zenodo,22868368,release-summary.json,36246,4557474a8552822ce57dd9eeb57eb1f2,cc-by-4.0,2026-10-02
+myceliumseg,zenodo,15224240,unlabeled-GL3.zip,6056037918,57d475d734b551fd33ce8b498caada70,cc-by-4.0,2026-10-02
+myceliumseg,zenodo,15224240,unlabeled-GL4.zip,6102287542,9b6f8e5739b5384b2d510ef2954ab3c1,cc-by-4.0,2026-10-02
+myceliumseg,zenodo,15224240,unlabeled-GL5.zip,6065034019,6c8d3a7a77220675c7b770d5f955b5d3,cc-by-4.0,2026-10-02
+myceliumseg,zenodo,15224240,unlabeled-GL6.zip,6099754615,183c537a21475d1c6f24748ea8067ce4,cc-by-4.0,2026-10-02
+myceliumseg,zenodo,15224240,unlabeled-GL7.zip,6076012925,3b1a8d8d56185402afe3f0f754d5c702,cc-by-4.0,2026-10-02
+myceliumseg,zenodo,15224240,unlabeled-GS_PO_TS.zip,5918734925,ae2f67d63b472a0ca25bfce53820bdb2,cc-by-4.0,2026-10-02
+myceliumseg,zenodo,15224240,unlabeled-GL1.zip,12219920832,48122702dc50321c418ecd6bbaa0cc6b,cc-by-4.0,2026-10-02

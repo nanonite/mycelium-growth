@@ -1,0 +1,31 @@
+Make SyncBatchNorm._specify_ddp_gpu_num a no-op on PyTorch >= 2.0.
+
+torch.nn.SyncBatchNorm._specify_ddp_gpu_num was an internal hook used to size
+the DDP gradient buckets. It was folded into _ddp_init_helper and removed in
+torch 2.0. mmcv 1.3.0 still overrides it and unconditionally delegates to
+super(), so `norm_cfg=dict(type='SyncBN')` (the setting the benchmark configs
+use) raises
+
+    AttributeError: 'super' object has no attribute '_specify_ddp_gpu_num'
+
+at model construction time, before any data is touched.
+
+The override only existed to keep the parrots (non-torch) branch inert. Guard
+the delegation on the parent actually having the hook, which keeps torch 1.x
+behaviour identical and degrades to a no-op on torch 2.x, where the equivalent
+work happens inside _ddp_init_helper anyway.
+
+--- a/mmcv/utils/parrots_wrapper.py
++++ b/mmcv/utils/parrots_wrapper.py
+@@ -83,7 +83,10 @@ class SyncBatchNorm(SyncBatchNorm_):
+
+     def _specify_ddp_gpu_num(self, gpu_size):
+         if TORCH_VERSION != 'parrots':
+-            super()._specify_ddp_gpu_num(gpu_size)
++            # torch < 2.0 sizes the DDP gradient buckets here; from 2.0 on the
++            # equivalent logic lives in _ddp_init_helper and this hook is gone.
++            if hasattr(super(), '_specify_ddp_gpu_num'):
++                super()._specify_ddp_gpu_num(gpu_size)
+
+     def _check_input_dim(self, input):
+         if TORCH_VERSION == 'parrots':

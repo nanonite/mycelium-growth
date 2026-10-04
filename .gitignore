@@ -1,0 +1,32 @@
+data/raw/
+*.part
+*.bad
+.chainlink/issues.db
+.chainlink/.locks-cache/
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# Nix and development environment outputs
+/result
+/result-*
+.direnv/
+
+# Python build and test artifacts
+*.py[cod]
+venv/
+ENV/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Rust build output
+/target/
+
+# Machine-local Codex settings
+.codex/config.toml

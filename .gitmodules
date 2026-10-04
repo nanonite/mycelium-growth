@@ -1,0 +1,6 @@
+[submodule "external/MyceliumSeg-benchmark"]
+	path = external/MyceliumSeg-benchmark
+	url = https://github.com/yuanqianguang/MyceliumSeg-benchmark.git
+[submodule "external/FungalGrazers"]
+	path = external/FungalGrazers
+	url = https://github.com/aguilart/FungalGrazers

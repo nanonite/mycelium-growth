@@ -1,0 +1,43 @@
+2026-10-01T23:51:30-05:00 start #11 zenodo 15224240 myceliumseg --only labeled-GL.zip unlabeled-GL2.zip
+2026-10-01T23:51:31-05:00 done  #11 myceliumseg
+2026-10-01T23:51:31-05:00 start #14 zenodo 14931953 fricker_grazers
+2026-10-02T01:28:22-05:00 done  #14 fricker_grazers
+2026-10-02T01:28:22-05:00 start #16 figshare 22666138 podospora_thallus
+2026-10-02T01:33:24-05:00 done  #16 podospora_thallus
+2026-10-02T01:33:24-05:00 start #16 figshare 22140692 podospora_m0_raw
+2026-10-02T01:42:05-05:00 done  #16 podospora_m0_raw
+2026-10-02T01:42:05-05:00 start #16 figshare 9897056 podospora_net2019a
+2026-10-02T01:42:14-05:00 done  #16 podospora_net2019a
+2026-10-02T01:42:14-05:00 start #16 figshare 10626968 podospora_net2019b
+2026-10-02T02:41:55-05:00 start #16 pod_2019b
+2026-10-02T02:42:22-05:00 done  #16 pod_2019b
+2026-10-02T02:42:22-05:00 start #15 networks
+2026-10-02T03:23:32-05:00 done  #15 networks
+2026-10-02T03:23:32-05:00 start #17 aureo
+2026-10-02T03:23:36-05:00 done  #17 aureo
+2026-10-02T03:23:36-05:00 queue finished: pod_2019b aureo networks
+2026-10-02T03:23:55-05:00 start #18 physarum
+2026-10-02T04:14:06-05:00 done  #18 physarum
+2026-10-02T04:14:06-05:00 queue finished: physarum
+2026-10-02T12:00:21-05:00 start #13 parallel GL1
+2026-10-02T12:03:24-05:00 start #13 mseg_GL3
+2026-10-02T12:52:04-05:00 done  #13 mseg_GL3
+2026-10-02T12:52:04-05:00 queue finished: mseg_GL3
+2026-10-02T12:52:21-05:00 start #13 mseg_GL4
+2026-10-02T13:34:16-05:00 done  #13 mseg_GL4
+2026-10-02T13:34:16-05:00 queue finished: mseg_GL4
+2026-10-02T13:34:20-05:00 start #13 mseg_GL5
+2026-10-02T14:07:11-05:00 done  #13 mseg_GL5
+2026-10-02T14:07:11-05:00 queue finished: mseg_GL5
+2026-10-02T14:07:31-05:00 start #13 mseg_GL6
+2026-10-02T14:41:51-05:00 done  #13 mseg_GL6
+2026-10-02T14:41:51-05:00 queue finished: mseg_GL6
+2026-10-02T14:42:17-05:00 start #13 mseg_GL7
+2026-10-02T15:18:49-05:00 done  #13 mseg_GL7
+2026-10-02T15:18:49-05:00 queue finished: mseg_GL7
+2026-10-02T15:18:53-05:00 start #13 mseg_GSPOTS
+2026-10-02T15:56:45-05:00 done  #13 mseg_GSPOTS
+2026-10-02T15:56:45-05:00 queue finished: mseg_GSPOTS
+2026-10-02T15:57:01-05:00 start #13 mseg_GL1
+2026-10-02T16:51:55-05:00 done  #13 mseg_GL1
+2026-10-02T16:51:55-05:00 queue finished: mseg_GL1
