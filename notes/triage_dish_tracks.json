@@ -1,0 +1,468 @@
+{
+  "images": 20176,
+  "dot_angles": {
+    "n": 16513,
+    "distinct": 3606,
+    "max_multiplicity": 37,
+    "max_multiplicity_share": 0.00224,
+    "median_multiplicity": 1.0,
+    "on_detector_grid_frac": 0.4513,
+    "detector_grid_deg": 0.5,
+    "occupied_bins": 720,
+    "total_bins": 720,
+    "chi2_vs_uniform": 5337.5,
+    "df": 719,
+    "chi2_per_df": 7.4235,
+    "collisions": {
+      "0.05": {
+        "observed": 97402,
+        "expected_uniform": 37869.8133
+      },
+      "0.10": {
+        "observed": 114812,
+        "expected_uniform": 75739.6267
+      }
+    }
+  },
+  "duplicates": {
+    "e4633e4f7f3537b77acb9d8c716882e8": [
+      "labeled-GL.zip|labeled-GL/testset/image/00000465.jpg",
+      "labeled-MYG_PDA_TEMP.zip|PDA/image/00018468.jpg"
+    ],
+    "4b74bdb561cc25ff0050d252973c23b6": [
+      "labeled-GL.zip|labeled-GL/testset/image/00000467.jpg",
+      "labeled-MYG_PDA_TEMP.zip|PDA/image/00018469.jpg"
+    ],
+    "697972681b60e99be0c7619cbbbcf888": [
+      "labeled-GL.zip|labeled-GL/testset/image/00000475.jpg",
+      "labeled-MYG_PDA_TEMP.zip|PDA/image/00018470.jpg"
+    ],
+    "c629b2ccfa3bf6f725f906a7416344fe": [
+      "labeled-GL.zip|labeled-GL/testset/image/00000480.jpg",
+      "labeled-MYG_PDA_TEMP.zip|PDA/image/00018471.jpg"
+    ],
+    "889a0a84fbecabb908250969e60eceb8": [
+      "labeled-GL.zip|labeled-GL/testset/image/00000485.jpg",
+      "labeled-MYG_PDA_TEMP.zip|PDA/image/00018472.jpg"
+    ],
+    "641c458f7e4c599535ee51ed770902b4": [
+      "labeled-GL.zip|labeled-GL/testset/image/00000486.jpg",
+      "labeled-MYG_PDA_TEMP.zip|PDA/image/00018473.jpg"
+    ],
+    "dd4e7c468f496c4dee2f2e4c12619dfc": [
+      "labeled-GL.zip|labeled-GL/testset/image/00000488.jpg",
+      "labeled-MYG_PDA_TEMP.zip|PDA/image/00018474.jpg"
+    ],
+    "0ba037ffd24fe48b4f7035bc0aed7960": [
+      "labeled-GL.zip|labeled-GL/testset/image/00000489.jpg",
+      "labeled-MYG_PDA_TEMP.zip|PDA/image/00018475.jpg"
+    ],
+    "2263d7ccb6d7024ae57dd28642a74677": [
+      "labeled-GL.zip|labeled-GL/testset/image/00000500.jpg",
+      "labeled-MYG_PDA_TEMP.zip|PDA/image/00018476.jpg"
+    ],
+    "b5c64e3c78c9726dcb4e6ac0f319f3f9": [
+      "labeled-GL.zip|labeled-GL/testset/image/00000501.jpg",
+      "labeled-MYG_PDA_TEMP.zip|PDA/image/00018477.jpg"
+    ],
+    "0c0dea45c90c0270306fe6166c7665ca": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/GS/image/00018428.jpg",
+      "unlabeled-GS_PO_TS.zip|00019773.jpg"
+    ],
+    "ede10c6d726b81f720191b802e83d481": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/GS/image/00018429.jpg",
+      "unlabeled-GS_PO_TS.zip|00019301.jpg"
+    ],
+    "40e2c818cb36fd7aaebfe6347bc83a29": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/GS/image/00018430.jpg",
+      "unlabeled-GS_PO_TS.zip|00018937.jpg"
+    ],
+    "3563fc4174f4c90a91048bbaa65fcf9e": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/GS/image/00018431.jpg",
+      "unlabeled-GS_PO_TS.zip|00018567.jpg"
+    ],
+    "0a6b1ba43a881c3fb922894405dacc72": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/GS/image/00018432.jpg",
+      "unlabeled-GS_PO_TS.zip|00019035.jpg"
+    ],
+    "2a284b7f50d3ad51457820c4ba009b03": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/GS/image/00018433.jpg",
+      "unlabeled-GS_PO_TS.zip|00018693.jpg"
+    ],
+    "6b0164697d7c25176b55f16400cca5b8": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/GS/image/00018434.jpg",
+      "unlabeled-GS_PO_TS.zip|00019811.jpg"
+    ],
+    "0ff8200d23e2e45dbf75afdd60644297": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/GS/image/00018435.jpg",
+      "unlabeled-GS_PO_TS.zip|00018515.jpg"
+    ],
+    "43658536d2ec4fa14875cf0a112f72e8": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/GS/image/00018436.jpg",
+      "unlabeled-GS_PO_TS.zip|00019552.jpg"
+    ],
+    "d56ff9831c17c3ea602e57548c203dd1": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/GS/image/00018437.jpg",
+      "unlabeled-GS_PO_TS.zip|00018580.jpg"
+    ],
+    "f50d06f0cc0046bf90070371faff35ad": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018438.jpg",
+      "labeled-MYG_PDA_TEMP.zip|MYG/image/00018458.jpg",
+      "unlabeled-GS_PO_TS.zip|00020079.jpg"
+    ],
+    "8281341311b3f5affc6d21406970dad5": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018439.jpg",
+      "labeled-MYG_PDA_TEMP.zip|MYG/image/00018459.jpg",
+      "unlabeled-GS_PO_TS.zip|00020129.jpg"
+    ],
+    "fc37ef26f80e5d1b2c3031e98eb7df7c": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018440.jpg",
+      "labeled-MYG_PDA_TEMP.zip|MYG/image/00018460.jpg",
+      "unlabeled-GS_PO_TS.zip|00019127.jpg"
+    ],
+    "fc1c5bd5c828ac76695e2beffaf0c85d": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018441.jpg",
+      "labeled-MYG_PDA_TEMP.zip|MYG/image/00018461.jpg"
+    ],
+    "fb39306da6f948aeeccf69911634057f": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018442.jpg",
+      "labeled-MYG_PDA_TEMP.zip|MYG/image/00018462.jpg",
+      "unlabeled-GS_PO_TS.zip|00019850.jpg"
+    ],
+    "0fdbbbacda88cc82dac6725dc232d53f": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018443.jpg",
+      "labeled-MYG_PDA_TEMP.zip|MYG/image/00018463.jpg",
+      "unlabeled-GS_PO_TS.zip|00019509.jpg"
+    ],
+    "fc31ed26c88511e8e476802d38e86290": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018444.jpg",
+      "labeled-MYG_PDA_TEMP.zip|MYG/image/00018464.jpg",
+      "unlabeled-GS_PO_TS.zip|00020154.jpg"
+    ],
+    "150e5fce881b87fafde7ddec3a34d12e": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018445.jpg",
+      "labeled-MYG_PDA_TEMP.zip|MYG/image/00018465.jpg",
+      "unlabeled-GS_PO_TS.zip|00018685.jpg"
+    ],
+    "7b866d2c3cabdafc90c275c39415ecc1": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018446.jpg",
+      "labeled-MYG_PDA_TEMP.zip|MYG/image/00018466.jpg",
+      "unlabeled-GS_PO_TS.zip|00019064.jpg"
+    ],
+    "35eed3508d23ece0c4e280f66934def6": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018447.jpg",
+      "labeled-MYG_PDA_TEMP.zip|MYG/image/00018467.jpg",
+      "unlabeled-GS_PO_TS.zip|00019348.jpg"
+    ],
+    "cfbc5d999d9577cc02a16b5b787a1a76": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/TS/image/00018448.jpg",
+      "unlabeled-GS_PO_TS.zip|00019008.jpg"
+    ],
+    "436c48ee892165428a462ecbbbb2e4d0": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/TS/image/00018449.jpg",
+      "unlabeled-GS_PO_TS.zip|00018858.jpg"
+    ],
+    "af6841c26621a36aaf6a231aff131d0f": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/TS/image/00018450.jpg",
+      "unlabeled-GS_PO_TS.zip|00018894.jpg"
+    ],
+    "643312c9f3a090962c97dd1e9c2ca74f": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/TS/image/00018451.jpg",
+      "unlabeled-GS_PO_TS.zip|00019140.jpg"
+    ],
+    "ab1bb1cca8d971285e1b590f64fa11f5": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/TS/image/00018452.jpg",
+      "unlabeled-GS_PO_TS.zip|00019499.jpg"
+    ],
+    "72ff4066042b54b94e62ba38bac9473d": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/TS/image/00018453.jpg",
+      "unlabeled-GS_PO_TS.zip|00019047.jpg"
+    ],
+    "388f6ad1221570c158836c0ed461fa56": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/TS/image/00018454.jpg",
+      "unlabeled-GS_PO_TS.zip|00019841.jpg"
+    ],
+    "e3539e18c9a4e978c6a26d7d6a5c56eb": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/TS/image/00018455.jpg",
+      "unlabeled-GS_PO_TS.zip|00018871.jpg"
+    ],
+    "4b7698af29bbe25899fcb0762eae05e8": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/TS/image/00018456.jpg",
+      "unlabeled-GS_PO_TS.zip|00018905.jpg"
+    ],
+    "ab41b37301e11633f683b4df7f60cbfb": [
+      "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/TS/image/00018457.jpg",
+      "unlabeled-GS_PO_TS.zip|00019559.jpg"
+    ],
+    "f582502d2ed6111f7de7b295e47d6909": [
+      "unlabeled-GS_PO_TS.zip|00018526.jpg",
+      "unlabeled-GS_PO_TS.zip|00018845.jpg"
+    ],
+    "8526607231a201bb556e67dfe6fbfd6d": [
+      "unlabeled-GS_PO_TS.zip|00018558.jpg",
+      "unlabeled-GS_PO_TS.zip|00019715.jpg"
+    ],
+    "41c5cbeb70dee5a307a4d18b493cf885": [
+      "unlabeled-GS_PO_TS.zip|00018628.jpg",
+      "unlabeled-GS_PO_TS.zip|00020160.jpg"
+    ],
+    "3afc409f67683b28c692b2fb6265e60b": [
+      "unlabeled-GS_PO_TS.zip|00018641.jpg",
+      "unlabeled-GS_PO_TS.zip|00019466.jpg"
+    ],
+    "d63caefcef49c54712305b494043a8f2": [
+      "unlabeled-GS_PO_TS.zip|00018653.jpg",
+      "unlabeled-GS_PO_TS.zip|00019390.jpg"
+    ],
+    "8f598cbf76c36140056388233ccca4a0": [
+      "unlabeled-GS_PO_TS.zip|00018686.jpg",
+      "unlabeled-GS_PO_TS.zip|00018943.jpg"
+    ],
+    "b1a3a03e02a4a889f5720d4f0962bdff": [
+      "unlabeled-GS_PO_TS.zip|00018743.jpg",
+      "unlabeled-GS_PO_TS.zip|00018768.jpg"
+    ],
+    "d1cf73c8b0ef82b01654d75a6b8d7cde": [
+      "unlabeled-GS_PO_TS.zip|00018747.jpg",
+      "unlabeled-GS_PO_TS.zip|00019572.jpg"
+    ],
+    "100b094c612c8abff305248c1a75baf1": [
+      "unlabeled-GS_PO_TS.zip|00018748.jpg",
+      "unlabeled-GS_PO_TS.zip|00019364.jpg"
+    ],
+    "1af93cb44ae8a14f89e861b55b251d43": [
+      "unlabeled-GS_PO_TS.zip|00018827.jpg",
+      "unlabeled-GS_PO_TS.zip|00020031.jpg"
+    ],
+    "30f6eec919a4a604cc122eb229738722": [
+      "unlabeled-GS_PO_TS.zip|00018854.jpg",
+      "unlabeled-GS_PO_TS.zip|00018923.jpg"
+    ],
+    "d63c46600ea858f8c6a171d387447098": [
+      "unlabeled-GS_PO_TS.zip|00018974.jpg",
+      "unlabeled-GS_PO_TS.zip|00019720.jpg"
+    ],
+    "39794bd1e0ef05afd83f96f6868dbd02": [
+      "unlabeled-GS_PO_TS.zip|00019144.jpg",
+      "unlabeled-GS_PO_TS.zip|00020166.jpg"
+    ],
+    "1421cf68a2489a1735ce0a83ec9a9ea6": [
+      "unlabeled-GS_PO_TS.zip|00019161.jpg",
+      "unlabeled-GS_PO_TS.zip|00019942.jpg"
+    ],
+    "58291e53da15a9f7e0845b2343b95a39": [
+      "unlabeled-GS_PO_TS.zip|00019197.jpg",
+      "unlabeled-GS_PO_TS.zip|00019683.jpg"
+    ],
+    "697c198e56c3589decf417cbf417d6e9": [
+      "unlabeled-GS_PO_TS.zip|00019256.jpg",
+      "unlabeled-GS_PO_TS.zip|00019803.jpg"
+    ],
+    "b2dd2304d85838169d978548e5df82ba": [
+      "unlabeled-GS_PO_TS.zip|00019259.jpg",
+      "unlabeled-GS_PO_TS.zip|00019982.jpg"
+    ],
+    "d5a8f35f5e687823aa8a9846aa08b752": [
+      "unlabeled-GS_PO_TS.zip|00019392.jpg",
+      "unlabeled-GS_PO_TS.zip|00019419.jpg"
+    ],
+    "6ee311a06892a7208ee18051f6618fe5": [
+      "unlabeled-GS_PO_TS.zip|00019504.jpg",
+      "unlabeled-GS_PO_TS.zip|00019933.jpg"
+    ],
+    "e06bb504e6f71d0081b527a05a65b5ee": [
+      "unlabeled-GS_PO_TS.zip|00019584.jpg",
+      "unlabeled-GS_PO_TS.zip|00019652.jpg"
+    ],
+    "8e6c6be352001308511072894da5cea1": [
+      "unlabeled-GS_PO_TS.zip|00019819.jpg",
+      "unlabeled-GS_PO_TS.zip|00019920.jpg"
+    ],
+    "66ef28b7cb18e6b555e366bdc27d142d": [
+      "unlabeled-GS_PO_TS.zip|00019995.jpg",
+      "unlabeled-GS_PO_TS.zip|00020029.jpg"
+    ]
+  },
+  "clusters": {
+    "rim": {
+      "n": 20176,
+      "nn_observed": [
+        0.6289145946502686,
+        0.7968060076236725,
+        0.9122354239225388,
+        1.0000005960464478
+      ],
+      "nn_null": [
+        0.31215061513652465,
+        0.3628147544929031,
+        0.41804386304882013,
+        0.49484899589987813
+      ],
+      "pairs_total": 203525400,
+      "pairs_gt_0p90": 137,
+      "pairs_gt_0p95": 83,
+      "pairs_gt_0p99": 80,
+      "duplicate_pairs": 80,
+      "duplicate_pairs_gt_0p90": 80,
+      "duplicate_pairs_gt_0p95": 80,
+      "duplicate_pairs_gt_0p99": 80,
+      "non_duplicate_pairs_gt_0p90": 57,
+      "non_duplicate_pairs_gt_0p95": 3,
+      "non_duplicate_pairs_gt_0p99": 0,
+      "top_pairs": [
+        {
+          "similarity": 1.0000005960464478,
+          "a": "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018443.jpg",
+          "b": "labeled-MYG_PDA_TEMP.zip|MYG/image/00018463.jpg"
+        },
+        {
+          "similarity": 1.0000005960464478,
+          "a": "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018443.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019509.jpg"
+        },
+        {
+          "similarity": 1.0000005960464478,
+          "a": "labeled-MYG_PDA_TEMP.zip|MYG/image/00018463.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019509.jpg"
+        },
+        {
+          "similarity": 1.0000004768371582,
+          "a": "labeled-GL.zip|labeled-GL/testset/image/00000467.jpg",
+          "b": "labeled-MYG_PDA_TEMP.zip|PDA/image/00018469.jpg"
+        },
+        {
+          "similarity": 1.0000004768371582,
+          "a": "labeled-MYG_PDA_TEMP.zip|MYG/image/00018466.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019064.jpg"
+        },
+        {
+          "similarity": 1.0000004768371582,
+          "a": "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018439.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00020129.jpg"
+        },
+        {
+          "similarity": 1.0000004768371582,
+          "a": "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018446.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019064.jpg"
+        },
+        {
+          "similarity": 1.0000004768371582,
+          "a": "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018446.jpg",
+          "b": "labeled-MYG_PDA_TEMP.zip|MYG/image/00018466.jpg"
+        },
+        {
+          "similarity": 1.0000004768371582,
+          "a": "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/TS/image/00018454.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019841.jpg"
+        },
+        {
+          "similarity": 1.0000004768371582,
+          "a": "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/GS/image/00018428.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019773.jpg"
+        }
+      ]
+    },
+    "rim_rot": {
+      "n": 20176,
+      "nn_observed": [
+        0.8644047677516937,
+        0.9206393957138062,
+        0.9724551290273666,
+        1.000000238418579
+      ],
+      "nn_null": [
+        0.8313240668393143,
+        0.8794299510050028,
+        0.9167242638294478,
+        0.9653034238005115
+      ],
+      "pairs_total": 203525400,
+      "pairs_gt_0p90": 3867,
+      "pairs_gt_0p95": 355,
+      "pairs_gt_0p99": 81,
+      "duplicate_pairs": 80,
+      "duplicate_pairs_gt_0p90": 80,
+      "duplicate_pairs_gt_0p95": 80,
+      "duplicate_pairs_gt_0p99": 80,
+      "non_duplicate_pairs_gt_0p90": 3787,
+      "non_duplicate_pairs_gt_0p95": 275,
+      "non_duplicate_pairs_gt_0p99": 1,
+      "top_pairs": [
+        {
+          "similarity": 1.000000238418579,
+          "a": "labeled-GL.zip|labeled-GL/testset/image/00000475.jpg",
+          "b": "labeled-MYG_PDA_TEMP.zip|PDA/image/00018470.jpg"
+        },
+        {
+          "similarity": 1.000000238418579,
+          "a": "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/TS/image/00018454.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019841.jpg"
+        },
+        {
+          "similarity": 1.000000238418579,
+          "a": "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/TS/image/00018448.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019008.jpg"
+        },
+        {
+          "similarity": 1.0000001192092896,
+          "a": "labeled-MYG_PDA_TEMP.zip|MYG/image/00018463.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019509.jpg"
+        },
+        {
+          "similarity": 1.0000001192092896,
+          "a": "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018446.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019064.jpg"
+        },
+        {
+          "similarity": 1.0000001192092896,
+          "a": "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018438.jpg",
+          "b": "labeled-MYG_PDA_TEMP.zip|MYG/image/00018458.jpg"
+        },
+        {
+          "similarity": 1.0000001192092896,
+          "a": "labeled-GS_PO_TS.zip|labeled-GS_PO_TS/PO/image/00018442.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019850.jpg"
+        },
+        {
+          "similarity": 1.0000001192092896,
+          "a": "unlabeled-GS_PO_TS.zip|00019504.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019933.jpg"
+        },
+        {
+          "similarity": 1.0000001192092896,
+          "a": "unlabeled-GS_PO_TS.zip|00019584.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019652.jpg"
+        },
+        {
+          "similarity": 1.0000001192092896,
+          "a": "labeled-MYG_PDA_TEMP.zip|MYG/image/00018462.jpg",
+          "b": "unlabeled-GS_PO_TS.zip|00019850.jpg"
+        }
+      ]
+    }
+  },
+  "disc_consistency": {
+    "labeled-GL.zip:median": 0.30222,
+    "labeled-GL.zip:spread_iqr": 0.00012000000000000899,
+    "labeled-GS_PO_TS.zip:median": 0.327225,
+    "labeled-GS_PO_TS.zip:spread_iqr": 0.1093075,
+    "labeled-MYG_PDA_TEMP.zip:median": 0.30222,
+    "labeled-MYG_PDA_TEMP.zip:spread_iqr": 0.02659250000000002,
+    "unlabeled-GL1.zip:median": 0.30222,
+    "unlabeled-GL1.zip:spread_iqr": 0.00040000000000001146,
+    "unlabeled-GL2.zip:median": 0.30222,
+    "unlabeled-GL2.zip:spread_iqr": 0.00035999999999997145,
+    "unlabeled-GL3.zip:median": 0.30222,
+    "unlabeled-GL3.zip:spread_iqr": 0.00039000000000000146,
+    "unlabeled-GL4.zip:median": 0.30222,
+    "unlabeled-GL4.zip:spread_iqr": 0.00041999999999997595,
+    "unlabeled-GL5.zip:median": 0.30222,
+    "unlabeled-GL5.zip:spread_iqr": 0.0007499999999999729,
+    "unlabeled-GL6.zip:median": 0.30222,
+    "unlabeled-GL6.zip:spread_iqr": 0.00040999999999996595,
+    "unlabeled-GL7.zip:median": 0.30222,
+    "unlabeled-GL7.zip:spread_iqr": 0.00039000000000000146,
+    "unlabeled-GS_PO_TS.zip:median": 0.33,
+    "unlabeled-GS_PO_TS.zip:spread_iqr": 0.005879999999999996
+  }
+}

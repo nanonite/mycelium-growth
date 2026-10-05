@@ -1,0 +1,12 @@
+archive,images,dish_r_over_w_median,dish_r_over_w_iqr,with_dot,dot_angles_distinct,dot_angle_fwd_steps,colony_radius_frac_median,colony_radius_fwd_steps,inoculum_offset_median,duplicated_images
+labeled-GL.zip,507,0.30222,0.00012,488,408,0.4949,0.3895,0.5079,0.0243,10
+labeled-GS_PO_TS.zip,30,0.32722,0.10931,18,18,0.7059,0.3163,0.4828,0.0446,30
+labeled-MYG_PDA_TEMP.zip,30,0.30222,0.02659,27,27,0.5385,0.3203,0.5517,0.0396,20
+unlabeled-GL1.zip,4480,0.30222,0.0004,3723,1695,0.5046,0.2558,0.5166,0.0259,0
+unlabeled-GL2.zip,2240,0.30222,0.00036,1893,1182,0.5037,0.2759,0.5163,0.026,0
+unlabeled-GL3.zip,2240,0.30222,0.00039,1849,1146,0.5,0.2509,0.5118,0.0269,0
+unlabeled-GL4.zip,2240,0.30222,0.00042,1852,1155,0.5051,0.2471,0.5042,0.0261,0
+unlabeled-GL5.zip,2240,0.30222,0.00075,1843,1140,0.5033,0.2587,0.5181,0.0258,0
+unlabeled-GL6.zip,2240,0.30222,0.00041,1851,1186,0.4973,0.2683,0.5194,0.0274,0
+unlabeled-GL7.zip,2240,0.30222,0.00039,1858,1153,0.4965,0.2696,0.5176,0.0255,0
+unlabeled-GS_PO_TS.zip,1689,0.33,0.00588,1111,811,0.5144,0.1366,0.5,0.063,73

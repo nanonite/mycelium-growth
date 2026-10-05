@@ -34,11 +34,15 @@ Download in this order (total archive 56.5 GB; check free disk first):
 3. One unlabeled shard, e.g. `unlabeled-GL2.zip` (6.2 GB)
 
 Checks (write to `data/metadata.csv`: file, species, medium, temp, dish_id, timestamp, stage):
-- [ ] EXIF `DateTimeOriginal` present? (`exiftool -csv`)
-- [ ] Does sequential numbering follow time within a dish? Look at thumbnail strips
-- [ ] Can images be grouped into dish tracks (inoculum position, lid marks, image-embedding clustering)?
-- [ ] Are stage and sclerotium-colour labels included anywhere in the release?
-- [ ] Mask area in pixels → mm² (dish rim = 90 mm)
+- [x] EXIF `DateTimeOriginal` present? → **no**, 0 / 20,176 (#21)
+- [x] Does sequential numbering follow time within a dish? → **no**, ~51% forward steps (#22)
+- [x] Can images be grouped into dish tracks? → **no**: the rim dot is measurable but does not
+      fingerprint dishes (largest shared angle: 37 images; 720/720 bins occupied), and
+      rim-embedding clustering finds no structure beyond the byte-identical duplicates (#23)
+- [x] Are stage and sclerotium-colour labels included anywhere in the release? → **no** (#24);
+      note the folder-derived species/medium labels are wrong for 20 duplicated images (#23)
+- [ ] Mask area in pixels → mm² (dish rim = 90 mm) — **calibrate per condition block**: apparent
+      dish size differs by block (r/W 0.302 / 0.332 / 0.224), so one global constant is off by ~35% (#25)
 
 **Gate:**
 - **A. Dish + time recoverable** → longitudinal growth-curve model (the best case)

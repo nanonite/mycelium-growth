@@ -50,7 +50,19 @@ The question for each dataset: can we follow **one colony over time**?
   the ID range — px→mm calibration (#25) must handle both.
 - File number vs time: 51% forward steps (shuffled).
 - Visual: no overlays. Each dish has an orange rim dot at a varying angle, plus occasional pen marks.
-  This could fingerprint dishes (issue #23). Colony sizes span the whole range, so cross-sectional size-by-condition is possible.
+  The dot is real and measurable (#23), but **it does not fingerprint dishes**: the angle fills all
+  720 half-degree bins, no angle is shared by more than 37 of the 16,513 detections (0.22%), and
+  the release behaves as one dish per image. Rim-embedding clustering finds no structure either —
+  of 203,525,400 pairs every one above 0.99 is a byte-identical duplicate. Colony sizes span the
+  whole range, so cross-sectional size-by-condition is possible.
+- **133 / 20,176 images are byte-identical duplicates** (#23): the `PO` block is a
+  copy of `MYG`, the `PDA` block a copy of `labeled-GL`, and 29 of the 30 `labeled-GS_PO_TS`
+  images reappear in `unlabeled-GS_PO_TS` — plus 22 pairs that are the same frame under two
+  different ids *inside* `unlabeled-GS_PO_TS.zip`. Folder-derived species/medium labels are
+  therefore wrong for 20 images (#24) — de-duplicate before any train/test split, within an
+  archive as well as across them (#28/#29). `TEMP15` is clean.
+- Apparent dish size differs per condition block (r/W 0.302 GL/MYG/PDA/TEMP15, 0.332 PO/TS, 0.224 GS),
+  so px→mm must be calibrated per block, not globally (#25).
 - Metadata may still exist with the authors (user is following up).
 
 ## Implication for the plan

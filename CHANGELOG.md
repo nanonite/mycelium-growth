@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 ### Changed
+- Recover dish tracks (inoculum position, lid marks, embedding clustering) (#23)
 - Check whether per-image stage / sclerotium colour labels ship in the release (#24)
 - Check whether sequential file numbering follows time within dish (thumbnail strips) (#22)
 - EXIF scan (DateTimeOriginal etc.) on labeled + probe shard (#21)
