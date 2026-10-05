@@ -277,7 +277,9 @@ nutrient transport test.
 
 Left behind for other issues:
 
-* **#25** must calibrate px→mm per condition block (§1) — a global constant is wrong by up to 35%.
+* **#25** (done): px→mm calibrated per condition block from the `dish_r` column above —
+  `notes/triage_calibration.md`, which also splits the flat shard, whose r/W table in §1 hid a
+  second camera scale (91 images at 0.222).
 * **#28/#29** must de-duplicate before splitting — across archives and inside
   `unlabeled-GS_PO_TS.zip` (§5).
 * **#24**'s species/medium table needs the 20 corrected labels (§5).
@@ -290,7 +292,7 @@ Left behind for other issues:
 .venv/bin/python scripts/triage/dish_tracks.py --jobs 11     # full scan, ~34 min on 11 cores
 .venv/bin/python scripts/triage/dish_tracks.py --limit 40     # smoke test, ~20 s
 .venv/bin/python scripts/triage/dish_tracks.py --report-only  # rebuild the JSON + summary
-.venv/bin/python -m pytest tests -q                           # 118 tests
+.venv/bin/python -m pytest tests -q                           # 156 tests
 ```
 
 Flags: `--jobs N` (archives scanned in parallel), `--limit N` (images per archive),

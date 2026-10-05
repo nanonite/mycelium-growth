@@ -251,7 +251,7 @@ nix build .#cmdstan                     # CmdStan on its own
 The repository's own tests run in `.venv`, not in the Nix shell:
 
 ```bash
-.venv/bin/python -m pytest tests -q      # 118 tests
+.venv/bin/python -m pytest tests -q      # 156 tests
 ```
 
 ## Layout
@@ -260,7 +260,7 @@ The repository's own tests run in `.venv`, not in the Nix shell:
 flake.nix, flake.lock    the one shell: R stack + Python stack + CmdStan
 patches/                 patches applied to mmcv 1.3.0 at build time
 scripts/                 data fetching, metadata triage, verification scripts
-  triage/                EXIF, label, numbering and dish-track triage for the raw downloads
+  triage/                EXIF, label, numbering, dish-track and px→mm scale triage for the raw downloads
 external/                vendored third-party checkouts (MyceliumSeg-benchmark, ...)
 data/
   raw/                   downloaded archives (gitignored, ~73 GB)

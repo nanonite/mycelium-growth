@@ -41,8 +41,10 @@ Checks (write to `data/metadata.csv`: file, species, medium, temp, dish_id, time
       rim-embedding clustering finds no structure beyond the byte-identical duplicates (#23)
 - [x] Are stage and sclerotium-colour labels included anywhere in the release? → **no** (#24);
       note the folder-derived species/medium labels are wrong for 20 duplicated images (#23)
-- [ ] Mask area in pixels → mm² (dish rim = 90 mm) — **calibrate per condition block**: apparent
-      dish size differs by block (r/W 0.302 / 0.332 / 0.224), so one global constant is off by ~35% (#25)
+- [x] Mask area in pixels → mm² (dish rim = 90 mm) — **calibrated per condition block** in
+      `data/triage/calibration.csv` (plus a per-image `image_scale.csv`): apparent dish size
+      differs by block (r/W 0.302 / 0.332 / 0.224), so one global constant is off by ~36%, and
+      the flat `unlabeled-GS_PO_TS` shard needed a second constant for its 91 GS-scale images (#25)
 
 **Gate:**
 - **A. Dish + time recoverable** → longitudinal growth-curve model (the best case)
