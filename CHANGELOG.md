@@ -7,6 +7,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- Expose a CUDA-capable MyceliumSeg training environment (#56): `devShells.gpu`
+  with CUDA torch 2.5.1+cu124 and mmcv/mmsegmentation, host `libcuda.so.1`
+  preloaded in the shell hook only, evaluation safe without a GPU, CPU default
+  shell retained
+- Run a GPU SegFormer smoke pipeline (#57): prepare/train/evaluate on the
+  RTX 4070 Ti in ~1 min, evidence in `evidence.json` (device, driver, versions,
+  batch size, peak memory, checkpoint hash, metrics); fixed mmcv 1.3.0 passing
+  int device ids to torch 2.x `_get_stream` via the compatibility shim
+- Reproduce the SegFormer baseline: `scripts/segformer_repro.py` (prepare / config / train / evaluate / evidence),
+  the `scripts/segformer_shim/` compatibility shim the pinned benchmark needs on this stack,
+  and the results write-up in `notes/segformer_baseline.md` (#28). The `evidence`
+  subcommand writes `evidence.json` (device, driver, CUDA/torch/mmcv versions, batch
+  size, peak GPU memory, checkpoint SHA-256, metrics, data hashes) for the GPU
+  baseline run (`--tag gpu`), which trains SegFormer-B0 for the published 50,000
+  iterations at the published effective batch of 16 on the RTX 4070 Ti
+
 
 ### Fixed
 

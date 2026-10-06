@@ -14,6 +14,24 @@
           config = { allowUnfree = true; };
         };
 
+        # Keep the default shell CPU-only and reproducible. The GPU shell uses
+        # the same pinned nixpkgs revision with CUDA enabled, then exposes the
+        # host NVIDIA driver at runtime. This follows the backrooms-workspace
+        # pattern: runtime driver paths are shell configuration, not an
+        # evaluation-time dependency that can make `nix develop` fail.
+        gpuPkgs = import nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            allowBroken = true;
+            cudaSupport = true;
+            # The available host is an RTX 4070 Ti (Ada, compute 8.9). Limit
+            # CUDA code generation to that architecture so the first build
+            # does not compile every historical NVIDIA target.
+            cudaCapabilities = [ "8.9" ];
+          };
+        };
+
         # Build custom R packages NOT available in nixpkgs
         customR = {
           # cmdstanr from GitHub (not on CRAN)
@@ -203,6 +221,56 @@
           };
         };
 
+        # GPU builds of the benchmark's legacy mmcv/mmseg stack. The model
+        # tensors use CUDA-enabled PyTorch, while mmcv 1.3.0 keeps its C++ ops
+        # because its CUDA sources require the removed THC headers from older
+        # PyTorch releases.
+        gpuTorch = gpuPkgs.python312Packages.torch;
+        gpuMmcv = customPython.mmcv.overridePythonAttrs (old: {
+          pname = "mmcv-gpu-torch";
+          MMCV_WITH_CUDA = "0";
+          FORCE_CUDA = "0";
+          nativeBuildInputs = [
+            pkgs.ninja
+            pkgs.gnumake
+            pkgs.which
+            pkgs.python312Packages.cython
+            gpuTorch.cxxdev
+          ];
+          buildInputs = [ gpuTorch.cxxdev ];
+          dependencies = with gpuPkgs.python312Packages; [
+            numpy
+            gpuTorch
+            torchvision
+            addict
+            packaging
+            pillow
+            pyyaml
+            yapf
+            # OpenCV is only used for image I/O here. Reuse the CPU build so
+            # the GPU shell does not pull in a second CUDA-enabled OpenCV.
+            pkgs.python312Packages.opencv4
+          ];
+          meta = old.meta // {
+            description = "OpenMMLab mmcv-full 1.3.0 C++ ops for CUDA PyTorch";
+          };
+        });
+
+        gpuMmsegmentation = customPython.mmsegmentation.overridePythonAttrs (old: {
+          pname = "mmsegmentation-cuda";
+          dependencies = with gpuPkgs.python312Packages; [
+            gpuMmcv
+            numpy
+            gpuTorch
+            matplotlib
+            terminaltables
+            addict
+            pyyaml
+            timm
+            fsspec
+          ];
+        });
+
         # List of R packages to include in the environment
         rPackageList = [
           customR.cmdstanr
@@ -284,6 +352,42 @@
           isort
         ]);
 
+        # CUDA-enabled Python environment for the benchmark. The host driver
+        # is intentionally not copied into the Nix closure; the shell hook
+        # makes the installed NVIDIA/CUDA runtime visible on this machine.
+        gpuPythonEnv = gpuPkgs.python312.withPackages (ps: with ps; [
+          numpy
+          pandas
+          scipy
+          matplotlib
+          scikit-learn
+          # This CPU-only package is sufficient for mask metrics and avoids
+          # pulling CUDA-enabled OpenCV through imageio/pillow-heif.
+          pkgs.python312Packages.scikit-image
+          seaborn
+          gpuTorch
+          torchvision
+          gpuMmcv
+          gpuMmsegmentation
+          # The benchmark does not use OpenCV CUDA kernels; reuse the CPU
+          # build rather than compiling CUDA OpenCV as well.
+          pkgs.python312Packages.opencv4
+          pillow
+          addict
+          pyyaml
+          tqdm
+          terminaltables
+          timm
+          safetensors
+          fsspec
+          packaging
+          medpy
+          ipython
+          pytest
+          yapf
+          isort
+        ]);
+
         # Development shell
         devShell = pkgs.mkShell {
           name = "mycelium-growth-dev";
@@ -355,9 +459,73 @@
           '';
         };
 
+        # GPU shell patterned after backrooms-workspace: keep host GL/CUDA
+        # libraries out of evaluation, add them at runtime, and leave the
+        # default shell untouched for CPU-only CI and reproducible tests.
+        gpuDevShell = gpuPkgs.mkShell {
+          name = "mycelium-growth-gpu";
+          buildInputs = [
+            rWithPackages
+            cmdstan
+            gpuPythonEnv
+            gpuPkgs.git
+            gpuPkgs.exiftool
+            gpuPkgs.graphviz
+            gpuPkgs.gnumake
+            gpuPkgs.cmake
+            gpuPkgs.gcc
+            gpuPkgs.glibc
+            gpuPkgs.zlib
+            gpuPkgs.libiconv
+            gpuPkgs.ncurses
+            gpuPkgs.readline
+            gpuPkgs.xz
+            gpuPkgs.bzip2
+            gpuPkgs.sqlite
+            gpuPkgs.openblas
+          ];
+
+          shellHook = ''
+            # The backrooms shell uses the same runtime-library approach for
+            # host NVIDIA driver. This workstation exposes libcuda in the
+            # Debian library directory rather than /run/opengl-driver/lib.
+            # Preload only that driver library: adding the whole host system
+            # directory makes Nix's glibc loader resolve incompatible system
+            # libraries before the shell's closure.
+            if [[ -r /usr/lib/x86_64-linux-gnu/libcuda.so.1 ]]; then
+              export LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libcuda.so.1''${LD_PRELOAD:+:$LD_PRELOAD}"
+            elif [[ -r /usr/lib64/libcuda.so.1 ]]; then
+              export LD_PRELOAD="/usr/lib64/libcuda.so.1''${LD_PRELOAD:+:$LD_PRELOAD}"
+            fi
+            export CUDA_HOME="''${CUDA_HOME:-/usr/local/cuda}"
+            export OMP_NUM_THREADS="''${OMP_NUM_THREADS:-1}"
+            export MKL_NUM_THREADS="''${MKL_NUM_THREADS:-1}"
+            export OPENBLAS_NUM_THREADS="''${OPENBLAS_NUM_THREADS:-1}"
+
+            echo "=== Mycelium Growth GPU Development Environment ==="
+            if command -v nvidia-smi >/dev/null 2>&1; then
+              nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv,noheader
+            else
+              echo "WARNING: nvidia-smi not found; GPU checks cannot pass" >&2
+            fi
+            python - <<'PY'
+            import torch
+            print(f"Torch: {torch.__version__}")
+            print(f"CUDA build: {torch.version.cuda}")
+            print(f"CUDA available: {torch.cuda.is_available()}")
+            if torch.cuda.is_available():
+                print(f"GPU: {torch.cuda.get_device_name(0)}")
+            else:
+                raise SystemExit("CUDA is unavailable in the GPU shell")
+            PY
+            echo "Run: nix develop .#gpu --command python scripts/verify_benchmark_models.py"
+          '';
+        };
+
       in
       {
         devShells.default = devShell;
+        devShells.gpu = gpuDevShell;
 
         packages = {
           default = rWithPackages;
@@ -365,9 +533,12 @@
           # projects can depend on either stack via `inputs.mycelium.packages.*`.
           rEnv = rWithPackages;
           pythonEnv = pythonEnv;
+          gpuPythonEnv = gpuPythonEnv;
           cmdstan = cmdstan;
           mmcv = customPython.mmcv;
           mmsegmentation = customPython.mmsegmentation;
+          gpuMmcv = gpuMmcv;
+          gpuMmsegmentation = gpuMmsegmentation;
           devShell = devShell;
         };
       }

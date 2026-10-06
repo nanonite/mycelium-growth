@@ -113,8 +113,32 @@ patches from `patches/`:
 - `mmc-v1.3.0-torch2-ddp-gpu-num.patch` restores `SyncBatchNorm._specify_ddp_gpu_num`,
   which torch 2.x removed and mmcv 1.3.0 calls for every SyncBN layer.
 
-Only the C++ (CPU) kernels are compiled (`MMCV_WITH_OPS=1`, `MMCV_WITH_CUDA=0`), so no
-CUDA toolkit is needed.
+Only the C++ (CPU) kernels are compiled in the default shell
+(`MMCV_WITH_OPS=1`, `MMCV_WITH_CUDA=0`), so no CUDA toolkit is needed there.
+
+#### GPU shell
+
+The repository also exposes `devShells.gpu` for the RTX 4070 Ti host used for the
+SegFormer work. It keeps the CPU shell as the reproducible default and selects a
+CUDA-enabled PyTorch, torchvision, mmcv, and mmsegmentation stack only
+when requested:
+
+```bash
+# Build the GPU package closure once, then enter the shell
+nix build .#gpuPythonEnv --no-link
+nix develop .#gpu
+
+# Confirm that PyTorch can see the host driver and GPU
+nix develop .#gpu --command python -c \
+  "import torch; print(torch.__version__, torch.version.cuda, torch.cuda.get_device_name(0)); assert torch.cuda.is_available()"
+```
+
+The GPU shell exposes the host `libcuda.so.1` through `LD_PRELOAD` in its shell hook.
+It uses the runtime-library pattern from the `backrooms-workspace` flake while
+avoiding the host system library directory, which can override the shell's glibc.
+Nix evaluation stays safe on machines without a GPU, while the runtime check is
+performed only when the GPU shell is entered.
+
 
 ## Usage
 
@@ -165,6 +189,40 @@ nix develop ../.. --command env PYTHONPATH=. python -c "import mmseg; print(mmse
 Real inference and training need the trained checkpoints, which are not in this
 repository. To check that the stack can build and run the benchmark's models without
 them, use the smoke test below.
+
+### SegFormer baseline reproduction
+
+`scripts/segformer_repro.py` runs the benchmark's own `train.py` / `test.py` end
+to end: it unpacks the three labeled release zips into the layout the benchmark's
+`EPA_mycelium` dataset expects (`data/segmentation/{train,test,conditions}`),
+renders a config layered on the authors' `segformer.b0.1024x1024.mycelium.507.py`,
+trains SegFormer-B0, and evaluates with the five metrics the paper reports
+(mIoU, mDice, ASSD, HD95, Boundary IoU):
+
+```bash
+# Minutes: 2 iterations on 4+2+2 images, proves the whole path works
+nix develop --command python scripts/segformer_repro.py run --smoke
+
+# The short reproduction run (CPU; --max-iters and friends are configurable)
+nix develop --command python scripts/segformer_repro.py run
+
+# The published protocol on the available GPU: 50,000 iterations at the
+# published effective batch of 16 (4 GPUs x 4 -> one 12 GB GPU), ~5 h
+nix develop .#gpu --command python scripts/segformer_repro.py run \
+  --tag gpu --max-iters 50000 --batch-size 16 --workers 8
+```
+
+Artifacts land in `work_dirs/segformer-b0-repro/` (configs, logs, the final
+checkpoint, `metrics.json`, and `evidence.json` — device, driver, versions,
+batch size, peak GPU memory, checkpoint SHA-256 and metrics, assembled by the
+`evidence` subcommand that `run` invokes last); `--tag NAME` writes to
+`full-NAME`/`smoke-NAME` so runs do not overwrite each other. The results and
+their deviations from the published protocol are written up in
+[notes/segformer_baseline.md](notes/segformer_baseline.md).
+The benchmark's entry points assume numpy < 1.24 and yapf < 0.40, neither of
+which this stack has, and (on the CPU shell) a CUDA-less torch, so
+`segformer_repro.py` starts them with a compatibility shim from
+`scripts/segformer_shim/` on `PYTHONPATH` - only its subprocesses see it.
 
 ### scikit-image for mask shape metrics
 
@@ -241,6 +299,7 @@ not usable, `3` the `--timeout` budget expired.
 nix flake update                        # bump the pinned nixpkgs / flake-utils
 nix build .#devShell                    # realise the shell without entering it
 nix build .#pythonEnv                   # the Python half on its own
+nix build .#gpuPythonEnv                # the CUDA-enabled Python half
 nix build .#rEnv                        # the R half on its own
 nix build .#cmdstan                     # CmdStan on its own
 ```
@@ -251,7 +310,7 @@ nix build .#cmdstan                     # CmdStan on its own
 The repository's own tests run in `.venv`, not in the Nix shell:
 
 ```bash
-.venv/bin/python -m pytest tests -q      # 156 tests
+.venv/bin/python -m pytest tests -q      # 182 tests
 ```
 
 ## Layout
@@ -283,10 +342,15 @@ The analysis layout in [PLAN.md](PLAN.md) (`R/`, `py/`) is not built yet.
   (`BLAS_INFO=open`, `USE_EIGEN_FOR_BLAS=ON`, `USE_OPENMP=ON`) rather than of the model.
   Until it is understood, run torch work single-threaded;
   `verify_benchmark_models.py` does that by default and explains why in
-  `pin_torch_threads()`.
-- **CPU only.** torch is built with `USE_CUDA=OFF`, so `torch.cuda.is_available()` is
-  `False` and the benchmark's `dist_train.sh` / `script_inference.sh`, which assume
-  several GPUs and `torch.distributed.launch`, cannot be used as written.
+  `pin_torch_threads()`. **This affects the default (CPU) shell only** - the
+  GPU shell's torch is a CUDA build without the issue, and its shell hook pins
+  `OMP_NUM_THREADS=1` anyway.
+- **CPU only (default shell).** `devShells.default` is built with `USE_CUDA=OFF`, so
+  `torch.cuda.is_available()` is `False` there and the benchmark's `dist_train.sh` /
+  `script_inference.sh`, which assume several GPUs and `torch.distributed.launch`,
+  cannot be used as written. Use `nix develop .#gpu` for CUDA (see "GPU shell"
+  above); its mmcv 1.3.0 still has **no CUDA kernels** (the sources need removed THC
+  headers), which this protocol does not need.
 - **`stanc --version` prints a placeholder** (`%%NAME%%3 %%VERSION%% (Unix)`). Read the
   CmdStan version from `cmdstanr::cmdstan_version()`.
 - **Six harmless locale warnings** (`input string ' ±' cannot be translated from

@@ -1,9 +1,12 @@
 data/raw/
+data/segmentation/
+data/pretrained/
 *.part
 *.bad
 .chainlink/issues.db
 .chainlink/.locks-cache/
 .venv/
+work_dirs/
 __pycache__/
 .pytest_cache/
 .ruff_cache/
