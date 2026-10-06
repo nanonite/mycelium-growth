@@ -1,0 +1,112 @@
+{
+  "benchmark_commit": "0c8516f32ab4cfc0bef9b420bb221c4a6d202ea4",
+  "checkpoint": {
+    "bytes": 44831424,
+    "path": "/mnt/sharedOs/mycelium-growth-workspace/work_dirs/segformer-b0-repro/full-gpu/train/iter_50000.pth",
+    "sha256": "bcf66b6c1b3ce44018bc54223bacad31bd48a1647efc842bfbc6bd5f6d3e20d6"
+  },
+  "commands": [
+    "nix develop .#gpu --command python scripts/segformer_repro.py run",
+    "nix develop .#gpu --command python scripts/segformer_repro.py evidence",
+    "nix develop --command python scripts/segformer_repro.py run  # CPU profile"
+  ],
+  "dataset": {
+    "counts": {
+      "conditions": 60,
+      "test": 50,
+      "train": 457
+    },
+    "manifest_sha256": "017bddb7a27f65cb833ba804c0d10b812dedbf538aef60bedd949f79c21dfa12",
+    "root": "/mnt/sharedOs/mycelium-growth-workspace/data/segmentation/release"
+  },
+  "environment": {
+    "cuda_available": true,
+    "cuda_device": "NVIDIA GeForce RTX 4070 Ti",
+    "gpus": [
+      {
+        "driver": "595.91.07",
+        "memory_free_mib": 9430,
+        "memory_total_mib": 12282,
+        "name": "NVIDIA GeForce RTX 4070 Ti"
+      }
+    ],
+    "hostname": "goya-linux",
+    "machine": "x86_64",
+    "mmcv": "1.3.0",
+    "mmseg": "0.11.0",
+    "platform": "Linux-6.8.0-142-generic-x86_64-with-glibc2.40",
+    "python": "3.12.8",
+    "torch": "2.5.1",
+    "torch_cuda_build": "12.4"
+  },
+  "generated_at": "2026-10-06T13:19:07.538547+00:00",
+  "metrics": {
+    "conditions": {
+      "aggregate": {
+        "aAcc": 0.9965999999999999,
+        "mAcc": 0.9869,
+        "mDice": 0.9854999999999999,
+        "mIoU": 0.9716,
+        "md95": 318.251,
+        "miou": 0.2585,
+        "mssd": 76.9937
+      },
+      "headline": {
+        "assd_px": 76.9937,
+        "boundary_iou": 0.2585,
+        "hd95_px": 318.251,
+        "mycelium_f1": 0.9727,
+        "mycelium_iou": 0.9469
+      },
+      "images": 60,
+      "wall_seconds": 287.4
+    },
+    "test": {
+      "aggregate": {
+        "aAcc": 0.9937999999999999,
+        "mAcc": 0.9847,
+        "mDice": 0.9864,
+        "mIoU": 0.9732999999999999,
+        "md95": 279.82689999999997,
+        "miou": 0.2791,
+        "mssd": 54.150299999999994
+      },
+      "headline": {
+        "assd_px": 54.150299999999994,
+        "boundary_iou": 0.2791,
+        "hd95_px": 279.82689999999997,
+        "mycelium_f1": 0.9763,
+        "mycelium_iou": 0.9537
+      },
+      "images": 50,
+      "wall_seconds": 715.8
+    }
+  },
+  "metrics_file": "/mnt/sharedOs/mycelium-growth-workspace/work_dirs/segformer-b0-repro/full-gpu/metrics.json",
+  "protocol": {
+    "base_config": "/mnt/sharedOs/mycelium-growth-workspace/external/MyceliumSeg-benchmark/mycelium_model/model/segformer.b0.1024x1024.mycelium.507.py",
+    "config": "/mnt/sharedOs/mycelium-growth-workspace/work_dirs/segformer-b0-repro/full-gpu/config.py",
+    "config_sha256": "e3d3e6f6ed0fcdaa8eea3852d23167b41962cb442a1a0aae30a91a7780f4e57e",
+    "log_interval": 10,
+    "max_iters": 50000,
+    "samples_per_gpu": 16,
+    "warmup_iters": 3000,
+    "workers_per_gpu": 8
+  },
+  "release_archives": {
+    "labeled-GL.zip": "1bf2703f74f03bcfdbc81fb93be5fd38",
+    "labeled-GS_PO_TS.zip": "dc7b89e8853911bc8a7dda12c0ac230f",
+    "labeled-MYG_PDA_TEMP.zip": "57a2de079dcb6b45ab825d68ce5d67bb"
+  },
+  "repository_commit": "bbba724eb0c4a1f5f1a16d4b57d2a16f3b371494",
+  "training": {
+    "final_loss": 0.0066,
+    "iterations": 50000,
+    "log": "/mnt/sharedOs/mycelium-growth-workspace/work_dirs/segformer-b0-repro/full-gpu/train/train.log",
+    "max_iters": 50000,
+    "mean_data_seconds": 0.162,
+    "mean_iter_seconds": 0.363,
+    "peak_memory_mb": 6507
+  },
+  "work_dir": "/mnt/sharedOs/mycelium-growth-workspace/work_dirs/segformer-b0-repro/full-gpu"
+}

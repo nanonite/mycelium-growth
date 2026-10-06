@@ -199,8 +199,8 @@ Recorded in `work_dirs/segformer-b0-repro/smoke/evidence.json`:
 | Batch size | `samples_per_gpu=4`, `workers_per_gpu=2` (authors' defaults) |
 | Iterations | 2, `--seed 42 --deterministic`, checkpoint `iter_2.pth` (SHA-256 in `smoke/evidence.json`) |
 | Peak GPU memory | 1,683 MiB (`memory:` field in the train log) |
-| Iteration time | 0.093 s steady (first iter 0.97 s incl. data warm-up) |
-| Metrics (2-image eval) | F1 0.7767, IoU 0.6350, mIoU 0.7801 — pipeline sanity only, not a quality result |
+| Iteration time | 0.536 s mean over 2 logged iterations (first iter slower, incl. data warm-up) |
+| Metrics (2-image eval) | F1 0.7767, IoU 0.6349, mIoU 0.7801 - pipeline sanity only, not a quality result |
 
 **Smoke found a real bug.** The first GPU training attempt died on every
 iteration with `AttributeError: 'int' object has no attribute 'type'`:
@@ -276,21 +276,21 @@ checkpoint.
 
 | Metric | Published | CPU run (1,200 iters) | GPU baseline (50,000 iters) |
 | --- | --- | --- | --- |
-| Mycelium F1 ↑ (%) | 97.55 | 96.88 | TBD |
-| Mycelium IoU ↑ (%) | 95.22 | 93.95 | TBD |
-| Boundary IoU ↑ (%) | 28.60 | 19.05 | TBD |
-| HD95 ↓ (px) | 75.95 | 51.84 | TBD |
-| ASSD ↓ (px) | 15.28 | 20.55 | TBD |
+| Mycelium F1 ↑ (%) | 97.55 | 96.88 | 97.63 |
+| Mycelium IoU ↑ (%) | 95.22 | 93.95 | 95.37 |
+| Boundary IoU ↑ (%) | 28.60 | 19.05 | 27.91 |
+| HD95 ↓ (px) | 75.95 | 51.84 | 279.83 |
+| ASSD ↓ (px) | 15.28 | 20.55 | 54.15 |
 
 ### Condition hold-outs — 60 images (vs. published Table 7 ranges)
 
 | Metric | Published range (GS/PO/TS) | CPU run (all 60) | GPU baseline (50,000 iters) |
 | --- | --- | --- | --- |
-| Mycelium F1 ↑ (%) | 95.93 – 97.67 | 96.65 | TBD |
-| Mycelium IoU ↑ (%) | 92.18 – 95.44 | 93.52 | TBD |
-| Boundary IoU ↑ (%) | 11.50 – 24.50 | 17.77 | TBD |
-| HD95 ↓ (px) | 51.23 – 512.53 | 233.04 | TBD |
-| ASSD ↓ (px) | 21.04 – 118.29 | 80.04 | TBD |
+| Mycelium F1 ↑ (%) | 95.93 – 97.67 | 96.65 | 97.27 |
+| Mycelium IoU ↑ (%) | 92.18 – 95.44 | 93.52 | 94.69 |
+| Boundary IoU ↑ (%) | 11.50 – 24.50 | 17.77 | 25.85 |
+| HD95 ↓ (px) | 51.23 – 512.53 | 233.04 | 318.25 |
+| ASSD ↓ (px) | 21.04 – 118.29 | 80.04 | 76.99 |
 
 (The published range is per-species over three 10-image sets; ours is one
 aggregate over all 60 condition images, so it is indicative, not identical.)
