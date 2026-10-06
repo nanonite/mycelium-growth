@@ -4,6 +4,7 @@
 **Status:** decided — Gate **C** (neither dish identity nor capture time recoverable)
 **Evidence:** #21 (EXIF), #22 (numbering), #23 (dish tracks), #24 (labels), #25 (px→mm calibration)
 **Blocks:** #20, #34 (any growth-curve interpretation of MyceliumSeg output)
+**Assumption record:** #20 falsified — `notes/assumptions.md` (cascade: #34, #41, #42, #44, #52)
 
 **Decision.** The released MyceliumSeg files do not identify dishes and do not date
 images, and no route inside the release recovers either. Therefore:
