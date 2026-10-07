@@ -7,6 +7,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- Audit eligible *G. lucidum* 15 °C images for cross-sectional morphology (#34) —
+  `scripts/triage/audit_15c_images.py` verifies the 10 TEMP15 candidates
+  (`labeled-MYG_PDA_TEMP.zip`, IDs 00018478–00018487) against the source
+  archive, duplicate map, label triage, px→mm calibration and measurement
+  table: all 10 are unique (distinct md5), correctly labelled (GL/MYG/15 °C),
+  calibrated (`fit_status=ok`), and free of cross-archive collisions and label
+  conflicts. Reports a validated 25 °C GL context count (18,437 unique; 18,001
+  calibrated). Gate C binding: descriptive feasibility only — no dish-level
+  power, no causal temperature effect, no physical growth rate. Writes
+  `data/triage/audit_15c.json`; `tests/test_audit_15c_images.py` (25 tests)
+  and `notes/image_count_15c.md` document the audit
 - Observable measurement table from the validated #29 masks —
   `scripts/measurements.py` writes `data/measurements.csv` (one provenance-rich
   row per image: area, area fraction, calibrated equivalent radius, perimeter,

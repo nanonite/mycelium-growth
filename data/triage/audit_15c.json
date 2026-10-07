@@ -1,0 +1,107 @@
+{
+  "task": "#34",
+  "scope": "image-count and descriptive-feasibility audit (Gate C)",
+  "temp15": {
+    "source_archive": "labeled-MYG_PDA_TEMP.zip",
+    "source_folder": "TEMP15",
+    "n_images": 10,
+    "image_ids": [
+      "00018478",
+      "00018479",
+      "00018480",
+      "00018481",
+      "00018482",
+      "00018483",
+      "00018484",
+      "00018485",
+      "00018486",
+      "00018487"
+    ],
+    "entries": [
+      {
+        "archive": "labeled-MYG_PDA_TEMP.zip",
+        "entry": "TEMP15/image/00018483.jpg",
+        "id": "00018483"
+      },
+      {
+        "archive": "labeled-MYG_PDA_TEMP.zip",
+        "entry": "TEMP15/image/00018482.jpg",
+        "id": "00018482"
+      },
+      {
+        "archive": "labeled-MYG_PDA_TEMP.zip",
+        "entry": "TEMP15/image/00018480.jpg",
+        "id": "00018480"
+      },
+      {
+        "archive": "labeled-MYG_PDA_TEMP.zip",
+        "entry": "TEMP15/image/00018481.jpg",
+        "id": "00018481"
+      },
+      {
+        "archive": "labeled-MYG_PDA_TEMP.zip",
+        "entry": "TEMP15/image/00018485.jpg",
+        "id": "00018485"
+      },
+      {
+        "archive": "labeled-MYG_PDA_TEMP.zip",
+        "entry": "TEMP15/image/00018484.jpg",
+        "id": "00018484"
+      },
+      {
+        "archive": "labeled-MYG_PDA_TEMP.zip",
+        "entry": "TEMP15/image/00018479.jpg",
+        "id": "00018479"
+      },
+      {
+        "archive": "labeled-MYG_PDA_TEMP.zip",
+        "entry": "TEMP15/image/00018486.jpg",
+        "id": "00018486"
+      },
+      {
+        "archive": "labeled-MYG_PDA_TEMP.zip",
+        "entry": "TEMP15/image/00018487.jpg",
+        "id": "00018487"
+      },
+      {
+        "archive": "labeled-MYG_PDA_TEMP.zip",
+        "entry": "TEMP15/image/00018478.jpg",
+        "id": "00018478"
+      }
+    ],
+    "n_distinct_md5": 10,
+    "duplicate_ids": [],
+    "cross_archive_collisions": [],
+    "label_issues": [],
+    "off_scale_ids": [],
+    "missing_from_measurements": [],
+    "label_conflicts": [],
+    "n_eligible": 10,
+    "eligible_ids": [
+      "00018478",
+      "00018479",
+      "00018480",
+      "00018481",
+      "00018482",
+      "00018483",
+      "00018484",
+      "00018485",
+      "00018486",
+      "00018487"
+    ]
+  },
+  "gl25_context": {
+    "n_images": 18437,
+    "n_distinct_md5": 18437,
+    "n_off_scale": 436,
+    "n_ok": 18001
+  },
+  "cross_temperature_md5_overlap": 0,
+  "feasibility": {
+    "descriptive_comparison": "feasible",
+    "causal_temperature_effect": "not identified (Gate C: no dish identity, no replication, no time axis)",
+    "physical_growth_rate": "not identifiable (no capture interval)",
+    "dish_level_power": "not computable (images are not independent dishes)",
+    "sample_size_limitation": "n=10 images at 15 \u00b0C; no dish-level replication; descriptive only"
+  }
+}
