@@ -33,7 +33,7 @@
       "intensity_max"
     ]
   },
-  "generated_at": "2026-10-07T06:10:30.227375+00:00",
+  "generated_at": "2026-10-07T06:24:00.397231+00:00",
   "measurement_columns": [
     {
       "column": "area_px",
@@ -147,7 +147,7 @@
       "00018458"
     ]
   },
-  "repository_commit": "1f79e8156b3c4dc13af398560d64556af91b3a08",
+  "repository_commit": "2abc519233faeeaa7de544737c1663ba50240de3",
   "task": 30,
   "work_dir": "/mnt/sharedOs/mycelium-growth-workspace/work_dirs/segformer-b0-repro/inference"
 }

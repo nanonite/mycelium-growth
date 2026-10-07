@@ -293,6 +293,10 @@ def build_measurement_rows(
         for key in PROVENANCE_COLUMNS:
             if key == "working_width":
                 row[key] = WORKING_WIDTH
+            elif key == "mask_sha256":
+                # the #29 record stores the mask content hash under
+                # `predicted_mask_sha256`; map it to the output column name
+                row[key] = rec.get("predicted_mask_sha256", "")
             else:
                 row[key] = rec.get(key, "")
         # measurements: the feature values, in MEASUREMENT_COLUMNS order

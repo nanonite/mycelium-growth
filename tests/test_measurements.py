@@ -297,6 +297,12 @@ def test_real_run_writes_one_row_per_image(tmp_path):
         assert row["area_px"] is not None
         assert row["equiv_radius_px"] is not None
         assert row["log_area_px2"] is not None
+    # the mask-level content hash is carried from the #29 record's
+    # `predicted_mask_sha256` and joins on `id`
+    rec_by_id = {str(r["id"]): r for r in records}
+    for row in rows:
+        assert row["mask_sha256"], f"row {row['id']} has an empty mask_sha256"
+        assert row["mask_sha256"] == rec_by_id[row["id"]]["predicted_mask_sha256"]
 
 
 @pytest.mark.skipif(
