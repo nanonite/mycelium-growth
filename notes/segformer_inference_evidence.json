@@ -1,0 +1,392 @@
+{
+  "benchmark_commit": "0c8516f32ab4cfc0bef9b420bb221c4a6d202ea4",
+  "caveats": [
+    "MyceliumSeg is cross-sectional: no ordered frames, no dish identity, no capture interval (Gate C, notes/provenance.md).",
+    "A frame index is not a duration and the file numbering is shuffled: no elapsed time, growth rate, timelapse membership or dish identity may be read from the sorted area order.",
+    "Area ordering inside an archive/block stratum is an exploratory inspection only; coherent bands may be acquisition, selection or condition artefacts, not biological growth.",
+    "Boundary features are weak by construction (published Boundary IoU 28.60%, #28): no boundary event here is a biological hyphal tip.",
+    "The labeled hold-out comparison is a smoke sanity check of the masks; the bias/SD measurement-error model is #31, not this task."
+  ],
+  "checkpoint_guard": {
+    "expected_config_sha256": "e3d3e6f6ed0fcdaa8eea3852d23167b41962cb442a1a0aae30a91a7780f4e57e",
+    "expected_sha256": "bcf66b6c1b3ce44018bc54223bacad31bd48a1647efc842bfbc6bd5f6d3e20d6"
+  },
+  "commands": [
+    "nix develop .#gpu --command env PYTHONPATH=scripts/segformer_shim python scripts/segformer_inference.py run",
+    "nix develop .#gpu --command env PYTHONPATH=scripts/segformer_shim python scripts/segformer_inference.py predict --set all",
+    "nix develop --command python scripts/segformer_inference.py explore"
+  ],
+  "counts": {
+    "conditions": 60,
+    "test": 50,
+    "unlabeled": 15
+  },
+  "environment": {
+    "cuda_available": true,
+    "cuda_device": "NVIDIA GeForce RTX 4070 Ti",
+    "gpus": [
+      {
+        "driver": "595.91.07",
+        "memory_free_mib": 6338,
+        "memory_total_mib": 12282,
+        "name": "NVIDIA GeForce RTX 4070 Ti"
+      }
+    ],
+    "hostname": "goya-linux",
+    "machine": "x86_64",
+    "mmcv": "1.3.0",
+    "mmseg": "0.11.0",
+    "platform": "Linux-6.8.0-142-generic-x86_64-with-glibc2.40",
+    "python": "3.12.8",
+    "torch": "2.5.1",
+    "torch_cuda_build": "12.4"
+  },
+  "exploration": {
+    "blocks": [
+      {
+        "archive": "labeled-GL.zip",
+        "block": "GL",
+        "n": 50,
+        "n_bands": 7,
+        "n_scored": 50
+      },
+      {
+        "archive": "labeled-GS_PO_TS.zip",
+        "block": "GS",
+        "n": 10,
+        "n_bands": 2,
+        "n_scored": 10
+      },
+      {
+        "archive": "labeled-GS_PO_TS.zip",
+        "block": "PO",
+        "n": 10,
+        "n_bands": 1,
+        "n_scored": 9
+      },
+      {
+        "archive": "labeled-GS_PO_TS.zip",
+        "block": "TS",
+        "n": 10,
+        "n_bands": 2,
+        "n_scored": 9
+      },
+      {
+        "archive": "labeled-MYG_PDA_TEMP.zip",
+        "block": "MYG",
+        "n": 10,
+        "n_bands": 1,
+        "n_scored": 9
+      },
+      {
+        "archive": "labeled-MYG_PDA_TEMP.zip",
+        "block": "PDA",
+        "n": 10,
+        "n_bands": 2,
+        "n_scored": 10
+      },
+      {
+        "archive": "labeled-MYG_PDA_TEMP.zip",
+        "block": "TEMP15",
+        "n": 10,
+        "n_bands": 3,
+        "n_scored": 10
+      },
+      {
+        "archive": "unlabeled-GL2.zip",
+        "block": "GL",
+        "n": 8,
+        "n_bands": 3,
+        "n_scored": 8
+      },
+      {
+        "archive": "unlabeled-GS_PO_TS.zip",
+        "block": "GS_PO_TS_flat",
+        "n": 7,
+        "n_bands": 1,
+        "n_scored": 7
+      }
+    ],
+    "duplicate_groups": [
+      {
+        "archives": [
+          "labeled-GL.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00000489",
+          "00018475"
+        ],
+        "md5": "0ba037ffd24fe48b4f7035bc0aed7960",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GS_PO_TS.zip",
+          "unlabeled-GS_PO_TS.zip"
+        ],
+        "ids": [
+          "00018428",
+          "00019773"
+        ],
+        "md5": "0c0dea45c90c0270306fe6166c7665ca",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GS_PO_TS.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00018443",
+          "00018463"
+        ],
+        "md5": "0fdbbbacda88cc82dac6725dc232d53f",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GS_PO_TS.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00018445",
+          "00018465"
+        ],
+        "md5": "150e5fce881b87fafde7ddec3a34d12e",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GL.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00000500",
+          "00018476"
+        ],
+        "md5": "2263d7ccb6d7024ae57dd28642a74677",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GS_PO_TS.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00018447",
+          "00018467"
+        ],
+        "md5": "35eed3508d23ece0c4e280f66934def6",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GL.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00000467",
+          "00018469"
+        ],
+        "md5": "4b74bdb561cc25ff0050d252973c23b6",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GL.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00000486",
+          "00018473"
+        ],
+        "md5": "641c458f7e4c599535ee51ed770902b4",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GL.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00000475",
+          "00018470"
+        ],
+        "md5": "697972681b60e99be0c7619cbbbcf888",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GS_PO_TS.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00018446",
+          "00018466"
+        ],
+        "md5": "7b866d2c3cabdafc90c275c39415ecc1",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GS_PO_TS.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00018439",
+          "00018459"
+        ],
+        "md5": "8281341311b3f5affc6d21406970dad5",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GL.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00000485",
+          "00018472"
+        ],
+        "md5": "889a0a84fbecabb908250969e60eceb8",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GL.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00000501",
+          "00018477"
+        ],
+        "md5": "b5c64e3c78c9726dcb4e6ac0f319f3f9",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GL.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00000480",
+          "00018471"
+        ],
+        "md5": "c629b2ccfa3bf6f725f906a7416344fe",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GL.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00000488",
+          "00018474"
+        ],
+        "md5": "dd4e7c468f496c4dee2f2e4c12619dfc",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GL.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00000465",
+          "00018468"
+        ],
+        "md5": "e4633e4f7f3537b77acb9d8c716882e8",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GS_PO_TS.zip",
+          "unlabeled-GS_PO_TS.zip"
+        ],
+        "ids": [
+          "00018429",
+          "00019301"
+        ],
+        "md5": "ede10c6d726b81f720191b802e83d481",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GS_PO_TS.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00018438",
+          "00018458"
+        ],
+        "md5": "f50d06f0cc0046bf90070371faff35ad",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GS_PO_TS.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00018442",
+          "00018462"
+        ],
+        "md5": "fb39306da6f948aeeccf69911634057f",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GS_PO_TS.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00018441",
+          "00018461"
+        ],
+        "md5": "fc1c5bd5c828ac76695e2beffaf0c85d",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GS_PO_TS.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00018444",
+          "00018464"
+        ],
+        "md5": "fc31ed26c88511e8e476802d38e86290",
+        "predicted_mask_sha256_identical": true
+      },
+      {
+        "archives": [
+          "labeled-GS_PO_TS.zip",
+          "labeled-MYG_PDA_TEMP.zip"
+        ],
+        "ids": [
+          "00018440",
+          "00018460"
+        ],
+        "md5": "fc37ef26f80e5d1b2c3031e98eb7df7c",
+        "predicted_mask_sha256_identical": true
+      }
+    ],
+    "gap_factor": 4.0,
+    "n_blocks": 9,
+    "n_duplicate_groups": 22
+  },
+  "generated_at": "2026-10-07T02:46:44.127523+00:00",
+  "model": {
+    "checkpoint": "/mnt/sharedOs/mycelium-growth-workspace/work_dirs/segformer-b0-repro/full-gpu/train/iter_50000.pth",
+    "checkpoint_bytes": 44831424,
+    "checkpoint_sha256": "bcf66b6c1b3ce44018bc54223bacad31bd48a1647efc842bfbc6bd5f6d3e20d6",
+    "config": "/mnt/sharedOs/mycelium-growth-workspace/work_dirs/segformer-b0-repro/full-gpu/config.py",
+    "config_sha256": "e3d3e6f6ed0fcdaa8eea3852d23167b41962cb442a1a0aae30a91a7780f4e57e",
+    "device": "cuda:0"
+  },
+  "repository_commit": "145f9e118c32a5742d2baf04fb1376dfba61276e",
+  "task": 29,
+  "work_dir": "/mnt/sharedOs/mycelium-growth-workspace/work_dirs/segformer-b0-repro/inference"
+}
