@@ -1,0 +1,5283 @@
+{
+ "issue": 61,
+ "generated_utc": "2026-10-06T05:27:55.396422+00:00",
+ "hashes": true,
+ "deflate64_supported": true,
+ "limit": 0,
+ "datasets": {
+  "myceliumseg": {
+   "inputs": [
+    "exif_scan_summary.csv",
+    "dish_tracks.csv",
+    "dish_tracks_summary.csv",
+    "known_labels.csv"
+   ],
+   "images": 20176,
+   "images_with_datetime": 0,
+   "resolutions": {
+    "4608x3456": 18448,
+    "1382x1037": 1728
+   },
+   "id_mtime_forward_fraction": [
+    0.4891,
+    0.5474
+   ],
+   "colony_vs_order_forward_fraction": [
+    0.4828,
+    0.5517
+   ],
+   "duplicates": {
+    "n": 20176,
+    "distinct": 20105,
+    "duplicate_groups": 62,
+    "items_in_duplicate_groups": 133,
+    "redundant_copies": 71,
+    "largest_group": 3
+   },
+   "labels_known": 18487,
+   "labels_unknown": 1689,
+   "conflict_groups": 20,
+   "images_involved": 49
+  },
+  "fricker_grazers": {
+   "zips": [
+    "Hf.zip",
+    "Pi.zip",
+    "Pv.zip",
+    "Rb.zip"
+   ],
+   "images_total": 780,
+   "images_kept": 777,
+   "images_rejected": 3,
+   "unparsed_names": [],
+   "unreadable_entries": [],
+   "resolutions": {
+    "3648x2736": 572,
+    "2048x1536": 205
+   },
+   "rejected_resolutions": {
+    "600x450": 3
+   },
+   "images_with_exif_datetime": 777,
+   "exif_datetime_min": "2009-02-24T14:56:23",
+   "exif_datetime_max": "2009-10-25T12:52:32",
+   "treatments": [
+    "coll",
+    "ctrl1",
+    "ctrl2",
+    "enchy",
+    "mill",
+    "mite",
+    "nema",
+    "wl1",
+    "wl2"
+   ],
+   "species": [
+    "Hf",
+    "Pi",
+    "Pv",
+    "Rb"
+   ],
+   "duplicates": {
+    "n": 777,
+    "distinct": 773,
+    "duplicate_groups": 4,
+    "items_in_duplicate_groups": 8,
+    "redundant_copies": 4,
+    "largest_group": 2
+   },
+   "duplicate_groups_detail": {
+    "1b9050968df226099756a9aeba452f23": [
+     "Pi/Pi_ctrl2_d1_1.jpg",
+     "Pi/Pi_ctrl2_d2_1.jpg"
+    ],
+    "3e7658aa938f6301408b40dba73cd0cd": [
+     "Pi/Pi_ctrl2_d1_2.jpg",
+     "Pi/Pi_ctrl2_d2_2.jpg"
+    ],
+    "3224845f3c5ddc49ece3710999b8632a": [
+     "Pi/Pi_ctrl2_d1_3.jpg",
+     "Pi/Pi_ctrl2_d2_3.jpg"
+    ],
+    "091908d5957687cad1cae49f568b1fd9": [
+     "Pi/Pi_ctrl2_d1_4.jpg",
+     "Pi/Pi_ctrl2_d2_4.jpg"
+    ]
+   },
+   "series": [
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "coll",
+      1
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2475,
+      1.8689,
+      3.8271,
+      6.0168
+     ],
+     "first_exif": "2009-02-25T11:55:09",
+     "last_exif": "2009-03-10T10:57:51"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "coll",
+      2
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2469,
+      1.8681,
+      3.828,
+      6.0159
+     ],
+     "first_exif": "2009-02-25T11:56:22",
+     "last_exif": "2009-03-10T10:57:07"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "coll",
+      3
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2467,
+      1.8676,
+      3.8288,
+      6.0148
+     ],
+     "first_exif": "2009-02-25T11:57:05",
+     "last_exif": "2009-03-10T10:56:26"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "coll",
+      4
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2465,
+      1.867,
+      3.8295,
+      6.014
+     ],
+     "first_exif": "2009-02-25T11:57:46",
+     "last_exif": "2009-03-10T10:55:49"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "coll",
+      5
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2461,
+      1.8666,
+      3.8302,
+      6.013
+     ],
+     "first_exif": "2009-02-25T11:58:42",
+     "last_exif": "2009-03-10T10:55:12"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "ctrl1",
+      1
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2238,
+      1.8683,
+      3.835,
+      6.0076
+     ],
+     "first_exif": "2009-02-25T12:25:23",
+     "last_exif": "2009-03-10T10:51:20"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "ctrl1",
+      2
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.223,
+      1.8688,
+      3.8342,
+      6.0085
+     ],
+     "first_exif": "2009-02-25T12:26:08",
+     "last_exif": "2009-03-10T10:51:52"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "ctrl1",
+      3
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2224,
+      1.8693,
+      3.8334,
+      6.0095
+     ],
+     "first_exif": "2009-02-25T12:26:48",
+     "last_exif": "2009-03-10T10:52:39"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "ctrl1",
+      4
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2216,
+      1.8702,
+      3.8323,
+      6.0107
+     ],
+     "first_exif": "2009-02-25T12:27:34",
+     "last_exif": "2009-03-10T10:53:38"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "ctrl1",
+      5
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2206,
+      1.8707,
+      3.8318,
+      6.0115
+     ],
+     "first_exif": "2009-02-25T12:28:30",
+     "last_exif": "2009-03-10T10:54:21"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "ctrl2",
+      1
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9474,
+      2.0058,
+      4.3347,
+      7.7508
+     ],
+     "first_exif": "2009-06-15T10:00:22",
+     "last_exif": "2009-06-30T10:56:06"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "ctrl2",
+      2
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9473,
+      2.006,
+      4.3346,
+      7.7508
+     ],
+     "first_exif": "2009-06-15T10:00:56",
+     "last_exif": "2009-06-30T10:56:37"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "ctrl2",
+      3
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9473,
+      2.0059,
+      4.3345,
+      7.7508
+     ],
+     "first_exif": "2009-06-15T10:01:27",
+     "last_exif": "2009-06-30T10:56:57"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "ctrl2",
+      4
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9472,
+      2.006,
+      4.3345,
+      7.7509
+     ],
+     "first_exif": "2009-06-15T10:02:00",
+     "last_exif": "2009-06-30T10:57:30"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "ctrl2",
+      5
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.947,
+      2.0061,
+      4.3344,
+      7.751
+     ],
+     "first_exif": "2009-06-15T10:02:36",
+     "last_exif": "2009-06-30T10:58:04"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "mill",
+      1
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9692,
+      1.9716,
+      4.0255,
+      8.0093,
+      8.0103
+     ],
+     "first_exif": "2009-03-31T10:11:14",
+     "last_exif": "2009-04-23T09:50:54"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "mill",
+      2
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9693,
+      1.9723,
+      4.0248,
+      8.0093,
+      8.0111
+     ],
+     "first_exif": "2009-03-31T10:10:36",
+     "last_exif": "2009-04-23T09:51:30"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "mill",
+      3
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9694,
+      1.9732,
+      4.0235,
+      8.0097,
+      8.012
+     ],
+     "first_exif": "2009-03-31T10:09:55",
+     "last_exif": "2009-04-23T09:52:26"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "mill",
+      4
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9692,
+      1.9744,
+      4.0227,
+      8.0095,
+      8.0136
+     ],
+     "first_exif": "2009-03-31T10:09:08",
+     "last_exif": "2009-04-23T09:53:54"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "mill",
+      5
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9694,
+      1.9751,
+      4.022,
+      8.0088,
+      8.0152
+     ],
+     "first_exif": "2009-03-31T10:08:18",
+     "last_exif": "2009-04-23T09:54:43"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "mite",
+      1
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.7815,
+      1.9703,
+      4.0267,
+      8.0109,
+      8.0056
+     ],
+     "first_exif": "2009-03-31T14:42:08",
+     "last_exif": "2009-04-23T09:46:48"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "mite",
+      2
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.7826,
+      1.9693,
+      4.0274,
+      8.0102,
+      8.0063
+     ],
+     "first_exif": "2009-03-31T14:41:26",
+     "last_exif": "2009-04-23T09:47:24"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "mite",
+      3
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.7833,
+      1.9687,
+      4.028,
+      8.0094,
+      8.0075
+     ],
+     "first_exif": "2009-03-31T14:40:58",
+     "last_exif": "2009-04-23T09:48:26"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "mite",
+      4
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.7839,
+      1.968,
+      4.0287,
+      8.0087,
+      8.0081
+     ],
+     "first_exif": "2009-03-31T14:40:29",
+     "last_exif": "2009-04-23T09:48:54"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "mite",
+      5
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.7846,
+      1.9669,
+      4.03,
+      8.008,
+      8.0087
+     ],
+     "first_exif": "2009-03-31T14:39:56",
+     "last_exif": "2009-04-23T09:49:22"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "nema",
+      1
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9202,
+      1.9388,
+      4.0424,
+      7.9782
+     ],
+     "first_exif": "2009-05-18T13:07:31",
+     "last_exif": "2009-06-02T10:14:06"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "nema",
+      2
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.92,
+      1.9379,
+      4.0434,
+      7.9775
+     ],
+     "first_exif": "2009-05-18T13:08:10",
+     "last_exif": "2009-06-02T10:13:33"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "nema",
+      3
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9197,
+      1.9373,
+      4.0441,
+      7.9768
+     ],
+     "first_exif": "2009-05-18T13:08:50",
+     "last_exif": "2009-06-02T10:13:02"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "nema",
+      4
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9195,
+      1.9367,
+      4.0447,
+      7.9761
+     ],
+     "first_exif": "2009-05-18T13:09:26",
+     "last_exif": "2009-06-02T10:12:23"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "nema",
+      5
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9193,
+      1.9362,
+      4.0454,
+      7.9753
+     ],
+     "first_exif": "2009-05-18T13:10:00",
+     "last_exif": "2009-06-02T10:11:52"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "wl1",
+      1
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2276,
+      1.8687,
+      3.8315,
+      6.0192
+     ],
+     "first_exif": "2009-02-25T12:15:45",
+     "last_exif": "2009-03-10T10:59:26"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "wl1",
+      2
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2274,
+      1.8699,
+      3.8297,
+      6.0225
+     ],
+     "first_exif": "2009-02-25T12:16:24",
+     "last_exif": "2009-03-10T11:03:38"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "wl1",
+      3
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2272,
+      1.8693,
+      3.8284,
+      6.0247
+     ],
+     "first_exif": "2009-02-25T12:17:11",
+     "last_exif": "2009-03-10T11:04:37"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "wl1",
+      4
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2267,
+      1.8688,
+      3.8282,
+      6.0262
+     ],
+     "first_exif": "2009-02-25T12:18:11",
+     "last_exif": "2009-03-10T11:06:01"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "wl1",
+      5
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.2264,
+      1.868,
+      3.8283,
+      6.0272
+     ],
+     "first_exif": "2009-02-25T12:18:58",
+     "last_exif": "2009-03-10T11:06:45"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "wl2",
+      1
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9208,
+      1.9422,
+      4.039,
+      7.9819,
+      8.9797
+     ],
+     "first_exif": "2009-05-18T13:03:59",
+     "last_exif": "2009-06-11T09:47:31"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "wl2",
+      2
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9208,
+      1.9415,
+      4.0398,
+      7.9811,
+      8.9805
+     ],
+     "first_exif": "2009-05-18T13:04:32",
+     "last_exif": "2009-06-11T09:48:06"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "wl2",
+      3
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9193,
+      1.9409,
+      4.0404,
+      7.9803,
+      8.9814
+     ],
+     "first_exif": "2009-05-18T13:07:05",
+     "last_exif": "2009-06-11T09:48:52"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "wl2",
+      4
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9206,
+      1.9402,
+      4.0411,
+      7.9796,
+      8.9822
+     ],
+     "first_exif": "2009-05-18T13:05:43",
+     "last_exif": "2009-06-11T09:49:35"
+    },
+    {
+     "series": [
+      "Hf",
+      "DD2",
+      "wl2",
+      5
+     ],
+     "n_images": 6,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9207,
+      1.9394,
+      4.0417,
+      7.979,
+      8.983
+     ],
+     "first_exif": "2009-05-18T13:06:17",
+     "last_exif": "2009-06-11T09:50:06"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "coll",
+      1
+     ],
+     "n_images": 6,
+     "days": [
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.1106,
+      3.8798,
+      7.1463,
+      7.9057,
+      14.2164
+     ],
+     "first_exif": "2009-08-13T09:22:16",
+     "last_exif": "2009-09-17T15:35:01"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "coll",
+      2
+     ],
+     "n_images": 6,
+     "days": [
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.1106,
+      3.8798,
+      7.1463,
+      7.9058,
+      14.2164
+     ],
+     "first_exif": "2009-08-13T09:22:38",
+     "last_exif": "2009-09-17T15:35:27"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "coll",
+      3
+     ],
+     "n_images": 6,
+     "days": [
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.1106,
+      3.8799,
+      7.1462,
+      7.9058,
+      14.2163
+     ],
+     "first_exif": "2009-08-13T09:22:58",
+     "last_exif": "2009-09-17T15:35:52"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "coll",
+      4
+     ],
+     "n_images": 6,
+     "days": [
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.1106,
+      3.88,
+      7.1462,
+      7.906,
+      14.2162
+     ],
+     "first_exif": "2009-08-13T09:23:17",
+     "last_exif": "2009-09-17T15:36:17"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "coll",
+      5
+     ],
+     "n_images": 6,
+     "days": [
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.1105,
+      3.8801,
+      7.1462,
+      7.9062,
+      14.216
+     ],
+     "first_exif": "2009-08-13T09:23:44",
+     "last_exif": "2009-09-17T15:36:44"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "ctrl1",
+      1
+     ],
+     "n_images": 6,
+     "days": [
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.1142,
+      3.8766,
+      7.1463,
+      7.905,
+      14.2171
+     ],
+     "first_exif": "2009-08-13T09:19:13",
+     "last_exif": "2009-09-17T15:32:35"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "ctrl1",
+      2
+     ],
+     "n_images": 6,
+     "days": [
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.1142,
+      3.8766,
+      7.1463,
+      7.9052,
+      14.2171
+     ],
+     "first_exif": "2009-08-13T09:19:39",
+     "last_exif": "2009-09-17T15:33:11"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "ctrl1",
+      3
+     ],
+     "n_images": 6,
+     "days": [
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.1143,
+      3.8765,
+      7.1464,
+      7.9053,
+      14.2169
+     ],
+     "first_exif": "2009-08-13T09:19:58",
+     "last_exif": "2009-09-17T15:33:34"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "ctrl1",
+      4
+     ],
+     "n_images": 6,
+     "days": [
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.1143,
+      3.8765,
+      7.1465,
+      7.9054,
+      14.2167
+     ],
+     "first_exif": "2009-08-13T09:20:24",
+     "last_exif": "2009-09-17T15:33:59"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "ctrl1",
+      5
+     ],
+     "n_images": 6,
+     "days": [
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.1144,
+      3.8765,
+      7.1465,
+      7.9056,
+      14.2166
+     ],
+     "first_exif": "2009-08-13T09:20:44",
+     "last_exif": "2009-09-17T15:34:26"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "ctrl2",
+      1
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 1,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.0,
+      1.8936,
+      4.13
+     ],
+     "first_exif": "2009-10-19T12:14:15",
+     "last_exif": "2009-10-25T12:48:18"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "ctrl2",
+      2
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 1,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.0,
+      1.8936,
+      4.1301
+     ],
+     "first_exif": "2009-10-19T12:14:39",
+     "last_exif": "2009-10-25T12:48:43"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "ctrl2",
+      3
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 1,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.0,
+      1.8936,
+      4.1302
+     ],
+     "first_exif": "2009-10-19T12:14:58",
+     "last_exif": "2009-10-25T12:49:14"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "ctrl2",
+      4
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 1,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.0,
+      1.8936,
+      4.1302
+     ],
+     "first_exif": "2009-10-19T12:15:18",
+     "last_exif": "2009-10-25T12:49:37"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "ctrl2",
+      5
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 1,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.0,
+      1.8936,
+      4.1303
+     ],
+     "first_exif": "2009-10-19T12:15:38",
+     "last_exif": "2009-10-25T12:50:04"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "enchy",
+      1
+     ],
+     "n_images": 3,
+     "days": [
+      2,
+      4,
+      8
+     ],
+     "n_days": 3,
+     "with_exif": 3,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.912,
+      4.1121
+     ],
+     "first_exif": "2009-10-19T12:16:02",
+     "last_exif": "2009-10-25T12:50:43"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "enchy",
+      2
+     ],
+     "n_images": 3,
+     "days": [
+      2,
+      4,
+      8
+     ],
+     "n_days": 3,
+     "with_exif": 3,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.9121,
+      4.1121
+     ],
+     "first_exif": "2009-10-19T12:16:22",
+     "last_exif": "2009-10-25T12:51:12"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "enchy",
+      3
+     ],
+     "n_images": 3,
+     "days": [
+      2,
+      4,
+      8
+     ],
+     "n_days": 3,
+     "with_exif": 3,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.9121,
+      4.1122
+     ],
+     "first_exif": "2009-10-19T12:16:48",
+     "last_exif": "2009-10-25T12:51:42"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "enchy",
+      4
+     ],
+     "n_images": 3,
+     "days": [
+      2,
+      4,
+      8
+     ],
+     "n_days": 3,
+     "with_exif": 3,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.912,
+      4.1122
+     ],
+     "first_exif": "2009-10-19T12:17:14",
+     "last_exif": "2009-10-25T12:52:06"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "enchy",
+      5
+     ],
+     "n_images": 3,
+     "days": [
+      2,
+      4,
+      8
+     ],
+     "n_days": 3,
+     "with_exif": 3,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.912,
+      4.1123
+     ],
+     "first_exif": "2009-10-19T12:17:36",
+     "last_exif": "2009-10-25T12:52:32"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "mill",
+      1
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.7742,
+      2.1075,
+      3.8835,
+      7.1345,
+      7.9267,
+      14.192
+     ],
+     "first_exif": "2009-08-12T14:57:34",
+     "last_exif": "2009-09-17T15:24:04"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "mill",
+      2
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.7731,
+      2.1075,
+      3.8836,
+      7.1344,
+      7.9268,
+      14.1948
+     ],
+     "first_exif": "2009-08-12T14:59:41",
+     "last_exif": "2009-09-17T15:28:36"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "mill",
+      3
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.773,
+      2.1073,
+      3.8837,
+      7.1344,
+      7.9268,
+      14.1949
+     ],
+     "first_exif": "2009-08-12T15:00:25",
+     "last_exif": "2009-09-17T15:29:18"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "mill",
+      4
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.7729,
+      2.1073,
+      3.8837,
+      7.1344,
+      7.9268,
+      14.1951
+     ],
+     "first_exif": "2009-08-12T15:00:53",
+     "last_exif": "2009-09-17T15:29:57"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "mill",
+      5
+     ],
+     "n_images": 6,
+     "days": [
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.1073,
+      3.8837,
+      7.1343,
+      7.9269,
+      14.1952
+     ],
+     "first_exif": "2009-08-13T09:34:22",
+     "last_exif": "2009-09-17T15:30:37"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "mite",
+      1
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8401,
+      1.8938,
+      4.1298
+     ],
+     "first_exif": "2009-10-18T16:02:14",
+     "last_exif": "2009-10-25T12:45:52"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "mite",
+      2
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8401,
+      1.8937,
+      4.1298
+     ],
+     "first_exif": "2009-10-18T16:02:43",
+     "last_exif": "2009-10-25T12:46:19"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "mite",
+      3
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.84,
+      1.8938,
+      4.1298
+     ],
+     "first_exif": "2009-10-18T16:03:10",
+     "last_exif": "2009-10-25T12:46:46"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "mite",
+      4
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.84,
+      1.8938,
+      4.13
+     ],
+     "first_exif": "2009-10-18T16:03:37",
+     "last_exif": "2009-10-25T12:47:29"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "mite",
+      5
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8401,
+      1.8938,
+      4.13
+     ],
+     "first_exif": "2009-10-18T16:03:58",
+     "last_exif": "2009-10-25T12:47:52"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "nema",
+      1
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9234,
+      2.1109,
+      3.88,
+      7.1327,
+      7.9282,
+      14.1925
+     ],
+     "first_exif": "2009-08-12T11:20:19",
+     "last_exif": "2009-09-17T15:21:51"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "nema",
+      2
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9231,
+      2.1109,
+      3.8801,
+      7.1326,
+      7.9283,
+      14.1925
+     ],
+     "first_exif": "2009-08-12T11:21:00",
+     "last_exif": "2009-09-17T15:22:22"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "nema",
+      3
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9232,
+      2.1108,
+      3.8802,
+      7.1326,
+      7.9284,
+      14.1924
+     ],
+     "first_exif": "2009-08-12T11:21:27",
+     "last_exif": "2009-09-17T15:22:48"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "nema",
+      4
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.923,
+      2.1108,
+      3.8803,
+      7.1345,
+      7.9266,
+      14.1923
+     ],
+     "first_exif": "2009-08-12T11:22:02",
+     "last_exif": "2009-09-17T15:23:11"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "nema",
+      5
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.923,
+      2.1109,
+      3.8803,
+      7.1346,
+      7.9266,
+      14.1921
+     ],
+     "first_exif": "2009-08-12T11:22:34",
+     "last_exif": "2009-09-17T15:23:35"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "wl1",
+      1
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9708,
+      2.1068,
+      3.8838,
+      7.1461,
+      7.9064,
+      14.2158
+     ],
+     "first_exif": "2009-08-12T10:06:35",
+     "last_exif": "2009-09-17T15:37:16"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "wl1",
+      2
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9713,
+      2.1071,
+      3.8835,
+      7.1461,
+      7.9065,
+      14.2157
+     ],
+     "first_exif": "2009-08-12T10:06:10",
+     "last_exif": "2009-09-17T15:37:41"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "wl1",
+      3
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9725,
+      2.1071,
+      3.8835,
+      7.1462,
+      7.9066,
+      14.2155
+     ],
+     "first_exif": "2009-08-12T10:04:50",
+     "last_exif": "2009-09-17T15:38:06"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "wl1",
+      4
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9732,
+      2.1074,
+      3.8833,
+      7.1462,
+      7.9067,
+      14.2156
+     ],
+     "first_exif": "2009-08-12T10:04:14",
+     "last_exif": "2009-09-17T15:38:44"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "wl1",
+      5
+     ],
+     "n_images": 6,
+     "days": [
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 6,
+     "with_exif": 6,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.1074,
+      3.8834,
+      7.1461,
+      7.9067,
+      14.2155
+     ],
+     "first_exif": "2009-08-13T09:26:05",
+     "last_exif": "2009-09-17T15:39:10"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "wl2",
+      1
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8971,
+      2.1142,
+      3.8766,
+      7.1329,
+      7.921,
+      14.2001
+     ],
+     "first_exif": "2009-08-12T11:55:49",
+     "last_exif": "2009-09-17T15:20:03"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "wl2",
+      2
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.897,
+      2.1142,
+      3.8766,
+      7.133,
+      7.9274,
+      14.1935
+     ],
+     "first_exif": "2009-08-12T11:56:17",
+     "last_exif": "2009-09-17T15:20:25"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "wl2",
+      3
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.897,
+      2.1142,
+      3.8766,
+      7.133,
+      7.9275,
+      14.1934
+     ],
+     "first_exif": "2009-08-12T11:56:45",
+     "last_exif": "2009-09-17T15:20:46"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "wl2",
+      4
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8968,
+      2.1141,
+      3.8769,
+      7.1328,
+      7.9279,
+      14.1929
+     ],
+     "first_exif": "2009-08-12T11:57:19",
+     "last_exif": "2009-09-17T15:21:07"
+    },
+    {
+     "series": [
+      "Pi",
+      "",
+      "wl2",
+      5
+     ],
+     "n_images": 7,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      24,
+      38
+     ],
+     "n_days": 7,
+     "with_exif": 7,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8967,
+      2.1141,
+      3.8769,
+      7.1329,
+      7.9282,
+      14.1926
+     ],
+     "first_exif": "2009-08-12T11:57:54",
+     "last_exif": "2009-09-17T15:21:28"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "coll",
+      1
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.0082,
+      2.0114,
+      3.8433,
+      5.9286
+     ],
+     "first_exif": "2009-02-24T14:56:23",
+     "last_exif": "2009-03-09T09:55:58"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "coll",
+      2
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.0075,
+      2.0107,
+      3.844,
+      5.9277
+     ],
+     "first_exif": "2009-02-24T14:57:41",
+     "last_exif": "2009-03-09T09:55:10"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "coll",
+      3
+     ],
+     "n_images": 4,
+     "days": [
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.0098,
+      3.8449,
+      5.9269
+     ],
+     "first_exif": "2009-02-25T15:09:08",
+     "last_exif": "2009-03-09T09:54:28"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "coll",
+      4
+     ],
+     "n_images": 4,
+     "days": [
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.0088,
+      3.8456,
+      5.926
+     ],
+     "first_exif": "2009-02-25T15:10:00",
+     "last_exif": "2009-03-09T09:53:47"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "coll",
+      5
+     ],
+     "n_images": 4,
+     "days": [
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      2.008,
+      3.8466,
+      5.9243
+     ],
+     "first_exif": "2009-02-25T15:10:28",
+     "last_exif": "2009-03-09T09:52:06"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "ctrl1",
+      1
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9824,
+      1.9992,
+      3.8494,
+      5.9237
+     ],
+     "first_exif": "2009-02-24T15:41:37",
+     "last_exif": "2009-03-09T09:48:24"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "ctrl1",
+      2
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.981,
+      1.9998,
+      3.8487,
+      5.9246
+     ],
+     "first_exif": "2009-02-24T15:43:16",
+     "last_exif": "2009-03-09T09:49:05"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "ctrl1",
+      3
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9804,
+      2.0004,
+      3.848,
+      5.9254
+     ],
+     "first_exif": "2009-02-24T15:43:51",
+     "last_exif": "2009-03-09T09:49:47"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "ctrl1",
+      4
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      8,
+      16
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9791,
+      5.8482,
+      5.9263
+     ],
+     "first_exif": "2009-02-24T15:45:19",
+     "last_exif": "2009-03-09T09:50:32"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "ctrl1",
+      5
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.978,
+      2.0017,
+      3.8464,
+      5.9273
+     ],
+     "first_exif": "2009-02-24T15:46:30",
+     "last_exif": "2009-03-09T09:51:18"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "ctrl2",
+      1
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9428,
+      2.01,
+      4.3303,
+      7.7506
+     ],
+     "first_exif": "2009-06-15T10:04:13",
+     "last_exif": "2009-06-30T10:52:58"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "ctrl2",
+      2
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9423,
+      2.0101,
+      4.3303,
+      7.7507
+     ],
+     "first_exif": "2009-06-15T10:05:12",
+     "last_exif": "2009-06-30T10:53:25"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "ctrl2",
+      3
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9421,
+      2.0103,
+      4.3302,
+      7.7506
+     ],
+     "first_exif": "2009-06-15T10:05:58",
+     "last_exif": "2009-06-30T10:53:49"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "ctrl2",
+      4
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9418,
+      2.0104,
+      4.3301,
+      7.7507
+     ],
+     "first_exif": "2009-06-15T10:06:39",
+     "last_exif": "2009-06-30T10:54:16"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "ctrl2",
+      5
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9417,
+      2.0105,
+      4.33,
+      7.7507
+     ],
+     "first_exif": "2009-06-15T10:07:14",
+     "last_exif": "2009-06-30T10:54:40"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "mill",
+      1
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8112,
+      1.9805,
+      4.3571,
+      7.8731
+     ],
+     "first_exif": "2009-03-30T13:48:26",
+     "last_exif": "2009-04-14T14:19:56"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "mill",
+      2
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8128,
+      1.984,
+      4.3536,
+      7.873
+     ],
+     "first_exif": "2009-03-30T13:46:42",
+     "last_exif": "2009-04-14T14:20:21"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "mill",
+      3
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8027,
+      1.9822,
+      4.3555,
+      7.8735
+     ],
+     "first_exif": "2009-03-30T14:01:28",
+     "last_exif": "2009-04-14T14:21:28"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "mill",
+      4
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8165,
+      1.9825,
+      4.3555,
+      7.8733
+     ],
+     "first_exif": "2009-03-30T13:41:57",
+     "last_exif": "2009-04-14T14:21:56"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "mill",
+      5
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8185,
+      1.9747,
+      4.3633,
+      7.8733
+     ],
+     "first_exif": "2009-03-30T13:39:31",
+     "last_exif": "2009-04-14T14:22:23"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "nema",
+      1
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8971,
+      1.9286,
+      4.0444,
+      7.9546
+     ],
+     "first_exif": "2009-05-18T13:46:27",
+     "last_exif": "2009-06-02T09:34:04"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "nema",
+      2
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8968,
+      1.928,
+      4.045,
+      7.9539
+     ],
+     "first_exif": "2009-05-18T13:47:22",
+     "last_exif": "2009-06-02T09:33:27"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "nema",
+      3
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8965,
+      1.9275,
+      4.0457,
+      7.9532
+     ],
+     "first_exif": "2009-05-18T13:48:05",
+     "last_exif": "2009-06-02T09:32:58"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "nema",
+      4
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8964,
+      1.9269,
+      4.0463,
+      7.9524
+     ],
+     "first_exif": "2009-05-18T13:48:34",
+     "last_exif": "2009-06-02T09:32:17"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "nema",
+      5
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8961,
+      1.9263,
+      4.0471,
+      7.9517
+     ],
+     "first_exif": "2009-05-18T13:49:16",
+     "last_exif": "2009-06-02T09:31:46"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "wl1",
+      1
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9904,
+      2.0063,
+      3.8408,
+      5.9279
+     ],
+     "first_exif": "2009-02-24T15:25:32",
+     "last_exif": "2009-03-09T09:47:33"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "wl1",
+      2
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9901,
+      2.0055,
+      3.8422,
+      5.9264
+     ],
+     "first_exif": "2009-02-24T15:26:29",
+     "last_exif": "2009-03-09T09:46:59"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "wl1",
+      3
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9898,
+      2.0048,
+      3.8429,
+      5.9253
+     ],
+     "first_exif": "2009-02-24T15:27:20",
+     "last_exif": "2009-03-09T09:45:50"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "wl1",
+      4
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.99,
+      2.0038,
+      3.8439,
+      5.9236
+     ],
+     "first_exif": "2009-02-24T15:27:56",
+     "last_exif": "2009-03-09T09:44:16"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "wl1",
+      5
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9898,
+      2.003,
+      3.8453,
+      5.9212
+     ],
+     "first_exif": "2009-02-24T15:28:36",
+     "last_exif": "2009-03-09T09:41:55"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "wl2",
+      1
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8932,
+      1.9318,
+      4.0389,
+      7.9636
+     ],
+     "first_exif": "2009-05-18T13:49:47",
+     "last_exif": "2009-06-02T09:41:22"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "wl2",
+      2
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8932,
+      1.9311,
+      4.0395,
+      7.9631
+     ],
+     "first_exif": "2009-05-18T13:50:21",
+     "last_exif": "2009-06-02T09:41:03"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "wl2",
+      3
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8931,
+      1.9304,
+      4.0403,
+      7.9613
+     ],
+     "first_exif": "2009-05-18T13:50:58",
+     "last_exif": "2009-06-02T09:39:16"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "wl2",
+      4
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.893,
+      1.9299,
+      4.0413,
+      7.9602
+     ],
+     "first_exif": "2009-05-18T13:51:32",
+     "last_exif": "2009-06-02T09:38:35"
+    },
+    {
+     "series": [
+      "Pv",
+      "",
+      "wl2",
+      5
+     ],
+     "n_images": 5,
+     "days": [
+      1,
+      2,
+      4,
+      8,
+      16
+     ],
+     "n_days": 5,
+     "with_exif": 5,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.8928,
+      1.9293,
+      4.0421,
+      7.9569
+     ],
+     "first_exif": "2009-05-18T13:52:11",
+     "last_exif": "2009-06-02T09:34:33"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "coll",
+      1
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.1079,
+      1.7201,
+      4.2343
+     ],
+     "first_exif": "2009-02-28T15:35:32",
+     "last_exif": "2009-03-07T17:05:09"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "coll",
+      2
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.108,
+      1.7192,
+      4.2351
+     ],
+     "first_exif": "2009-02-28T15:36:03",
+     "last_exif": "2009-03-07T17:05:48"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "coll",
+      3
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.108,
+      1.7185,
+      4.2363
+     ],
+     "first_exif": "2009-02-28T15:36:34",
+     "last_exif": "2009-03-07T17:06:57"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "coll",
+      4
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.1078,
+      1.7176,
+      4.2374
+     ],
+     "first_exif": "2009-02-28T15:37:15",
+     "last_exif": "2009-03-07T17:07:48"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "coll",
+      5
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.1084,
+      1.7164,
+      4.2384
+     ],
+     "first_exif": "2009-02-28T15:37:40",
+     "last_exif": "2009-03-07T17:08:44"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "ctrl1",
+      1
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.1251,
+      1.7121,
+      4.2375
+     ],
+     "first_exif": "2009-02-28T15:16:33",
+     "last_exif": "2009-03-07T17:04:08"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "ctrl1",
+      2
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.1243,
+      1.7128,
+      4.2366
+     ],
+     "first_exif": "2009-02-28T15:17:14",
+     "last_exif": "2009-03-07T17:03:28"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "ctrl1",
+      3
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.1227,
+      1.7136,
+      4.2357
+     ],
+     "first_exif": "2009-02-28T15:19:11",
+     "last_exif": "2009-03-07T17:02:49"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "ctrl1",
+      4
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.1216,
+      1.7146,
+      4.2348
+     ],
+     "first_exif": "2009-02-28T15:20:05",
+     "last_exif": "2009-03-07T17:02:18"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "ctrl1",
+      5
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.1206,
+      1.7155,
+      4.2341
+     ],
+     "first_exif": "2009-02-28T15:20:53",
+     "last_exif": "2009-03-07T17:01:49"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "ctrl2",
+      1
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9578,
+      1.9932,
+      4.3474
+     ],
+     "first_exif": "2009-06-15T09:51:15",
+     "last_exif": "2009-06-22T17:00:58"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "ctrl2",
+      2
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9575,
+      1.9933,
+      4.3472
+     ],
+     "first_exif": "2009-06-15T09:52:11",
+     "last_exif": "2009-06-22T17:01:19"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "ctrl2",
+      3
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9572,
+      1.9934,
+      4.3471
+     ],
+     "first_exif": "2009-06-15T09:52:55",
+     "last_exif": "2009-06-22T17:01:40"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "ctrl2",
+      4
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.957,
+      1.9937,
+      4.3469
+     ],
+     "first_exif": "2009-06-15T09:53:30",
+     "last_exif": "2009-06-22T17:02:06"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "ctrl2",
+      5
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9569,
+      1.9938,
+      4.3468
+     ],
+     "first_exif": "2009-06-15T09:54:05",
+     "last_exif": "2009-06-22T17:02:33"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "mill",
+      1
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9051,
+      0.9877,
+      5.2057
+     ],
+     "first_exif": "2009-04-07T11:53:24",
+     "last_exif": "2009-04-14T14:15:16"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "mill",
+      2
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.905,
+      0.9872,
+      5.2065
+     ],
+     "first_exif": "2009-04-07T11:53:55",
+     "last_exif": "2009-04-14T14:16:00"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "mill",
+      3
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9045,
+      0.9866,
+      5.2072
+     ],
+     "first_exif": "2009-04-07T11:54:57",
+     "last_exif": "2009-04-14T14:16:28"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "mill",
+      4
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9044,
+      0.986,
+      5.2079
+     ],
+     "first_exif": "2009-04-07T11:55:30",
+     "last_exif": "2009-04-14T14:17:04"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "mill",
+      5
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9043,
+      0.9854,
+      5.2087
+     ],
+     "first_exif": "2009-04-07T11:55:54",
+     "last_exif": "2009-04-14T14:17:32"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "nema",
+      1
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9154,
+      1.9637,
+      3.9979
+     ],
+     "first_exif": "2009-05-18T12:57:14",
+     "last_exif": "2009-05-25T10:00:00"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "nema",
+      2
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9158,
+      1.9641,
+      3.9971
+     ],
+     "first_exif": "2009-05-18T12:56:27",
+     "last_exif": "2009-05-25T09:59:22"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "nema",
+      3
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9159,
+      1.9646,
+      3.9964
+     ],
+     "first_exif": "2009-05-18T12:55:58",
+     "last_exif": "2009-05-25T09:58:43"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "nema",
+      4
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9209,
+      1.9651,
+      3.9956
+     ],
+     "first_exif": "2009-05-18T12:48:24",
+     "last_exif": "2009-05-25T09:58:03"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "nema",
+      5
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9213,
+      1.9658,
+      3.9948
+     ],
+     "first_exif": "2009-05-18T12:47:35",
+     "last_exif": "2009-05-25T09:57:35"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "wl1",
+      1
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.1216,
+      1.7092,
+      4.2364
+     ],
+     "first_exif": "2009-02-28T15:22:19",
+     "last_exif": "2009-03-07T16:59:04"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "wl1",
+      2
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.1214,
+      1.7095,
+      4.2361
+     ],
+     "first_exif": "2009-02-28T15:23:01",
+     "last_exif": "2009-03-07T16:59:36"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "wl1",
+      3
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.1212,
+      1.7095,
+      4.2361
+     ],
+     "first_exif": "2009-02-28T15:23:48",
+     "last_exif": "2009-03-07T17:00:07"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "wl1",
+      4
+     ],
+     "n_images": 3,
+     "days": [
+      1,
+      2,
+      8
+     ],
+     "n_days": 3,
+     "with_exif": 3,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.1207,
+      5.9458
+     ],
+     "first_exif": "2009-02-28T15:25:03",
+     "last_exif": "2009-03-07T17:00:43"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "wl1",
+      5
+     ],
+     "n_images": 3,
+     "days": [
+      1,
+      2,
+      8
+     ],
+     "n_days": 3,
+     "with_exif": 3,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      1.1204,
+      5.9456
+     ],
+     "first_exif": "2009-02-28T15:25:58",
+     "last_exif": "2009-03-07T17:01:07"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "wl2",
+      1
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.916,
+      1.9593,
+      4.001
+     ],
+     "first_exif": "2009-05-18T13:00:31",
+     "last_exif": "2009-05-25T10:02:23"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "wl2",
+      2
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9162,
+      1.9598,
+      4.0003
+     ],
+     "first_exif": "2009-05-18T12:59:58",
+     "last_exif": "2009-05-25T10:01:52"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "wl2",
+      3
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9164,
+      1.9603,
+      3.9998
+     ],
+     "first_exif": "2009-05-18T12:59:20",
+     "last_exif": "2009-05-25T10:01:28"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "wl2",
+      4
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9153,
+      1.9622,
+      3.9991
+     ],
+     "first_exif": "2009-05-18T12:58:41",
+     "last_exif": "2009-05-25T10:01:03"
+    },
+    {
+     "series": [
+      "Rb",
+      "",
+      "wl2",
+      5
+     ],
+     "n_images": 4,
+     "days": [
+      1,
+      2,
+      4,
+      8
+     ],
+     "n_days": 4,
+     "with_exif": 4,
+     "order_confirmed": true,
+     "order_backwards": [],
+     "identical_timestamp_pairs": 0,
+     "same_day_reshots": 0,
+     "gaps_days": [
+      0.9155,
+      1.9628,
+      3.9985
+     ],
+     "first_exif": "2009-05-18T12:57:58",
+     "last_exif": "2009-05-25T10:00:29"
+    }
+   ],
+   "series_aggregate": {
+    "n_series": 155,
+    "n_series_multi_day": 155,
+    "n_order_confirmed": 155,
+    "n_order_conflicts": 0,
+    "n_series_identical_timestamps": 5,
+    "n_identical_timestamp_pairs": 5,
+    "n_without_exif": 0,
+    "n_same_day_reshots": 0,
+    "day_min": 1,
+    "day_max": 38,
+    "gap_days_median": 3.846,
+    "gap_days_min": 0.0,
+    "gap_days_max": 14.217,
+    "n_gap_obs": 622
+   }
+  },
+  "fricker_networks": {
+   "zips": [
+    "Zygomycetous1.zip",
+    "Zygomycetous2.zip",
+    "Zygomycetous3.zip",
+    "ascomycota.zip",
+    "basidiomycota.zip"
+   ],
+   "images": 33,
+   "unparsed_names": [],
+   "unreadable_entries": [],
+   "resolutions": {
+    "27139x18274": 1,
+    "27049x18171": 1,
+    "27023x18082": 1,
+    "27079x18190": 1,
+    "26993x18019": 1,
+    "27011x18099": 1,
+    "27074x18237": 1,
+    "27175x17956": 1,
+    "27163x18136": 1,
+    "27124x18196": 1,
+    "27110x18490": 1,
+    "27212x18292": 1,
+    "27007x18220": 1,
+    "27241x18191": 1,
+    "27280x18477": 1,
+    "8192x5514": 2,
+    "8192x5507": 1,
+    "8192x5528": 1,
+    "8192x5632": 1,
+    "8192x5505": 1,
+    "8192x5420": 1,
+    "8192x5481": 1,
+    "8192x5503": 1,
+    "1494x1620": 1,
+    "1719x1559": 1,
+    "1624x1540": 1,
+    "3648x2736": 4,
+    "2736x3648": 2
+   },
+   "colonies": 33,
+   "colonies_with_multiple_images": {},
+   "day_labels": [
+    8,
+    9,
+    11,
+    13,
+    22,
+    23,
+    24,
+    25
+   ],
+   "duplicates": {
+    "n": 33,
+    "distinct": 33,
+    "duplicate_groups": 0,
+    "items_in_duplicate_groups": 0,
+    "redundant_copies": 0,
+    "largest_group": 1
+   },
+   "files": [
+    {
+     "zip": "Zygomycetous1.zip",
+     "colony": "C34(1)",
+     "day": 11
+    },
+    {
+     "zip": "Zygomycetous1.zip",
+     "colony": "C34(2)",
+     "day": 23
+    },
+    {
+     "zip": "Zygomycetous1.zip",
+     "colony": "C34(3)",
+     "day": 23
+    },
+    {
+     "zip": "Zygomycetous1.zip",
+     "colony": "DF25(4)",
+     "day": 8
+    },
+    {
+     "zip": "Zygomycetous1.zip",
+     "colony": "DF25(5)",
+     "day": 11
+    },
+    {
+     "zip": "Zygomycetous1.zip",
+     "colony": "DF25(6)",
+     "day": 11
+    },
+    {
+     "zip": "Zygomycetous2.zip",
+     "colony": "DF19(1)",
+     "day": 11
+    },
+    {
+     "zip": "Zygomycetous2.zip",
+     "colony": "DF19(2)",
+     "day": 11
+    },
+    {
+     "zip": "Zygomycetous2.zip",
+     "colony": "DF19(3)",
+     "day": 11
+    },
+    {
+     "zip": "Zygomycetous2.zip",
+     "colony": "M(4)",
+     "day": 13
+    },
+    {
+     "zip": "Zygomycetous2.zip",
+     "colony": "M(5)",
+     "day": 13
+    },
+    {
+     "zip": "Zygomycetous2.zip",
+     "colony": "M(6)",
+     "day": 13
+    },
+    {
+     "zip": "Zygomycetous3.zip",
+     "colony": "DF56(4)",
+     "day": 11
+    },
+    {
+     "zip": "Zygomycetous3.zip",
+     "colony": "DF56(5)",
+     "day": 9
+    },
+    {
+     "zip": "Zygomycetous3.zip",
+     "colony": "DF56(6)",
+     "day": 9
+    },
+    {
+     "zip": "ascomycota.zip",
+     "colony": "C41(1)",
+     "day": 25
+    },
+    {
+     "zip": "ascomycota.zip",
+     "colony": "C41(2)",
+     "day": 25
+    },
+    {
+     "zip": "ascomycota.zip",
+     "colony": "C41(3)",
+     "day": 25
+    },
+    {
+     "zip": "ascomycota.zip",
+     "colony": "DF9(4)",
+     "day": 25
+    },
+    {
+     "zip": "ascomycota.zip",
+     "colony": "DF9(5)",
+     "day": 25
+    },
+    {
+     "zip": "ascomycota.zip",
+     "colony": "DF9(6)",
+     "day": 25
+    },
+    {
+     "zip": "ascomycota.zip",
+     "colony": "FOX(1)",
+     "day": 24
+    },
+    {
+     "zip": "ascomycota.zip",
+     "colony": "FOX(2)",
+     "day": 22
+    },
+    {
+     "zip": "ascomycota.zip",
+     "colony": "FOX(3)",
+     "day": 24
+    },
+    {
+     "zip": "basidiomycota.zip",
+     "colony": "Pi_18C_1",
+     "day": 8
+    },
+    {
+     "zip": "basidiomycota.zip",
+     "colony": "Pi_18C_2",
+     "day": 8
+    },
+    {
+     "zip": "basidiomycota.zip",
+     "colony": "Pi_18C_3",
+     "day": 8
+    },
+    {
+     "zip": "basidiomycota.zip",
+     "colony": "Pv_ctrl1_1",
+     "day": 8
+    },
+    {
+     "zip": "basidiomycota.zip",
+     "colony": "Pv_ctrl1_2",
+     "day": 8
+    },
+    {
+     "zip": "basidiomycota.zip",
+     "colony": "Pv_ctrl1_3",
+     "day": 8
+    },
+    {
+     "zip": "basidiomycota.zip",
+     "colony": "Rb_ctrl1_2",
+     "day": 8
+    },
+    {
+     "zip": "basidiomycota.zip",
+     "colony": "Rb_ctrl1_3",
+     "day": 8
+    },
+    {
+     "zip": "basidiomycota.zip",
+     "colony": "Rb_ctrl1_4",
+     "day": 8
+    }
+   ]
+  },
+  "podospora_thallus": {
+   "movies": [
+    {
+     "file": "M0_1.avi",
+     "bytes": 361221590,
+     "frames_header": 85,
+     "frames_stored": 85,
+     "order_complete": true,
+     "width": 7129,
+     "height": 6995,
+     "handler": "DIB ",
+     "playback_fps": 5.0,
+     "microsec_per_frame": 200000,
+     "duplicates": {
+      "n": 85,
+      "distinct": 85,
+      "duplicate_groups": 0,
+      "items_in_duplicate_groups": 0,
+      "redundant_copies": 0,
+      "largest_group": 1
+     },
+     "medium": "M0",
+     "replicate": 1
+    },
+    {
+     "file": "M0_2.avi",
+     "bytes": 456877348,
+     "frames_header": 85,
+     "frames_stored": 85,
+     "order_complete": true,
+     "width": 7177,
+     "height": 6985,
+     "handler": "DIB ",
+     "playback_fps": 5.0,
+     "microsec_per_frame": 200000,
+     "duplicates": {
+      "n": 85,
+      "distinct": 85,
+      "duplicate_groups": 0,
+      "items_in_duplicate_groups": 0,
+      "redundant_copies": 0,
+      "largest_group": 1
+     },
+     "medium": "M0",
+     "replicate": 2
+    },
+    {
+     "file": "M0_3.avi",
+     "bytes": 475744180,
+     "frames_header": 81,
+     "frames_stored": 81,
+     "order_complete": true,
+     "width": 7183,
+     "height": 6903,
+     "handler": "DIB ",
+     "playback_fps": 5.0,
+     "microsec_per_frame": 200000,
+     "duplicates": {
+      "n": 81,
+      "distinct": 81,
+      "duplicate_groups": 0,
+      "items_in_duplicate_groups": 0,
+      "redundant_copies": 0,
+      "largest_group": 1
+     },
+     "medium": "M0",
+     "replicate": 3
+    },
+    {
+     "file": "M2_1.avi",
+     "bytes": 376739576,
+     "frames_header": 74,
+     "frames_stored": 74,
+     "order_complete": true,
+     "width": 7178,
+     "height": 6974,
+     "handler": "DIB ",
+     "playback_fps": 5.0,
+     "microsec_per_frame": 200000,
+     "duplicates": {
+      "n": 74,
+      "distinct": 74,
+      "duplicate_groups": 0,
+      "items_in_duplicate_groups": 0,
+      "redundant_copies": 0,
+      "largest_group": 1
+     },
+     "medium": "M2",
+     "replicate": 1
+    },
+    {
+     "file": "M2_2.avi",
+     "bytes": 367944572,
+     "frames_header": 70,
+     "frames_stored": 70,
+     "order_complete": true,
+     "width": 7125,
+     "height": 6986,
+     "handler": "DIB ",
+     "playback_fps": 5.0,
+     "microsec_per_frame": 200000,
+     "duplicates": {
+      "n": 70,
+      "distinct": 70,
+      "duplicate_groups": 0,
+      "items_in_duplicate_groups": 0,
+      "redundant_copies": 0,
+      "largest_group": 1
+     },
+     "medium": "M2",
+     "replicate": 2
+    },
+    {
+     "file": "M2_3.avi",
+     "bytes": 353379264,
+     "frames_header": 69,
+     "frames_stored": 69,
+     "order_complete": true,
+     "width": 7220,
+     "height": 6973,
+     "handler": "DIB ",
+     "playback_fps": 5.0,
+     "microsec_per_frame": 200000,
+     "duplicates": {
+      "n": 69,
+      "distinct": 69,
+      "duplicate_groups": 0,
+      "items_in_duplicate_groups": 0,
+      "redundant_copies": 0,
+      "largest_group": 1
+     },
+     "medium": "M2",
+     "replicate": 3
+    }
+   ],
+   "duplicates": {
+    "n": 464,
+    "distinct": 464,
+    "duplicate_groups": 0,
+    "items_in_duplicate_groups": 0,
+    "redundant_copies": 0,
+    "largest_group": 1
+   }
+  },
+  "podospora_m0_raw": {
+   "file": "M0_1.tif",
+   "bytes": 4261178698,
+   "frames": 85,
+   "frames_with_content": 15,
+   "blank_pages": 70,
+   "trailer_bytes": 10584,
+   "imagej_images": 85,
+   "layout_consistent": true,
+   "width": 7177,
+   "height": 6985,
+   "description": "ImageJ=1.52t\nimages=85\nslices=85\nloop=false",
+   "next_ifd": 4261168114,
+   "duplicates": {
+    "n": 15,
+    "distinct": 15,
+    "duplicate_groups": 0,
+    "items_in_duplicate_groups": 0,
+    "redundant_copies": 0,
+    "largest_group": 1
+   },
+   "order_check": {
+    "adjacent_mean_abs_diff": 9.4995,
+    "non_adjacent_mean_abs_diff": 18.5545
+   }
+  },
+  "podospora_net2019a": {
+   "file": "experiment_a_downsized.avi",
+   "bytes": 33615844,
+   "frames_header": 82,
+   "frames_stored": 82,
+   "order_complete": true,
+   "width": 1604,
+   "height": 1708,
+   "handler": "DIB ",
+   "playback_fps": 4.0,
+   "microsec_per_frame": 250000,
+   "duplicates": {
+    "n": 82,
+    "distinct": 82,
+    "duplicate_groups": 0,
+    "items_in_duplicate_groups": 0,
+    "redundant_copies": 0,
+    "largest_group": 1
+   }
+  },
+  "podospora_net2019b": {
+   "file": "superpose_50-60_raw.tif",
+   "bytes": 165419683,
+   "frames": 11,
+   "imagej_images": 11,
+   "width": 2524,
+   "height": 1986,
+   "channels": 3,
+   "dtype": "uint8",
+   "description": "ImageJ=1.52p\nimages=11\nslices=11\nloop=false",
+   "duplicates": {
+    "n": 11,
+    "distinct": 11,
+    "duplicate_groups": 0,
+    "items_in_duplicate_groups": 0,
+    "redundant_copies": 0,
+    "largest_group": 1
+   },
+   "order_check": {
+    "adjacent_mean_abs_diff": 12.6255,
+    "non_adjacent_mean_abs_diff": 17.5929
+   }
+  },
+  "physarum_rig": {
+   "archives_on_disk": [
+    "physarum-001-dish0-r0c0.ome.zarr.zip"
+   ],
+   "release_archives": 24,
+   "axes": [
+    "t",
+    "c",
+    "y",
+    "x"
+   ],
+   "frames": 1696,
+   "width": 1276,
+   "height": 1169,
+   "dtype": "uint8",
+   "nominal_interval_s": 300.0,
+   "mm_per_px": 0.089286,
+   "timestamps": {
+    "n": 1696,
+    "strictly_increasing": true,
+    "first_utc": "2023-08-26T18:20:49+00:00",
+    "last_utc": "2023-09-01T15:38:03+00:00",
+    "span_days": 5.887,
+    "gap_min_s": 300.0,
+    "gap_median_s": 300.0,
+    "gap_max_s": 301.0,
+    "gap_distinct_s": [
+     300.0,
+     301.0
+    ]
+   },
+   "source_sha256": {
+    "n": 1696,
+    "distinct": 1696,
+    "duplicate_groups": 0,
+    "items_in_duplicate_groups": 0,
+    "redundant_copies": 0,
+    "largest_group": 1
+   },
+   "qc_flagged_frames": 0,
+   "frames_with_dish_circle": 1696,
+   "experiment": "001",
+   "dish": {
+    "index": 0,
+    "row": 0,
+    "column": 0
+   },
+   "first_source": "physarum_20230826_142049.png",
+   "last_source": "physarum_20230901_113803.png",
+   "license": "CC-BY-4.0"
+  },
+  "aureobasidium": {
+   "files": [
+    "22_IRIC23_Gubensek.pdf",
+    "SOURCE.md"
+   ],
+   "data_files": [
+    "SOURCE.md"
+   ]
+  }
+ }
+}
