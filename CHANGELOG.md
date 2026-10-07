@@ -45,6 +45,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   size, peak GPU memory, checkpoint SHA-256, metrics, data hashes) for the GPU
   baseline run (`--tag gpu`), which trains SegFormer-B0 for the published 50,000
   iterations at the published effective batch of 16 on the RTX 4070 Ti
+- Causal DAGs and adjustment-set checks (`R/dag.R`, #33): the MyceliumSeg
+  cross-sectional DAG under Gate C (species-medium aliasing, latent dish/time,
+  selection for distinctive edge morphology, imaging/segmentation error,
+  duplicate/mislabeled files) and future causal intervention DAGs, with
+  `dagitty::adjustmentSets` verifying that no adjustment set identifies a causal
+  temperature effect (T→Y), medium effect (M→Y), or physical growth rate (T→k)
+  from MyceliumSeg, while the future graphs (D, t observed) do identify T→k
 
 ### Fixed
 
