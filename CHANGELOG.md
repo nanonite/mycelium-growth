@@ -37,6 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 ### Changed
+- Measurement-error model: bias + SD of area/radius on test set (#31)
 - Inference on unlabeled images → masks (#29)
 - ASSUMPTION: MyceliumSeg dish ID + timestamp are recoverable (#20)
 - Record Gate C for MyceliumSeg identifiability (#26)
