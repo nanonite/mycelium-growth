@@ -49,6 +49,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 ### Changed
+- Shape metrics (area, r_eq, perimeter, roughness, density) → data/measurements.csv (#30)
 - Extract shape metrics (area, r_eq, perimeter, roughness, density) → data/measurements.csv (#30)
 - Inventory time-resolved image sequences and frame provenance (#61)
 - Define frame-level observable growth estimands and units (#60)
