@@ -37,6 +37,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 ### Changed
+- Inventory time-resolved image sequences and frame provenance (#61)
+- Define frame-level observable growth estimands and units (#60)
 - Measurement-error model: bias + SD of area/radius on test set (#31)
 - Inference on unlabeled images → masks (#29)
 - ASSUMPTION: MyceliumSeg dish ID + timestamp are recoverable (#20)
