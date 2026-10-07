@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 ### Changed
+- ASSUMPTION: MyceliumSeg dish ID + timestamp are recoverable (#20)
 - Record Gate C for MyceliumSeg identifiability (#26)
 - Establish a validated SegFormer baseline for MyceliumSeg measurement (#28)
 - Record SegFormer evidence and the measurement handoff (#59)
