@@ -1,0 +1,153 @@
+{
+  "caveats": [
+    "MyceliumSeg is cross-sectional: no ordered frames, no dish identity, no capture interval (Gate C, notes/provenance.md).",
+    "Area, log-area and equivalent radius are the primary size features; the #31 error model puts their bias and spread inside the #60 size budget.",
+    "Perimeter, edge roughness, circularity and solidity are boundary-derived and secondary: #31 puts their error well outside the size budget (published Boundary IoU 28.60%, #28), so they carry the boundary budget and are not size proxies.",
+    "Mean intensity and the intensity summaries are density proxies only: dark incubation and fixed exposure are per-block facts, so they are comparable within a condition block, never across.",
+    "The test and conditions hold-outs are not independent: ten PDA conditions images are byte copies of ten labeled-GL test images (#23), so de-duplication removes the conditions copies before any summary."
+  ],
+  "checkpoint": {
+    "path": "/mnt/sharedOs/mycelium-growth-workspace/work_dirs/segformer-b0-repro/inference/model_meta.json",
+    "sha256": "bcf66b6c1b3ce44018bc54223bacad31bd48a1647efc842bfbc6bd5f6d3e20d6"
+  },
+  "feature_tiers": {
+    "primary": [
+      "area_px",
+      "area_mm2",
+      "area_fraction",
+      "equiv_radius_px",
+      "equiv_radius_mm",
+      "log_area_px2",
+      "log_area_mm2"
+    ],
+    "secondary": [
+      "perimeter_px",
+      "perimeter_mm",
+      "edge_roughness",
+      "circularity",
+      "solidity",
+      "mean_intensity",
+      "intensity_median",
+      "intensity_std",
+      "intensity_min",
+      "intensity_max"
+    ]
+  },
+  "generated_at": "2026-10-07T06:10:30.227375+00:00",
+  "measurement_columns": [
+    {
+      "column": "area_px",
+      "note": "colony mask area in px^2 at the 900-px working width",
+      "tier": "primary"
+    },
+    {
+      "column": "area_mm2",
+      "note": "calibrated colony area in mm^2 (fit_status == ok only)",
+      "tier": "primary"
+    },
+    {
+      "column": "area_fraction",
+      "note": "A_colony / A_dish, both in the same frame (fit_status == ok only)",
+      "tier": "primary"
+    },
+    {
+      "column": "equiv_radius_px",
+      "note": "sqrt(area_px / pi) at the 900-px working width",
+      "tier": "primary"
+    },
+    {
+      "column": "equiv_radius_mm",
+      "note": "calibrated equivalent radius in mm (fit_status == ok only)",
+      "tier": "primary"
+    },
+    {
+      "column": "log_area_px2",
+      "note": "ln(area_px) -- log area with its reference unit stated",
+      "tier": "primary"
+    },
+    {
+      "column": "log_area_mm2",
+      "note": "ln(area_mm^2) -- calibrated log area (fit_status == ok only)",
+      "tier": "primary"
+    },
+    {
+      "column": "perimeter_px",
+      "note": "4-connected boundary-pixel count at the 900-px working width",
+      "tier": "secondary"
+    },
+    {
+      "column": "perimeter_mm",
+      "note": "calibrated perimeter in mm (fit_status == ok only)",
+      "tier": "secondary"
+    },
+    {
+      "column": "edge_roughness",
+      "note": "P / (2 pi r_eq) -- 1.0 is a circle; resolution-locked",
+      "tier": "secondary"
+    },
+    {
+      "column": "circularity",
+      "note": "4 pi A / P^2 -- dimensionless, resolution-locked",
+      "tier": "secondary"
+    },
+    {
+      "column": "solidity",
+      "note": "A_colony / A_convex_hull -- dimensionless",
+      "tier": "secondary"
+    },
+    {
+      "column": "mean_intensity",
+      "note": "mean 8-bit grey level inside the mask -- density proxy",
+      "tier": "secondary"
+    },
+    {
+      "column": "intensity_median",
+      "note": "median 8-bit grey level inside the mask",
+      "tier": "secondary"
+    },
+    {
+      "column": "intensity_std",
+      "note": "SD of the 8-bit grey level inside the mask -- texture proxy",
+      "tier": "secondary"
+    },
+    {
+      "column": "intensity_min",
+      "note": "minimum 8-bit grey level inside the mask",
+      "tier": "secondary"
+    },
+    {
+      "column": "intensity_max",
+      "note": "maximum 8-bit grey level inside the mask",
+      "tier": "secondary"
+    }
+  ],
+  "output": {
+    "by_block": {
+      "GL": 58,
+      "GS": 10,
+      "GS_PO_TS_flat": 7,
+      "MYG": 10,
+      "PDA": 10,
+      "PO": 10,
+      "TEMP15": 10,
+      "TS": 10
+    },
+    "by_source_set": {
+      "conditions": 60,
+      "test": 50,
+      "unlabeled": 15
+    },
+    "measurements_csv": "/mnt/sharedOs/mycelium-growth-workspace/data/measurements.csv",
+    "n_calibrated": 122,
+    "n_off_scale": 3,
+    "n_rows": 125,
+    "off_scale_ids": [
+      "00018438",
+      "00018456",
+      "00018458"
+    ]
+  },
+  "repository_commit": "1f79e8156b3c4dc13af398560d64556af91b3a08",
+  "task": 30,
+  "work_dir": "/mnt/sharedOs/mycelium-growth-workspace/work_dirs/segformer-b0-repro/inference"
+}

@@ -7,6 +7,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- Observable measurement table from the validated #29 masks —
+  `scripts/measurements.py` writes `data/measurements.csv` (one provenance-rich
+  row per image: area, area fraction, calibrated equivalent radius, perimeter,
+  edge roughness / circularity / solidity, intensity summaries and density
+  proxies, with image-level and mask-level provenance, calibration block,
+  duplicate status, frame-order status and time-unit status) plus
+  `notes/measurements_evidence.json` and `notes/measurements.md`. Area,
+  log-area and equivalent radius are primary; the boundary-derived features and
+  the intensity/density proxies are secondary and carry the #31 error model's
+  uncertainty. Guards refuse any elapsed-time, rate, dish-id or hyphal-tip
+  field (Gate C). `tests/test_measurements.py` covers the intensity arithmetic,
+  the off_scale exclusion and the #31 value agreement (#30)
 - Inventory time-resolved image sequences and frame provenance (#61):
   `scripts/triage/sequence_inventory.py` audits every dataset under `data/raw`
   for the six provenance facts — ordered frames, specimen identity, capture
@@ -37,6 +49,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 ### Changed
+- Extract shape metrics (area, r_eq, perimeter, roughness, density) → data/measurements.csv (#30)
 - Inventory time-resolved image sequences and frame provenance (#61)
 - Define frame-level observable growth estimands and units (#60)
 - Measurement-error model: bias + SD of area/radius on test set (#31)
