@@ -78,17 +78,24 @@ For context, the validated 25 °C GL count is:
 | GL 25 °C off-scale | 436 | `image_scale.csv` (435 GL block + 1 MYG block) |
 | GL 25 °C calibrated (`ok`) | **18,001** | 18,437 − 436 |
 
-The 15 °C : 25 °C ratio is 10 : 18,437 (unique) or 10 : 18,001 (calibrated).
+These figures are the **release inventory**, not the number of images with
+measurements. At this audit commit, `data/measurements.csv` contains 68 GL
+25 °C morphology rows (50 test hold-outs, 10 condition hold-outs, and 8
+unlabeled stride samples) and 10 GL 15 °C rows. The archive ratio above must
+not be read as the measured comparison sample size or as evidence of
+independent biological replication.
 
 ---
 
 ## 5. Feasibility and sample-size limitations
 
-**Descriptive image-level comparison: feasible.** A cross-sectional
-morphology comparison of 15 °C vs 25 °C GL images is possible as an
-associational, within-release summary — area, area fraction, equivalent
-radius, perimeter, roughness, and calibrated mm², stratified by condition,
-with the #31 measurement-error budget attached.
+**Descriptive image-level comparison: feasible on measured rows.** A
+cross-sectional summary can use the 10 measured GL 15 °C rows and 68 measured
+GL 25 °C rows — area, area fraction, equivalent radius, perimeter, roughness,
+and calibrated mm², stratified by condition, with the #31 measurement-error
+budget attached. This compares the available image rows only; selection and
+measurement coverage differ by source set, so the 18,437-image archive count
+is not the denominator for this summary.
 
 **Not feasible (Gate C, #26):**
 

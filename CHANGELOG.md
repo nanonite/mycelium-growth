@@ -67,6 +67,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 ### Changed
+- Count eligible G. lucidum 15°C images for cross-sectional analysis (#34)
 - Write DAG in R/dag.R; check adjustmentSets for T→k (#33)
 - Shape metrics (area, r_eq, perimeter, roughness, density) → data/measurements.csv (#30)
 - Extract shape metrics (area, r_eq, perimeter, roughness, density) → data/measurements.csv (#30)
