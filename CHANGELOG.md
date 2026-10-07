@@ -7,14 +7,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
-- Expose a CUDA-capable MyceliumSeg training environment (#56): `devShells.gpu`
-  with CUDA torch 2.5.1+cu124 and mmcv/mmsegmentation, host `libcuda.so.1`
-  preloaded in the shell hook only, evaluation safe without a GPU, CPU default
-  shell retained
-- Run a GPU SegFormer smoke pipeline (#57): prepare/train/evaluate on the
-  RTX 4070 Ti in ~1 min, evidence in `evidence.json` (device, driver, versions,
-  batch size, peak memory, checkpoint hash, metrics); fixed mmcv 1.3.0 passing
-  int device ids to torch 2.x `_get_stream` via the compatibility shim
+- Inventory time-resolved image sequences and frame provenance (#61):
+  `scripts/triage/sequence_inventory.py` audits every dataset under `data/raw`
+  for the six provenance facts — ordered frames, specimen identity, capture
+  interval, resolution, duplicates, condition labels — and writes the capability
+  matrix `data/triage/sequence_inventory.csv` plus the per-file evidence
+  `notes/sequence_inventory.json`; the write-up and estimand mapping are in
+  `notes/provenance.md` (MyceliumSeg has **no usable longitudinal sequence**, so
+  the cross-sectional fallback stands and Fricker/Boddy, *Podospora* and a
+  controlled rig are nominated for dynamic and intervention models). New
+  findings: 4 byte-identical `Pi_ctrl2` day-1 ≡ day-2 pairs in the grazer
+  series, and `podospora_m0_raw/M0_1.tif` carries only 15 content pages behind
+  an `images=85` header. Guards in `validate_rows()` are re-run against the
+  committed matrix by `tests/test_sequence_inventory.py`
+- Define the measurement contract before inference — `notes/estimands.md` with the
+  machine-readable `scripts/measurement_contract.py` (image-level morphology estimands
+  by species and condition, the conditional per-frame `delta_log_area_per_frame`,
+  population, inclusion rule, duplicate handling, units, px→mm calibration and the
+  95% uncertainty target) and `tests/test_measurement_contract.py` guards that refuse a
+  per-time rate without a capture interval (#60)
 - Reproduce the SegFormer baseline: `scripts/segformer_repro.py` (prepare / config / train / evaluate / evidence),
   the `scripts/segformer_shim/` compatibility shim the pinned benchmark needs on this stack,
   and the results write-up in `notes/segformer_baseline.md` (#28). The `evidence`
@@ -23,10 +34,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   baseline run (`--tag gpu`), which trains SegFormer-B0 for the published 50,000
   iterations at the published effective batch of 16 on the RTX 4070 Ti
 
-
 ### Fixed
 
 ### Changed
+- Inference on unlabeled images → masks (#29)
 - ASSUMPTION: MyceliumSeg dish ID + timestamp are recoverable (#20)
 - Record Gate C for MyceliumSeg identifiability (#26)
 - Establish a validated SegFormer baseline for MyceliumSeg measurement (#28)
@@ -34,6 +45,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Run the agreed SegFormer baseline protocol on the available GPU (#58)
 - Run a GPU SegFormer smoke pipeline (#57)
 - Expose a CUDA-capable MyceliumSeg training environment (#56)
+- Update the growth modeling plan for observable MyceliumSeg dynamics (#55)
+- Calibrate px → mm using 90-mm dish rim (#25)
+- Recover dish tracks (inoculum position, lid marks, embedding clustering) (#23)
 - Convert docs/pdfs to Markdown and extract MyceliumSeg modeling implications (#63)
 - Recover dish tracks (inoculum position, lid marks, embedding clustering) (#23)
 - Check whether per-image stage / sclerotium colour labels ship in the release (#24)
