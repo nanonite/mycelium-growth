@@ -28,6 +28,7 @@ if str(SCRIPTS) not in sys.path:
 import measurement_contract as mc  # needs the sys.path line above
 
 NOTE = REPO / "notes" / "estimands.md"
+ASSUMPTIONS_NOTE = REPO / "notes" / "assumptions.md"
 DISH_TRACKS = REPO / "data" / "triage" / "dish_tracks.csv"
 CALIBRATION = REPO / "data" / "triage" / "calibration.csv"
 
@@ -332,3 +333,87 @@ def test_note_and_module_agree_on_the_frame_condition(note_text: str) -> None:
         mc.PRECONDITION_FRAME_ORDER
     )
     assert "not estimated" in note_text
+
+
+# --- selection-bias record (#35) -----------------------------------------------
+
+
+def test_validate_selection_record_reports_no_problems() -> None:
+    assert mc.validate_selection_record() == []
+
+
+def test_selection_record_carries_exactly_the_two_claims() -> None:
+    assert set(mc.SELECTION_BIAS["claims"]) == {
+        "independent_of_observed_morphology",
+        "independent_of_latent_time_frame",
+    }
+
+
+def test_selection_record_names_the_documented_mechanism() -> None:
+    assert "distinctive edge morphology" in mc.SELECTION_BIAS["mechanism"]
+
+
+def test_selection_independence_from_observed_morphology_is_falsified() -> None:
+    # Selection is explicitly based on distinctive edge morphology, so the
+    # release over-represents the estimands' own features by construction.
+    assert mc.selection_claim("independent_of_observed_morphology") == "falsified"
+
+
+def test_selection_independence_from_latent_time_frame_is_untestable() -> None:
+    # Gate C: no dish identity, no timestamps, no ordered sequences, so no
+    # in-release evidence can speak to temporal dependence.
+    assert mc.selection_claim("independent_of_latent_time_frame") == "untestable"
+
+
+def test_no_selection_claim_is_supported() -> None:
+    # Neither half may be reported as independent: one is falsified, the other
+    # untestable, and no evidence for temporal independence may be invented.
+    for claim, status in mc.SELECTION_BIAS["claims"].items():
+        assert status != "supported", claim
+        assert status in mc.SELECTION_STATUSES, claim
+
+
+def test_selection_claim_refuses_an_unknown_half() -> None:
+    with pytest.raises(mc.ContractViolation):
+        mc.selection_claim("independent_of_species")
+
+
+def test_selection_record_bounds_interpretation_to_the_selected_release() -> None:
+    supported = mc.SELECTION_BIAS["supported"]
+    assert "selected release" in supported
+    assert "never a plate population" in supported
+
+
+def test_selection_record_preserves_the_gate_c_prohibition() -> None:
+    prohibition = mc.SELECTION_BIAS["gate_c_prohibition"]
+    assert "causal temperature or medium" in prohibition
+    assert "growth-rate" in prohibition
+
+
+# --- the assumptions note and the module say the same thing --------------------
+
+
+@pytest.fixture(scope="module")
+def assumptions_text() -> str:
+    assert ASSUMPTIONS_NOTE.is_file(), f"missing assumption register at {ASSUMPTIONS_NOTE}"
+    return ASSUMPTIONS_NOTE.read_text()
+
+
+def test_assumptions_note_records_the_35_split(assumptions_text: str) -> None:
+    """The register must separate the falsified half from the untestable half."""
+    assert "#35" in assumptions_text
+    assert "falsified" in assumptions_text
+    assert "untestable" in assumptions_text
+    assert "selected release" in assumptions_text
+
+
+def test_note_and_module_agree_on_the_selection_mechanism(assumptions_text: str) -> None:
+    assert mc.SELECTION_BIAS["mechanism"] in assumptions_text
+
+
+def test_note_does_not_assert_temporal_independence(assumptions_text: str) -> None:
+    """No evidence for temporal independence may be invented (#35)."""
+    lowered = assumptions_text.lower()
+    assert "no evidence for temporal independence" in lowered
+    # the untestable half is stated as untestable, never as independent
+    assert mc.selection_claim("independent_of_latent_time_frame") == "untestable"

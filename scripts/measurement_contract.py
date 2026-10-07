@@ -422,6 +422,100 @@ CONTRACT: dict[str, Any] = {
 }
 
 
+# --- selection-bias record (Chainlink #35) -------------------------------------
+
+# The release documents exactly one selection mechanism: images were "selected
+# for distinctive edge morphology" (PLAN.md section 0; notes/estimands.md
+# section 1).  That single fact splits assumption #35 -- selection is
+# independent of latent growth features and frame/time -- into two claims with
+# different statuses, and this record keeps them apart so neither half can be
+# quietly upgraded to "supported":
+#
+#   * independence from OBSERVED morphology is falsified by construction --
+#     selection reads the true morphology Z and the imaged morphology I
+#     (Z -> Sel <- I in R/dag.R), so the release over-represents the estimands'
+#     own features.  That is a logical consequence of the documented mechanism,
+#     not a statistical test.
+#   * independence from LATENT time/frame is untestable under Gate C -- dish
+#     identity, capture timestamps and ordered sequences are all unavailable
+#     (notes/gate.md section 1), so no in-release evidence can speak to it, and
+#     none may be invented.
+SELECTION_STATUSES = ("falsified", "untestable")
+
+SELECTION_BIAS: dict[str, Any] = {
+    "issue": 35,
+    "assumption": (
+        "image selection for distinctive edge morphology is independent of "
+        "latent growth features and frame/time"
+    ),
+    "mechanism": "images were 'selected for distinctive edge morphology'",
+    "mechanism_source": (
+        "Yuan et al. 2025, doi:10.1038/s41597-025-06265-1; in-repo: PLAN.md "
+        "section 0, notes/estimands.md section 1, R/dag.R (Z -> Sel <- I)"
+    ),
+    "claims": {
+        "independent_of_observed_morphology": "falsified",
+        "independent_of_latent_time_frame": "untestable",
+    },
+    "supported": (
+        "cross-sectional morphology distributions describe the selected release "
+        "only: associational, within-release, by species and known condition -- "
+        "never a plate population, a treatment effect or a growth curve"
+    ),
+    "gate_c_prohibition": (
+        "no causal temperature or medium effect and no physical growth-rate "
+        "claim is licensed by any status above (notes/gate.md)"
+    ),
+}
+
+
+def selection_claim(claim: str) -> str:
+    """Return the #35 status of one half of the selection assumption.
+
+    The two halves are fixed: one is falsified by the documented mechanism, the
+    other is untestable under Gate C.  A claim the record does not carry is a
+    :class:`ContractViolation` -- there is no code path through which selection
+    independence may be asserted.
+    """
+    try:
+        return SELECTION_BIAS["claims"][claim]
+    except KeyError:
+        raise ContractViolation(
+            f"unknown selection claim {claim!r}; the #35 record carries exactly "
+            f"{sorted(SELECTION_BIAS['claims'])}"
+        ) from None
+
+
+def validate_selection_record() -> list[str]:
+    """Return every way the #35 selection-bias record breaks its own rules.
+
+    Empty list means the record is internally consistent: exactly the two
+    halves, each with a status the evidence supports (never "supported"), the
+    documented mechanism named, and the supported scope stated.
+    """
+    problems: list[str] = []
+    claims = SELECTION_BIAS.get("claims") or {}
+    if set(claims) != {
+        "independent_of_observed_morphology",
+        "independent_of_latent_time_frame",
+    }:
+        problems.append(
+            "selection record must carry exactly the two #35 halves: "
+            "independent_of_observed_morphology, independent_of_latent_time_frame"
+        )
+    for claim, status in claims.items():
+        if status not in SELECTION_STATUSES:
+            problems.append(
+                f"selection claim {claim!r} has status {status!r}; the evidence "
+                f"supports only {list(SELECTION_STATUSES)}"
+            )
+    if not SELECTION_BIAS.get("mechanism"):
+        problems.append("selection record must name the documented mechanism")
+    if not SELECTION_BIAS.get("supported"):
+        problems.append("selection record must state the supported scope")
+    return problems
+
+
 # --- validation ---------------------------------------------------------------
 
 
@@ -430,10 +524,11 @@ def validate_contract() -> list[str]:
 
     Empty list means the contract is internally consistent: all sections
     present, every estimand fully and coherently specified, no time unit hiding
-    in a per-frame quantity, and the prohibition on unconverted frame change
-    actually recorded.
+    in a per-frame quantity, the prohibition on unconverted frame change
+    actually recorded, and the #35 selection-bias record carrying exactly the
+    two halves the evidence supports.
     """
-    problems: list[str] = []
+    problems: list[str] = validate_selection_record()
 
     for key in REQUIRED_CONTRACT_KEYS:
         if key not in CONTRACT or not CONTRACT[key]:

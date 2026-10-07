@@ -7,6 +7,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- Assess the "distinctive edge morphology" selection assumption under Gate C
+  (#35) — `notes/assumptions.md` §5 records the documented selection mechanism
+  and splits the assumption in two: independence from observed morphology is
+  falsified by construction (selection reads the true and imaged morphology,
+  Z → Sel ← I in `R/dag.R`), and independence from latent time/frame is
+  untestable (no dish identity, no timestamps, no ordered sequences), with no
+  evidence for temporal independence invented. Cross-sectional interpretation is
+  bounded to the selected release; the Gate C prohibition on causal
+  temperature/medium and physical growth-rate claims is preserved. The
+  machine-readable `SELECTION_BIAS` record and guards in
+  `scripts/measurement_contract.py` are checked by
+  `tests/test_measurement_contract.py`; `notes/estimands.md` §1, `notes/gate.md`
+  §3, PLAN.md (§0, Phase 3 DAG, open question 5) and `R/dag.R` carry the same
+  split
 - Audit eligible *G. lucidum* 15 °C images for cross-sectional morphology (#34) —
   `scripts/triage/audit_15c_images.py` verifies the 10 TEMP15 candidates
   (`labeled-MYG_PDA_TEMP.zip`, IDs 00018478–00018487) against the source

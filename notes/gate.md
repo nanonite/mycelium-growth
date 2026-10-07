@@ -76,6 +76,18 @@ All in-data routes to A or B were tested and failed (#21–#23), so the gate is 
 | Growth-stage or sclerotium-colour effects | **Not estimable per image** | Labels do not ship per image; stratifying on stage would also condition on a downstream variable |
 | Dish-level varying effects | **Not estimable** | No dish identity → no grouping → no per-dish random effects |
 
+**Selection bias (#35).** The release documents one selection mechanism:
+images were "selected for distinctive edge morphology" (PLAN.md §0). Under
+Gate C this splits assumption #35 in two, and the split is a scope fact, not a
+new estimand: independence from observed morphology is **falsified** by
+construction (selection reads the true and imaged morphology — Z → Sel ← I in
+`R/dag.R`), and independence from latent time/frame is **untestable** (no dish
+identity, no timestamps, no ordered sequences — § 1 above). The consequence is
+bounded scope: every morphology summary describes the selected release, the
+direction of the morphology bias is known though its magnitude is not, and no
+selection model is identifiable from the release. The prohibitions below are
+unaffected. Full record: `notes/assumptions.md` §5.
+
 ---
 
 ## 4. Permitted near-term work

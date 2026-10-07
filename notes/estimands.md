@@ -45,6 +45,18 @@ distinctive edge morphology", so even the release is not a random sample of
 plates. Nothing here estimates a species population, a treatment effect or a
 growth curve.
 
+**Selection bias (#35).** The documented selection mechanism splits the
+independence assumption in two (full record: `notes/assumptions.md` §5;
+machine-readable: `SELECTION_BIAS` in `scripts/measurement_contract.py`).
+Selection is *not independent of observed morphology* — that half is falsified
+by construction, because selection reads the true and imaged morphology
+(Z → Sel ← I, `R/dag.R`), the very features these estimands describe.
+Selection *may not be asserted independent of latent time/frame* — that half
+is untestable under Gate C (no dish identity, no timestamps, no ordered
+sequences), and no evidence for temporal independence is invented. Every
+summary under this contract therefore carries the scope label **selected
+release**, never "plates" or "population".
+
 ## 2. Inclusion rule
 
 An image enters an estimand when all of the following hold; each exclusion is
