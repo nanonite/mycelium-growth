@@ -112,8 +112,10 @@ is not the denominator for this summary.
 replication. Any descriptive summary describes these 10 images only; it
 cannot support inference to a dish population, a treatment effect, or a
 growth rate. The paper describes the release as collected "with distinctive
-edge morphology" but documents no inclusion rule (#35, `notes/assumptions.md`
-§ 5), so the 10 images are not a random sample of 15 °C plates.
+edge morphology" but documents no inclusion rule, and the release records no
+plate-level sampling design (#35, `notes/assumptions.md` § 5); plate
+representativeness is therefore unknown and no plate-population inference is
+supported.
 
 ---
 

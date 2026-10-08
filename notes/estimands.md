@@ -26,7 +26,8 @@ disagree on a name, a unit, a rule or a number.
 
 The estimand is a property of a **finite, enumerable set of images**, not of a
 sample of dishes. Gate C (#26) established that nothing in the release assigns
-an image to a dish or a date, so there is no sampling frame to generalise over.
+an image to a dish or a date, so the plate-level sampling frame is unknown and
+no plate-population inference is supported.
 
 | | Count | Source |
 |---|---|---|
@@ -40,10 +41,12 @@ an image to a dish or a date, so there is no sampling frame to generalise over.
 | Images flagged `fit_status = off_scale` | 560 (2.8%) | `image_scale.csv` |
 
 **Scope of inference.** Summaries describe *this release*: associational,
-within-release, by species and known condition. The paper describes collecting
-images "with distinctive edge morphology" and documents no inclusion rule, so
-the release is not a random sample of plates. Nothing here estimates a species
-population, a treatment effect or a growth curve.
+within-release, by species and known condition. The release records no
+plate-level sampling design and the paper describes collecting images "with
+distinctive edge morphology" without documenting an inclusion rule, so plate
+representativeness is unknown and no plate-population inference is supported.
+Nothing here estimates a species population, a treatment effect or a growth
+curve.
 
 **Selection bias (#35).** The release's Methods / Data collection section
 *describes* the collected set — "We collected 20,176 mycelium images with

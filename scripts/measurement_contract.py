@@ -282,8 +282,10 @@ CONTRACT: dict[str, Any] = {
         "n_condition_known": 18487,  # species/medium labelled per image (known_labels.csv)
         "n_condition_unknown": 1689,  # flat unlabeled-GS_PO_TS shard, species/medium blank
         "sampling_frame": (
-            "none -- the release is not a random sample of plates; whether an "
-            "edge-morphology selection rule was applied is undocumented (#35)"
+            "undocumented -- the release records no plate-level sampling design, "
+            "so plate representativeness is unknown and no plate-population "
+            "inference is supported; whether an edge-morphology selection rule "
+            "was applied is also undocumented (#35)"
         ),
         "generalization": (
             "descriptive of the release only; associations by species and known "
@@ -425,6 +427,34 @@ CONTRACT: dict[str, Any] = {
 }
 
 
+# --- sampling-design record ----------------------------------------------------
+
+# The release documents no plate-level sampling design, and absence of a
+# documented design establishes neither random nor non-random sampling: plate
+# representativeness is simply unknown (#35 follow-up).  These phrases assert a
+# design the source does not document, so neither the population record nor its
+# prose mirror may carry them.
+SAMPLING_ASSERTION_PHRASES = (
+    "random sample",
+    "non-random",
+    "nonrandom",
+    "not random",
+    "randomly sampled",
+)
+
+
+def unsupported_sampling_claims(text: str) -> list[str]:
+    """Return the plate-sampling assertions in ``text`` the source cannot support.
+
+    The source records no plate-level sampling design, so neither "random
+    sample" nor "non-random sample" may be asserted -- both claim a design that
+    is not documented.  An empty list means the text leaves plate
+    representativeness unknown, which is the only supported reading.
+    """
+    lowered = text.lower()
+    return [phrase for phrase in SAMPLING_ASSERTION_PHRASES if phrase in lowered]
+
+
 # --- selection-bias record (Chainlink #35) -------------------------------------
 
 # The paper's Methods / Data collection section states: "We collected 20,176
@@ -486,7 +516,9 @@ SELECTION_BIAS: dict[str, Any] = {
     ),
     "required_to_test": (
         "the documented inclusion rule; the candidate / included / excluded "
-        "image frame; and linked per-image dish/time or growth-stage metadata"
+        "image frame; and linked per-image dish/time or growth-stage metadata -- "
+        "necessary to test selection dependence, but not sufficient by themselves "
+        "to identify a selection model"
     ),
 }
 
@@ -575,15 +607,24 @@ def validate_contract() -> list[str]:
     Empty list means the contract is internally consistent: all sections
     present, every estimand fully and coherently specified, no time unit hiding
     in a per-frame quantity, the prohibition on unconverted frame change
-    actually recorded, and the #35 selection-bias record carrying exactly the
-    two halves with the statuses the evidence supports (undocumented morphology
-    selection, untestable time/frame dependence).
+    actually recorded, the population record asserting no unsupported plate
+    sampling design (random or non-random), and the #35 selection-bias record
+    carrying exactly the two halves with the statuses the evidence supports
+    (undocumented morphology selection, untestable time/frame dependence).
     """
     problems: list[str] = validate_selection_record()
 
     for key in REQUIRED_CONTRACT_KEYS:
         if key not in CONTRACT or not CONTRACT[key]:
             problems.append(f"CONTRACT is missing section {key!r}")
+
+    sampling = (CONTRACT.get("population") or {}).get("sampling_frame") or ""
+    for phrase in unsupported_sampling_claims(sampling):
+        problems.append(
+            "population.sampling_frame asserts an unsupported plate sampling "
+            f"design ({phrase!r}); the release documents no plate-level sampling "
+            "design, so representativeness is unknown"
+        )
 
     names = [e.name for e in ALL_ESTIMANDS]
     if len(names) != len(set(names)):

@@ -20,6 +20,9 @@ if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
 import audit_15c_images as a15
+import measurement_contract as mc
+
+NOTE = REPO / "notes" / "image_count_15c.md"
 
 
 @pytest.fixture(scope="module")
@@ -150,3 +153,18 @@ class TestAuditAgainstLiveData:
         for i in temp15_ids:
             assert i in meas
             assert meas[i]["label_conflict"] == "False"
+
+
+class TestSamplingDesignDisclosure:
+    """The note must not assert a plate sampling design the source lacks (#35)."""
+
+    def test_no_random_or_non_random_sampling_claim(self):
+        assert NOTE.is_file()
+        text = NOTE.read_text()
+        assert mc.unsupported_sampling_claims(text) == []
+
+    def test_states_unknown_representativeness_instead(self):
+        squashed = " ".join(NOTE.read_text().split())
+        assert "plate-level sampling design" in squashed
+        assert "plate representativeness is therefore unknown" in squashed
+        assert "no plate-population inference is supported" in squashed

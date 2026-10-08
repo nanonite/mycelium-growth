@@ -137,9 +137,12 @@ selected release; any "dynamics" inferred from file order would be subject to
 the same two unresolved statuses — undocumented morphology selection and
 untestable time/frame dependence — and may not be presented as established.
 
-**If the authors supply the selection rule and dish/time or stage metadata**, the
+**If the authors supply the documented inclusion rule, the candidate / included
+/ excluded image frame, and linked dish/time or stage metadata**, the
 undocumented half can be assessed and the untestable half becomes testable, and
-this register is amended — and only then could a selection model be identified.
+this register is amended. Those inputs are necessary to test selection
+dependence; they do not by themselves identify a selection model, which would
+additionally need the functional form relating selection to the latent features.
 Not before.
 
 ---

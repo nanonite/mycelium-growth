@@ -378,6 +378,13 @@ def test_selection_record_states_what_a_future_test_requires() -> None:
     assert "stage" in required
 
 
+def test_selection_record_does_not_promise_identification_from_inputs() -> None:
+    # The inputs are necessary to test selection dependence, but supplying them
+    # does not by itself identify a selection model (#35 follow-up).
+    required = mc.SELECTION_BIAS["required_to_test"]
+    assert "not sufficient" in required
+
+
 def test_selection_record_cites_the_primary_paper() -> None:
     source = mc.SELECTION_BIAS["source"]
     assert "10.1038/s41597-025-06265-1" in source
@@ -449,6 +456,51 @@ def test_contract_sampling_frame_does_not_assert_a_selection_rule() -> None:
     assert "selected for distinctive edge morphology" not in sampling
 
 
+def test_contract_sampling_frame_leaves_representativeness_unknown() -> None:
+    """No plate-level sampling design is documented, so none may be asserted."""
+    sampling = mc.CONTRACT["population"]["sampling_frame"]
+    assert "sampling design" in sampling
+    assert "representativeness" in sampling
+    assert "no plate-population inference is supported" in sampling
+    assert mc.unsupported_sampling_claims(sampling) == []
+
+
+@pytest.mark.parametrize(
+    "phrase",
+    ["random sample", "non-random", "nonrandom", "not random", "randomly sampled"],
+)
+def test_unsupported_sampling_claims_detects_each_assertion(phrase: str) -> None:
+    assert mc.unsupported_sampling_claims(f"the plates are {phrase}") == [phrase]
+
+
+def test_unsupported_sampling_claims_accepts_unknown_representativeness() -> None:
+    assert (
+        mc.unsupported_sampling_claims(
+            "plate representativeness is unknown; no plate-population inference"
+        )
+        == []
+    )
+
+
+def test_validate_contract_rejects_random_and_non_random_sampling_claims(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The validator must reject both sampling assertions, not merely avoid them."""
+    for bad in (
+        "the release is a random sample of plates",
+        "the release is not a random sample of plates",
+        "plates were non-randomly sampled",
+    ):
+        monkeypatch.setitem(mc.CONTRACT["population"], "sampling_frame", bad)
+        assert mc.validate_contract(), f"{bad!r} must be rejected"
+    monkeypatch.setitem(
+        mc.CONTRACT["population"],
+        "sampling_frame",
+        "undocumented -- plate representativeness is unknown",
+    )
+    assert mc.validate_contract() == []
+
+
 def test_selection_record_preserves_the_gate_c_prohibition() -> None:
     prohibition = mc.SELECTION_BIAS["gate_c_prohibition"]
     assert "causal temperature or medium" in prohibition
@@ -503,3 +555,29 @@ def test_note_does_not_assert_temporal_independence(assumptions_text: str) -> No
     assert "no evidence for temporal independence" in lowered
     # the untestable half is stated as untestable, never as independent
     assert mc.selection_claim("independent_of_latent_time_frame") == "untestable"
+
+
+def test_assumptions_note_future_evidence_condition_is_complete(
+    assumptions_text: str,
+) -> None:
+    """The final conditional names all three inputs and promises no identification."""
+    lowered = assumptions_text.lower()
+    assert "documented inclusion rule" in lowered
+    assert "candidate / included" in lowered or "candidate/included" in lowered
+    assert "excluded image frame" in lowered
+    assert "dish/time or stage metadata" in lowered
+    # supplying the inputs does not by itself identify a selection model
+    assert "do not by themselves identify a selection model" in lowered
+
+
+def test_notes_do_not_assert_a_plate_sampling_design(
+    note_text: str, assumptions_text: str
+) -> None:
+    """Neither note may claim random or non-random plate sampling (#35 follow-up)."""
+    assert mc.unsupported_sampling_claims(note_text) == []
+    assert mc.unsupported_sampling_claims(assumptions_text) == []
+    # the supported reading -- unknown representativeness -- is present instead
+    squashed = " ".join(note_text.split())
+    assert "plate representativeness is unknown" in squashed
+    assert "no plate-population inference is supported" in squashed
+

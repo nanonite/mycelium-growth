@@ -28,6 +28,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   statuses
 
 ### Fixed
+- Correct the #35 follow-up on plate sampling: `population.sampling_frame`,
+  `notes/estimands.md` §1 and `notes/image_count_15c.md` §5 no longer assert the
+  release is a (non-)random sample of plates — the release documents no
+  plate-level sampling design, so plate representativeness is unknown and no
+  plate-population inference is supported, while the selected-release
+  descriptions are preserved. `notes/assumptions.md` §5's final conditional now
+  names the documented inclusion rule, the candidate / included / excluded image
+  frame, and linked dish/time or stage metadata, and states those inputs are
+  necessary but do not by themselves identify a selection model.
+  `scripts/measurement_contract.py` gains `unsupported_sampling_claims()` and a
+  `validate_contract()` guard; regression tests reject random/non-random
+  sampling assertions in the record and the notes (#35)
 - Correct the #35 selection-assumption record (commit 6610ebb) to match the
   source: the paper's Methods / Data collection section states the 20,176
   images were collected *with* distinctive edge morphology and describes
