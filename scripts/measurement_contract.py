@@ -281,7 +281,10 @@ CONTRACT: dict[str, Any] = {
         "n_unlabeled": 19609,
         "n_condition_known": 18487,  # species/medium labelled per image (known_labels.csv)
         "n_condition_unknown": 1689,  # flat unlabeled-GS_PO_TS shard, species/medium blank
-        "sampling_frame": "none -- images were 'selected for distinctive edge morphology'",
+        "sampling_frame": (
+            "none -- the release is not a random sample of plates; whether an "
+            "edge-morphology selection rule was applied is undocumented (#35)"
+        ),
         "generalization": (
             "descriptive of the release only; associations by species and known "
             "condition, never a species-population or causal claim"
@@ -424,23 +427,28 @@ CONTRACT: dict[str, Any] = {
 
 # --- selection-bias record (Chainlink #35) -------------------------------------
 
-# The release documents exactly one selection mechanism: images were "selected
-# for distinctive edge morphology" (PLAN.md section 0; notes/estimands.md
-# section 1).  That single fact splits assumption #35 -- selection is
-# independent of latent growth features and frame/time -- into two claims with
-# different statuses, and this record keeps them apart so neither half can be
-# quietly upgraded to "supported":
+# The paper's Methods / Data collection section states: "We collected 20,176
+# mycelium images with distinctive edge morphology" (Yuan et al. 2025,
+# doi:10.1038/s41597-025-06265-1).  That sentence *describes the collected
+# release*; it does not document an image-selection inclusion rule based on edge
+# morphology.  The same section describes process-level, periodic fixed-position
+# acquisition ("we periodically placed mycelial petri dishes at a fixed position
+# for image acquisition") but ships no per-image dish, time, order or stage link.
 #
-#   * independence from OBSERVED morphology is falsified by construction --
-#     selection reads the true morphology Z and the imaged morphology I
-#     (Z -> Sel <- I in R/dag.R), so the release over-represents the estimands'
-#     own features.  That is a logical consequence of the documented mechanism,
-#     not a statistical test.
-#   * independence from LATENT time/frame is untestable under Gate C -- dish
+# So neither half of assumption #35 -- selection is independent of latent growth
+# features and frame/time -- can be settled from the source or the release, and
+# this record keeps both halves below "supported":
+#
+#   * independence from OBSERVED morphology is UNDOCUMENTED -- the source names
+#     no inclusion rule, no candidate/included/excluded image frame, and no
+#     in-release evidence establishes that selection read the measured
+#     morphology.  The release cannot be shown to over-represent the estimands'
+#     own features, and the direction of any morphology bias is unknown.
+#   * independence from LATENT time/frame is UNTESTABLE under Gate C -- dish
 #     identity, capture timestamps and ordered sequences are all unavailable
-#     (notes/gate.md section 1), so no in-release evidence can speak to it, and
-#     none may be invented.
-SELECTION_STATUSES = ("falsified", "untestable")
+#     (notes/gate.md section 1).  Periodic fixed-position acquisition is
+#     process-level context, not per-image linkage.
+SELECTION_STATUSES = ("undocumented", "untestable")
 
 SELECTION_BIAS: dict[str, Any] = {
     "issue": 35,
@@ -448,13 +456,23 @@ SELECTION_BIAS: dict[str, Any] = {
         "image selection for distinctive edge morphology is independent of "
         "latent growth features and frame/time"
     ),
-    "mechanism": "images were 'selected for distinctive edge morphology'",
-    "mechanism_source": (
-        "Yuan et al. 2025, doi:10.1038/s41597-025-06265-1; in-repo: PLAN.md "
-        "section 0, notes/estimands.md section 1, R/dag.R (Z -> Sel <- I)"
+    "release_description": (
+        "We collected 20,176 mycelium images with distinctive edge morphology"
+    ),
+    # The paper documents no inclusion rule; the field stays None so no
+    # selection mechanism can be asserted by accident.
+    "documented_inclusion_rule": None,
+    "acquisition_process": (
+        "we periodically placed mycelial petri dishes at a fixed position for "
+        "image acquisition (process-level context; no per-image dish/time link)"
+    ),
+    "source": (
+        "Yuan et al. 2025, Methods/Data collection, "
+        "doi:10.1038/s41597-025-06265-1; in-repo: PLAN.md section 0, "
+        "notes/estimands.md section 1, notes/gate.md section 1"
     ),
     "claims": {
-        "independent_of_observed_morphology": "falsified",
+        "independent_of_observed_morphology": "undocumented",
         "independent_of_latent_time_frame": "untestable",
     },
     "supported": (
@@ -466,16 +484,21 @@ SELECTION_BIAS: dict[str, Any] = {
         "no causal temperature or medium effect and no physical growth-rate "
         "claim is licensed by any status above (notes/gate.md)"
     ),
+    "required_to_test": (
+        "the documented inclusion rule; the candidate / included / excluded "
+        "image frame; and linked per-image dish/time or growth-stage metadata"
+    ),
 }
 
 
 def selection_claim(claim: str) -> str:
     """Return the #35 status of one half of the selection assumption.
 
-    The two halves are fixed: one is falsified by the documented mechanism, the
-    other is untestable under Gate C.  A claim the record does not carry is a
-    :class:`ContractViolation` -- there is no code path through which selection
-    independence may be asserted.
+    The two halves are fixed: morphology-based selection is *undocumented* (the
+    paper describes the release, not an inclusion rule) and dependence on latent
+    time/frame is *untestable* under Gate C.  A claim the record does not carry
+    is a :class:`ContractViolation` -- there is no code path through which
+    selection independence may be asserted.
     """
     try:
         return SELECTION_BIAS["claims"][claim]
@@ -490,8 +513,11 @@ def validate_selection_record() -> list[str]:
     """Return every way the #35 selection-bias record breaks its own rules.
 
     Empty list means the record is internally consistent: exactly the two
-    halves, each with a status the evidence supports (never "supported"), the
-    documented mechanism named, and the supported scope stated.
+    halves, each with a status the evidence supports (never "supported" or the
+    retracted "falsified"), no invented inclusion rule, the release description
+    quoted, periodic acquisition recorded as process-level context, what a
+    future test needs stated, the primary paper cited, and the supported scope
+    bounded to the release.
     """
     problems: list[str] = []
     claims = SELECTION_BIAS.get("claims") or {}
@@ -509,8 +535,32 @@ def validate_selection_record() -> list[str]:
                 f"selection claim {claim!r} has status {status!r}; the evidence "
                 f"supports only {list(SELECTION_STATUSES)}"
             )
-    if not SELECTION_BIAS.get("mechanism"):
-        problems.append("selection record must name the documented mechanism")
+    if SELECTION_BIAS.get("documented_inclusion_rule") is not None:
+        problems.append(
+            "selection record must not invent an inclusion rule: the source "
+            "documents none, so documented_inclusion_rule must stay None"
+        )
+    if "distinctive edge morphology" not in (
+        SELECTION_BIAS.get("release_description") or ""
+    ):
+        problems.append(
+            "selection record must quote the release description that names "
+            "distinctive edge morphology"
+        )
+    acquisition = SELECTION_BIAS.get("acquisition_process") or ""
+    if "periodically" not in acquisition and "fixed position" not in acquisition:
+        problems.append(
+            "selection record must record periodic fixed-position acquisition "
+            "as process-level context"
+        )
+    required = SELECTION_BIAS.get("required_to_test") or ""
+    for token in ("inclusion rule", "candidate", "dish/time"):
+        if token not in required:
+            problems.append(
+                f"selection record must state what a future test needs ({token!r})"
+            )
+    if "10.1038/s41597-025-06265-1" not in (SELECTION_BIAS.get("source") or ""):
+        problems.append("selection record must cite the primary paper DOI")
     if not SELECTION_BIAS.get("supported"):
         problems.append("selection record must state the supported scope")
     return problems
@@ -526,7 +576,8 @@ def validate_contract() -> list[str]:
     present, every estimand fully and coherently specified, no time unit hiding
     in a per-frame quantity, the prohibition on unconverted frame change
     actually recorded, and the #35 selection-bias record carrying exactly the
-    two halves the evidence supports.
+    two halves with the statuses the evidence supports (undocumented morphology
+    selection, untestable time/frame dependence).
     """
     problems: list[str] = validate_selection_record()
 

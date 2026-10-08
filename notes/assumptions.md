@@ -1,4 +1,4 @@
-# Assumption register: #20 falsified; #35 split — selection on distinctive edge morphology
+# Assumption register: #20 falsified; #35 statuses — morphology selection undocumented, time/frame dependence untestable
 
 **Date:** 2026-10-06
 **Status:** recorded — **#20 falsified**. The issue is left open; the operator closes it
@@ -75,59 +75,72 @@ capture interval, this register is amended and the tasks in § 3 are unblocked �
 
 ---
 
-## 5. Assumption #35 — selection on "distinctive edge morphology" (#35)
+## 5. Assumption #35 — image selection and "distinctive edge morphology" (#35)
 
-**Date:** 2026-10-07
-**Status:** recorded — **#35 split**: independence from observed morphology is
-**falsified** by the documented selection mechanism; independence from latent
-time/frame is **untestable** under Gate C. The issue is left open; the operator
-closes it after review.
-**Evidence:** the selection mechanism, quoted verbatim:
+**Date:** 2026-10-07 (corrected 2026-10-08 after review)
+**Status:** recorded — **#35 carries two statuses**: morphology-based selection is
+**undocumented** (the paper describes the release, not an inclusion rule) and
+per-image dependence on latent time/frame is **untestable** under Gate C. The
+issue is left open; the operator closes it after review.
+**Evidence:** the paper's Methods / Data collection section (Yuan et al. 2025,
+doi:10.1038/s41597-025-06265-1), quoted verbatim:
 
-> images were 'selected for distinctive edge morphology'
+> We collected 20,176 mycelium images with distinctive edge morphology.
 
-Documented at PLAN.md §0 (paper: Yuan et al. 2025, doi:10.1038/s41597-025-06265-1);
-`notes/estimands.md` §1; `R/dag.R` (Z → Sel ← I); Gate C — `notes/gate.md` (#26) §1;
-`notes/provenance.md` (#61) §4.1; machine-readable mirror
-`scripts/measurement_contract.py` (`SELECTION_BIAS`, #35)
+That sentence describes the **collected release**. The same section documents
+process-level, periodic fixed-position acquisition:
+
+> … we periodically placed mycelial petri dishes at a fixed position for image
+> acquisition.
+
+It does **not** document an image-selection inclusion rule based on edge
+morphology, and it ships no per-image dish, time, order or stage link. Local
+record: PLAN.md §0; `notes/estimands.md` §1; `notes/gate.md` §1, §3; `R/dag.R`;
+machine-readable mirror `scripts/measurement_contract.py` (`SELECTION_BIAS`, #35)
 **Propagates to:** #41, #42 (assumption relations) — both already re-scoped by
-the #20 cascade (§ 3 above); #35 adds the selection half of that re-scope
+the #20 cascade (§ 3 above); #35 adds the selection caveat to that re-scope
 
 **Verdict.** Assumption **#35** — that image selection for distinctive edge
-morphology is independent of latent growth features and frame/time — is **not
-one claim but two**, and the two halves fail differently:
+morphology is independent of latent growth features and frame/time — cannot be
+settled from the source or the release, and the two halves are recorded with the
+status the evidence supports:
 
 | Half of #35 | Status | Why |
 |---|---|---|
-| Selection is independent of **observed morphology** | **Falsified** | The documented mechanism is explicitly based on distinctive edge morphology: selection reads the true morphology *and* the imaged morphology (Z → Sel ← I, `R/dag.R`), so the release over-represents the estimands' own features by construction. A logical consequence of the mechanism, not a statistical test. |
-| Selection is independent of **latent time/frame** | **Untestable** | Gate C: no dish identity, no capture timestamps, no ordered sequences (0/20,176 EXIF; zip mtimes are export sessions; numbering shuffled — forward steps 0.489–0.547, `notes/gate.md` §1). With no time axis and no dish identity, no in-release evidence can identify whether selection depended on latent growth features or frame/time. **No evidence for temporal independence is invented here**: the honest status is *untestable*, not *supported*. |
+| Selection is independent of **observed morphology** | **Undocumented** | The paper states it *collected* images "with distinctive edge morphology"; it documents no edge-morphology inclusion rule. There is no candidate / included / excluded image frame and no in-release evidence that selection read the measured morphology, so the release cannot be shown to over-represent the estimands' own features and the **direction of any morphology bias is unknown**. The `Z → Sel ← I` collider in `R/dag.R` is a *hypothesis to test*, not an established mechanism. |
+| Selection is independent of **latent time/frame** | **Untestable** | Gate C: no dish identity, no capture timestamps, no ordered sequences (0/20,176 EXIF; zip mtimes are export sessions; numbering shuffled — forward steps 0.489–0.547, `notes/gate.md` §1). The paper's periodic fixed-position acquisition is **process-level context**, not a per-image dish/time link, so no in-release evidence can identify whether selection depended on latent growth features or frame/time. **No evidence for temporal independence is invented here**: the honest status is *untestable*, not *supported*. |
+
+**What a future test would require.** Selection dependence cannot be tested from
+this release. It needs (i) the **documented inclusion rule**; (ii) the
+**candidate / included / excluded image frame** — which images were eligible and
+which were kept or dropped; and (iii) **linked per-image dish/time or growth-stage
+metadata** to relate inclusion to a latent time or stage axis. Until the authors
+supply those, both halves stay as recorded: undocumented and untestable.
 
 **Supported, and bounded.** What the release *can* support is cross-sectional
-morphology **of the selected release**: associational, within-release, by
-species and known condition (`notes/estimands.md` §1, §3). The selection
-mechanism is documented, so the *direction* of the morphology bias is known
-(toward distinctive edges) even though its *magnitude* is not identifiable from
-the release — and no selection model is identifiable from the release either
-(Sel is latent). Cross-sectional interpretation is therefore bounded to the
-selected release: never a plate population, a species population, a treatment
-effect or a growth curve.
+morphology **of the selected release**: associational, within-release, by species
+and known condition (`notes/estimands.md` §1, §3). Because the selection
+mechanism is undocumented, no selection model is identifiable and no claim about
+the magnitude *or direction* of a morphology bias may be made. Cross-sectional
+interpretation is therefore bounded to the selected release: never a plate
+population, a species population, a treatment effect or a growth curve.
 
 **Gate C prohibition preserved.** Nothing in the #35 record licenses a causal
 temperature or medium effect or a physical growth-rate claim: those stay
 prohibited under Gate C (`notes/gate.md` §3–§4) regardless of how the selection
-numbers look. The #35 split bounds *interpretation*; it opens no estimand.
+numbers look. The #35 record bounds *interpretation*; it opens no estimand.
 
 **Consequence for #41/#42.** Both are already re-scoped by the #20 cascade
 (§ 3): no per-dish effects, no time-parameterised growth model. #35 adds the
-selection half: any morphology distribution either task reports describes the
-selected release, and any "dynamics" inferred from file order would be
-selection-biased on both halves at once — falsified on morphology, untestable
-on time.
+selection caveat: any morphology distribution either task reports describes the
+selected release; any "dynamics" inferred from file order would be subject to
+the same two unresolved statuses — undocumented morphology selection and
+untestable time/frame dependence — and may not be presented as established.
 
-**If the authors supply the selection rule** (or dish/time metadata), the
-untestable half becomes testable and this register is amended — the temporal
-half moves from *untestable* to a tested status, and only then could a
-selection model be identified. Not before.
+**If the authors supply the selection rule and dish/time or stage metadata**, the
+undocumented half can be assessed and the untestable half becomes testable, and
+this register is amended — and only then could a selection model be identified.
+Not before.
 
 ---
 

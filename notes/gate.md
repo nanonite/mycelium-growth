@@ -76,17 +76,22 @@ All in-data routes to A or B were tested and failed (#21–#23), so the gate is 
 | Growth-stage or sclerotium-colour effects | **Not estimable per image** | Labels do not ship per image; stratifying on stage would also condition on a downstream variable |
 | Dish-level varying effects | **Not estimable** | No dish identity → no grouping → no per-dish random effects |
 
-**Selection bias (#35).** The release documents one selection mechanism:
-images were "selected for distinctive edge morphology" (PLAN.md §0). Under
-Gate C this splits assumption #35 in two, and the split is a scope fact, not a
-new estimand: independence from observed morphology is **falsified** by
-construction (selection reads the true and imaged morphology — Z → Sel ← I in
-`R/dag.R`), and independence from latent time/frame is **untestable** (no dish
-identity, no timestamps, no ordered sequences — § 1 above). The consequence is
-bounded scope: every morphology summary describes the selected release, the
-direction of the morphology bias is known though its magnitude is not, and no
-selection model is identifiable from the release. The prohibitions below are
-unaffected. Full record: `notes/assumptions.md` §5.
+**Selection bias (#35).** The paper's Methods / Data collection section
+*describes* the collected release — "We collected 20,176 mycelium images with
+distinctive edge morphology" — but documents **no** edge-morphology inclusion
+rule (Yuan et al. 2025, doi:10.1038/s41597-025-06265-1; PLAN.md §0). Under
+Gate C assumption #35 is therefore recorded with two unresolved statuses, and
+that is a scope fact, not a new estimand: morphology-based selection is
+**undocumented** (no candidate / included / excluded frame, so the release
+cannot be shown to over-represent the estimands' own features and the bias
+direction is unknown), and dependence on latent time/frame is **untestable**
+(no dish identity, no timestamps, no ordered sequences — § 1 above; the paper's
+periodic fixed-position acquisition is process-level context, not per-image
+linkage). The consequence is bounded scope: every morphology summary describes
+the selected release and no selection model is identifiable. Testing selection
+dependence would need the documented inclusion rule, the candidate / included /
+excluded image frame, and linked dish/time or stage metadata. The prohibitions
+below are unaffected. Full record: `notes/assumptions.md` §5.
 
 ---
 

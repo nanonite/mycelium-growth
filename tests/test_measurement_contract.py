@@ -349,14 +349,46 @@ def test_selection_record_carries_exactly_the_two_claims() -> None:
     }
 
 
-def test_selection_record_names_the_documented_mechanism() -> None:
-    assert "distinctive edge morphology" in mc.SELECTION_BIAS["mechanism"]
+def test_selection_record_quotes_the_release_description() -> None:
+    # The paper describes the release ("collected ... with distinctive edge
+    # morphology"); that sentence is not an inclusion rule.
+    assert "distinctive edge morphology" in mc.SELECTION_BIAS["release_description"]
 
 
-def test_selection_independence_from_observed_morphology_is_falsified() -> None:
-    # Selection is explicitly based on distinctive edge morphology, so the
-    # release over-represents the estimands' own features by construction.
-    assert mc.selection_claim("independent_of_observed_morphology") == "falsified"
+def test_selection_record_documents_no_inclusion_rule() -> None:
+    # The source names no edge-morphology inclusion rule, so the record must
+    # not invent one.
+    assert mc.SELECTION_BIAS["documented_inclusion_rule"] is None
+
+
+def test_selection_record_records_periodic_acquisition_as_process_level() -> None:
+    acquisition = mc.SELECTION_BIAS["acquisition_process"]
+    assert "periodically" in acquisition
+    assert "fixed position" in acquisition
+    assert "process-level" in acquisition
+    assert "no per-image" in acquisition
+
+
+def test_selection_record_states_what_a_future_test_requires() -> None:
+    required = mc.SELECTION_BIAS["required_to_test"]
+    assert "inclusion rule" in required
+    assert "candidate" in required
+    assert "included" in required and "excluded" in required
+    assert "dish/time" in required
+    assert "stage" in required
+
+
+def test_selection_record_cites_the_primary_paper() -> None:
+    source = mc.SELECTION_BIAS["source"]
+    assert "10.1038/s41597-025-06265-1" in source
+    assert "Methods/Data collection" in source
+
+
+def test_selection_independence_from_observed_morphology_is_undocumented() -> None:
+    # The source documents no edge-morphology inclusion rule, so the release
+    # cannot be shown to over-represent the estimands' own features, and the
+    # direction of any morphology bias is unknown.
+    assert mc.selection_claim("independent_of_observed_morphology") == "undocumented"
 
 
 def test_selection_independence_from_latent_time_frame_is_untestable() -> None:
@@ -365,12 +397,18 @@ def test_selection_independence_from_latent_time_frame_is_untestable() -> None:
     assert mc.selection_claim("independent_of_latent_time_frame") == "untestable"
 
 
-def test_no_selection_claim_is_supported() -> None:
-    # Neither half may be reported as independent: one is falsified, the other
-    # untestable, and no evidence for temporal independence may be invented.
+def test_no_selection_claim_is_supported_or_falsified() -> None:
+    # Neither half may be reported as independent, and the retracted
+    # "falsified by construction" status may not reappear.
     for claim, status in mc.SELECTION_BIAS["claims"].items():
         assert status != "supported", claim
+        assert status != "falsified", claim
         assert status in mc.SELECTION_STATUSES, claim
+
+
+def test_selection_statuses_exclude_supported_and_falsified() -> None:
+    assert "supported" not in mc.SELECTION_STATUSES
+    assert "falsified" not in mc.SELECTION_STATUSES
 
 
 def test_selection_claim_refuses_an_unknown_half() -> None:
@@ -378,10 +416,37 @@ def test_selection_claim_refuses_an_unknown_half() -> None:
         mc.selection_claim("independent_of_species")
 
 
+def test_validate_selection_record_rejects_falsified_and_supported(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The validator must reject the retracted statuses, not merely avoid them."""
+    for bad in ("falsified", "supported"):
+        monkeypatch.setitem(
+            mc.SELECTION_BIAS["claims"], "independent_of_observed_morphology", bad
+        )
+        assert mc.validate_selection_record(), f"{bad!r} must be rejected"
+
+
+def test_validate_selection_record_rejects_an_invented_inclusion_rule(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setitem(
+        mc.SELECTION_BIAS, "documented_inclusion_rule", "select distinctive edges"
+    )
+    assert mc.validate_selection_record()
+
+
 def test_selection_record_bounds_interpretation_to_the_selected_release() -> None:
     supported = mc.SELECTION_BIAS["supported"]
     assert "selected release" in supported
     assert "never a plate population" in supported
+
+
+def test_contract_sampling_frame_does_not_assert_a_selection_rule() -> None:
+    """The population record must not claim images were selected by morphology."""
+    sampling = mc.CONTRACT["population"]["sampling_frame"]
+    assert "undocumented" in sampling
+    assert "selected for distinctive edge morphology" not in sampling
 
 
 def test_selection_record_preserves_the_gate_c_prohibition() -> None:
@@ -399,16 +464,37 @@ def assumptions_text() -> str:
     return ASSUMPTIONS_NOTE.read_text()
 
 
-def test_assumptions_note_records_the_35_split(assumptions_text: str) -> None:
-    """The register must separate the falsified half from the untestable half."""
+def test_assumptions_note_records_the_35_statuses(assumptions_text: str) -> None:
+    """The register must mark morphology selection undocumented and time untestable."""
     assert "#35" in assumptions_text
-    assert "falsified" in assumptions_text
+    assert "undocumented" in assumptions_text.lower()
     assert "untestable" in assumptions_text
     assert "selected release" in assumptions_text
 
 
-def test_note_and_module_agree_on_the_selection_mechanism(assumptions_text: str) -> None:
-    assert mc.SELECTION_BIAS["mechanism"] in assumptions_text
+def test_assumptions_note_does_not_claim_morphology_selection_falsified(
+    assumptions_text: str,
+) -> None:
+    """The retracted falsification and known-bias-direction claims may not return."""
+    lowered = assumptions_text.lower()
+    assert "falsified by construction" not in lowered
+    assert "over-represents" not in lowered
+    assert "direction of the morphology bias is known" not in lowered
+
+
+def test_note_and_module_agree_on_the_release_description(
+    assumptions_text: str,
+) -> None:
+    assert mc.SELECTION_BIAS["release_description"] in assumptions_text
+
+
+def test_assumptions_note_states_what_a_future_test_requires(
+    assumptions_text: str,
+) -> None:
+    lowered = assumptions_text.lower()
+    assert "inclusion rule" in lowered
+    assert "candidate" in lowered
+    assert "dish/time" in lowered or "dish or time" in lowered
 
 
 def test_note_does_not_assert_temporal_independence(assumptions_text: str) -> None:

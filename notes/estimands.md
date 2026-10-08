@@ -40,22 +40,27 @@ an image to a dish or a date, so there is no sampling frame to generalise over.
 | Images flagged `fit_status = off_scale` | 560 (2.8%) | `image_scale.csv` |
 
 **Scope of inference.** Summaries describe *this release*: associational,
-within-release, by species and known condition. Images were "selected for
-distinctive edge morphology", so even the release is not a random sample of
-plates. Nothing here estimates a species population, a treatment effect or a
-growth curve.
+within-release, by species and known condition. The paper describes collecting
+images "with distinctive edge morphology" and documents no inclusion rule, so
+the release is not a random sample of plates. Nothing here estimates a species
+population, a treatment effect or a growth curve.
 
-**Selection bias (#35).** The documented selection mechanism splits the
-independence assumption in two (full record: `notes/assumptions.md` §5;
-machine-readable: `SELECTION_BIAS` in `scripts/measurement_contract.py`).
-Selection is *not independent of observed morphology* — that half is falsified
-by construction, because selection reads the true and imaged morphology
-(Z → Sel ← I, `R/dag.R`), the very features these estimands describe.
-Selection *may not be asserted independent of latent time/frame* — that half
-is untestable under Gate C (no dish identity, no timestamps, no ordered
-sequences), and no evidence for temporal independence is invented. Every
-summary under this contract therefore carries the scope label **selected
-release**, never "plates" or "population".
+**Selection bias (#35).** The release's Methods / Data collection section
+*describes* the collected set — "We collected 20,176 mycelium images with
+distinctive edge morphology" (Yuan et al. 2025,
+doi:10.1038/s41597-025-06265-1) — but documents **no** edge-morphology inclusion
+rule, and ships no per-image dish, time, order or stage link (full record:
+`notes/assumptions.md` §5; machine-readable: `SELECTION_BIAS` in
+`scripts/measurement_contract.py`). So neither half of the independence
+assumption is settled: morphology-based selection is **undocumented** (the
+release cannot be shown to over-represent the estimands' own features, and the
+bias direction is unknown) and dependence on latent time/frame is **untestable**
+under Gate C (no dish identity, no timestamps, no ordered sequences; the paper's
+periodic fixed-position acquisition is process-level context, not per-image
+linkage). Testing either would need the documented inclusion rule, the
+candidate / included / excluded image frame, and linked dish/time or stage
+metadata. Every summary under this contract therefore carries the scope label
+**selected release**, never "plates" or "population".
 
 ## 2. Inclusion rule
 

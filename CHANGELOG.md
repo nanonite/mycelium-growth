@@ -8,19 +8,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 - Assess the "distinctive edge morphology" selection assumption under Gate C
-  (#35) — `notes/assumptions.md` §5 records the documented selection mechanism
-  and splits the assumption in two: independence from observed morphology is
-  falsified by construction (selection reads the true and imaged morphology,
-  Z → Sel ← I in `R/dag.R`), and independence from latent time/frame is
-  untestable (no dish identity, no timestamps, no ordered sequences), with no
-  evidence for temporal independence invented. Cross-sectional interpretation is
+  (#35) — `notes/assumptions.md` §5 records the two unresolved statuses:
+  morphology-based selection is **undocumented** (the paper's Methods / Data
+  collection *describes* collecting 20,176 images "with distinctive edge
+  morphology" but documents no edge-morphology inclusion rule, so the release
+  cannot be shown to over-represent the estimands' own features and the bias
+  direction is unknown), and dependence on latent time/frame is **untestable**
+  (no dish identity, no timestamps, no ordered sequences; periodic
+  fixed-position acquisition is process-level context, not per-image linkage),
+  with no evidence for temporal independence invented. Testing either needs the
+  documented inclusion rule, the candidate / included / excluded image frame,
+  and linked dish/time or stage metadata. Cross-sectional interpretation is
   bounded to the selected release; the Gate C prohibition on causal
   temperature/medium and physical growth-rate claims is preserved. The
   machine-readable `SELECTION_BIAS` record and guards in
   `scripts/measurement_contract.py` are checked by
   `tests/test_measurement_contract.py`; `notes/estimands.md` §1, `notes/gate.md`
   §3, PLAN.md (§0, Phase 3 DAG, open question 5) and `R/dag.R` carry the same
-  split
+  statuses
+
+### Fixed
+- Correct the #35 selection-assumption record (commit 6610ebb) to match the
+  source: the paper's Methods / Data collection section states the 20,176
+  images were collected *with* distinctive edge morphology and describes
+  periodic fixed-position acquisition; it does **not** document selecting
+  images by an edge-morphology inclusion rule
+  (doi:10.1038/s41597-025-06265-1). Removed the unsupported claims that
+  morphology independence is falsified by construction, that the release
+  over-represents the morphology estimands, and that the bias direction is
+  known; `SELECTION_BIAS` now records morphology selection as undocumented and
+  time/frame dependence as untestable, with `validate_selection_record()` and
+  `tests/test_measurement_contract.py` rejecting the retracted statuses
 - Audit eligible *G. lucidum* 15 °C images for cross-sectional morphology (#34) —
   `scripts/triage/audit_15c_images.py` verifies the 10 TEMP15 candidates
   (`labeled-MYG_PDA_TEMP.zip`, IDs 00018478–00018487) against the source

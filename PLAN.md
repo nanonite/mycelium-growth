@@ -39,7 +39,7 @@ with identifiable time and specimen identity.
 | Temperature: GL at 15 °C and 25 °C; others 25 °C only | A possible condition contrast, but not a growth-rate estimand without dish/time identity and adequate replication |
 | 567 labeled masks (507 GL, 10 each GS/PO/TS/MYG/PDA/TEMP15); 19,609 unlabeled | Train a segmenter on the labeled masks, then measure colony size on the unlabeled images |
 | Growth-stage and sclerotium-colour counts reported (Tables 2–3) | We don't yet know whether these labels ship per image |
-| Files numbered sequentially (`00000001`…); images "selected for distinctive edge morphology" | **Dish ID and timestamp may be missing**, and the image selection is a possible selection bias — assessed under Gate C (#35): falsified for observed morphology, untestable for latent time/frame (`notes/assumptions.md` §5) |
+| Files numbered sequentially (`00000001`…); the paper describes images "with distinctive edge morphology" and periodic fixed-position acquisition | **Dish ID and timestamp may be missing**; whether an edge-morphology selection rule was applied is undocumented, and per-image time/frame dependence is untestable under Gate C (#35, `notes/assumptions.md` §5) |
 
 Boundary IoU is only ~11–30% even for the best model (SegFormer). Colony *area* is
 measured more reliably than the edge/radius. Any feature derived from the boundary,
@@ -173,10 +173,10 @@ Treatment T ──► latent dynamics Z ──► observable feature Y
 Frame index f / time t ──► Z      (only when sequence order is known)
 Dish D ──► Z                      (varying effect when dish identity is known)
 Imaging I ──► Y*                 (segmentation and boundary measurement error)
-Selection: "distinctive edges" ──► inclusion   (collider on Z -> Sel <- I;
-                                              #35: falsified for observed
-                                              morphology, untestable for latent
-                                              time/frame — notes/assumptions.md §5)
+Selection: "distinctive edges" ──► inclusion   (hypothesized collider Z -> Sel <- I;
+                                              mechanism UNDOCUMENTED; time/frame
+                                              dependence UNTESTABLE — #35,
+                                              notes/assumptions.md §5)
 Duplicate or mislabeled file ──► observed condition label
 ```
 
@@ -354,12 +354,17 @@ notes/           decisions, author emails, gate outcomes
    (`notes/provenance.md` § 4.1, Gate C)
 4. How many 15 °C GL dishes exist? That count sets the power for any temperature contrast.
 5. Is image selection ("distinctive edge morphology") time-dependent? If so, it biases
-   feature distributions and any inferred dynamics. — **answered (#35, 2026-10-07):**
-   the observed-morphology half is falsified by construction (selection reads the true and
-   imaged morphology, Z → Sel ← I in `R/dag.R`); the time-dependence half is untestable
-   under Gate C (no dish identity, no timestamps, no ordered sequences), and no evidence
-   for temporal independence is invented. Cross-sectional interpretation is bounded to the
-   selected release; the Gate C prohibition on causal temperature/medium and physical
+   feature distributions and any inferred dynamics. — **answered (#35, corrected
+   2026-10-08):** the paper *describes* collecting images "with distinctive edge
+   morphology" and periodic fixed-position acquisition, but documents no edge-morphology
+   inclusion rule (doi:10.1038/s41597-025-06265-1). Morphology-based selection is
+   therefore **undocumented** — the release cannot be shown to over-represent the
+   estimands' features and the bias direction is unknown — and time/frame dependence is
+   **untestable** under Gate C (no dish identity, no timestamps, no ordered sequences;
+   periodic acquisition is process-level context, not per-image linkage). Testing either
+   needs the documented inclusion rule, the candidate / included / excluded image frame,
+   and linked dish/time or stage metadata. Cross-sectional interpretation is bounded to
+   the selected release; the Gate C prohibition on causal temperature/medium and physical
    growth-rate claims is preserved. `notes/assumptions.md` §5.
 6. Which parts of the observable measurement model transport across datasets, and which
    must be re-estimated for each camera, scale, and resolution?

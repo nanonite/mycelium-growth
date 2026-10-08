@@ -85,16 +85,22 @@ graph_nodes <- function(dag) {
 #   k -> G        growth rate -> growth stage (stage is downstream of growth)
 #   Z -> Y        true morphology -> observed feature Y
 #   I -> Y        imaging/segmentation error (notes/measurement_error.md #31)
-#   Z -> Sel      selection on "distinctive edge morphology" reads the true
-#                 morphology (PLAN.md §0) — so selection is NOT independent of
-#                 observed morphology: that half of assumption #35 is falsified
-#                 by construction (notes/assumptions.md §5)
-#   I -> Sel      ... and the imaged morphology, so selection is a collider
-#                 on Z -> Sel <- I (PLAN.md Phase 3 draft: "possible collider")
-#   (t,k) -> Sel  dependence of selection on latent time/frame is UNTESTABLE
-#                 under Gate C — no dish identity, no timestamps, no ordered
-#                 sequences (notes/gate.md §1) — and no temporal independence
-#                 may be asserted (assumption #35, notes/assumptions.md §5)
+#   Z -> Sel      HYPOTHESIZED selection on "distinctive edge morphology".  The
+#                 paper *describes* the collected release ("20,176 mycelium
+#                 images with distinctive edge morphology") but documents no
+#                 edge-morphology inclusion rule, so this edge is a hypothesis
+#                 to test, not an established mechanism.  If it held, selection
+#                 would read the true morphology Z (#35: morphology-based
+#                 selection UNDOCUMENTED, notes/assumptions.md §5)
+#   I -> Sel      ... and the imaged morphology I, so selection would be a
+#                 collider on Z -> Sel <- I (PLAN.md Phase 3 draft: "possible
+#                 collider").  Undocumented, not asserted.
+#   (t,k) -> Sel  HYPOTHESIZED dependence of selection on latent time/frame.
+#                 UNTESTABLE under Gate C — no dish identity, no timestamps, no
+#                 ordered sequences (notes/gate.md §1); the paper's periodic
+#                 fixed-position acquisition is process-level context, not
+#                 per-image linkage.  No temporal independence may be asserted
+#                 (#35, notes/assumptions.md §5)
 #   Sel -> In     inclusion in the release / analysis
 #   Dup -> C_obs  duplicate/mislabeled file -> observed condition label
 #                 (133 byte-identical images, 20 wrong folder labels —
@@ -315,8 +321,8 @@ replication (Fricker/Boddy, Podospora, or a controlled rig).
 Represented in the MyceliumSeg graph:
   * species-medium aliasing   S -> M (deterministic; M = f(S))
   * missing dish/time identity  D, t latent (Gate C)
-  * selection for distinctive edge morphology  Z -> Sel <- I (collider;
-    #35: falsified for observed morphology, untestable for latent time)
+  * selection for distinctive edge morphology  Z -> Sel <- I (HYPOTHESIZED
+    collider; mechanism undocumented, time/frame dependence untestable — #35)
   * imaging/segmentation error  I -> Y (notes/measurement_error.md #31)
   * duplicate/mislabeled files  Dup -> C_obs (133 duplicates, 20 wrong labels)
 ")

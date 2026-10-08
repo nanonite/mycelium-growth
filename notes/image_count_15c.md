@@ -111,8 +111,9 @@ is not the denominator for this summary.
 **Sample-size limitation.** n = 10 images at 15 °C with no dish-level
 replication. Any descriptive summary describes these 10 images only; it
 cannot support inference to a dish population, a treatment effect, or a
-growth rate. The 10 images were "selected for distinctive edge morphology"
-(#60 § 1), so they are not even a random sample of 15 °C plates.
+growth rate. The paper describes the release as collected "with distinctive
+edge morphology" but documents no inclusion rule (#35, `notes/assumptions.md`
+§ 5), so the 10 images are not a random sample of 15 °C plates.
 
 ---
 
