@@ -5,6 +5,12 @@ SegFormer-B0 baseline end to end with this repository's pinned stack, so that
 the measurement pipeline (issues #29–#31) has a trained, evaluated segmenter to
 build on.
 
+This is a standalone image-to-mask model trained using the release's 457
+labeled *G. lucidum* training pairs; it predicts the mycelium region and is
+evaluated against held-out masks. Dish identity and capture time are not inputs,
+and its output alone makes no claim about growth. Area fraction is a downstream
+measurement derived from the predicted mask and dish geometry.
+
 Everything below is produced by `scripts/segformer_repro.py` (see "Reproduce"
 at the end). Artifacts live in `work_dirs/segformer-b0-repro/` (gitignored):
 the generated configs, `train/train.log`, `eval_test.log`, `eval_conditions.log`
@@ -384,3 +390,39 @@ Tests and lint for the driver itself (no GPU needed):
 .venv/bin/python -m pytest tests -q          # includes tests/test_segformer_repro.py
 ruff check scripts/segformer_repro.py scripts/segformer_shim tests/test_segformer_repro.py
 ```
+
+## Fit a final model using all released masks
+
+The three labeled archives contain 567 annotation records: 457 GL train, 50 GL
+test, and 60 condition images. Hash review found 20 exact duplicate image/mask
+records; all duplicate masks agree, so `scripts/segformer_all_labeled.py`
+collapses them to 547 unique training pairs and preserves every source record
+in its manifest. The trainer leaves the #28 benchmark run untouched and trains
+a separate final checkpoint from the complete unique labeled set.
+
+Because the GL test and condition masks are included in that fit, its metrics
+are not independent evaluation results. The #28 split remains the reference
+score for the architecture/training recipe. The other 19,609 release records
+have no manual segmentation masks and are not supervised targets in this run.
+
+```bash
+# Two-iteration loader/training smoke over the all-labeled dataset
+nix develop .#gpu --command python scripts/segformer_all_labeled.py \
+  --smoke --tag preflight
+
+# Full fit: about five to six hours on the available RTX 4070 Ti
+nix develop .#gpu --command python scripts/segformer_all_labeled.py \
+  --tag all-unique --max-iters 50000 --batch-size 16 --workers 8
+```
+
+The dataset manifest records source archive/member, image/mask hashes, and the
+duplicate mapping. The final checkpoint and training evidence are written under
+`work_dirs/segformer-b0-repro/full-all-labeled-all-unique-20261008/`.
+
+The 50,000-iteration fit completed after resuming from `iter_18750.pth` following
+a host interruption. The final artifact is
+`work_dirs/segformer-b0-repro/full-all-labeled-all-unique-20261008/train/iter_50000.pth`
+(SHA-256 `a7c758960bf2482e58571c2839db468d116d228cd34d41dccdd96cdb6721fdef`).
+Its `evidence.json` records 547 unique labeled pairs, 50,000 completed
+iterations, and final training loss 0.0085. The run used every labeled pair,
+so it has no independent holdout score; #28 remains the benchmark reference.

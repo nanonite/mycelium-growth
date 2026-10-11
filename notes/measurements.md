@@ -54,11 +54,12 @@ The #60 contract assigns each estimand a status; the #31 error model quantifies 
 
 | Tier | Features | #31 error model |
 | --- | --- | --- |
-| **primary** | `area_px`, `area_mm2`, `area_fraction`, `equiv_radius_px`, `equiv_radius_mm`, `log_area_px2`, `log_area_mm2` | bias and spread inside the #60 size budget (relative bias ≤ 3%, relative SD ≤ 10%) |
+| **primary** | `area_px`, `area_mm2`, `area_fraction` | low bias, but 14.3% relative SD exceeds the #60 size target of ≤10%; target **unmet** (coverage-stratified audit: `notes/area_fraction_precision.md`, #66) |
+| **primary** | `equiv_radius_px`, `equiv_radius_mm`, `log_area_px2`, `log_area_mm2` | bias and spread inside the #60 size budget (relative bias ≤ 3%, relative SD ≤ 10%) |
 | **secondary** (boundary) | `perimeter_px`, `perimeter_mm`, `edge_roughness`, `circularity`, `solidity` | error well outside the size budget (published Boundary IoU 28.60%, #28); they carry the looser boundary budget and are not size proxies |
 | **secondary** (density) | `mean_intensity`, `intensity_median`, `intensity_std`, `intensity_min`, `intensity_max` | density proxy only; comparable within a condition block, never across |
 
-Reading: area, log-area and equivalent radius are the reliable quantities — the segmenter is near-unbiased on the median with a spread well inside the size budget. Perimeter and the boundary-derived shape features carry a much larger, heavy-tailed error, so they are published as shape descriptors at the fidelity the boundary metrics allow. `mean_intensity` is a density proxy only: dark incubation and fixed exposure are per-block facts.
+Reading: equivalent radius and log-area meet the size target. Area and area fraction are near-unbiased on average but have 14.3% relative SD, above the 10% target. The sorted coverage coordinate remains useful, while per-image percentages are approximate. Perimeter and boundary-derived shape features carry much larger, heavy-tailed error, so they are published only as shape descriptors at the fidelity the boundary metrics allow. `mean_intensity` is a density proxy only: dark incubation and fixed exposure are per-block facts.
 
 ## 4. Column dictionary
 
@@ -88,14 +89,15 @@ Provenance columns (image-level and mask-level) are carried from the #29 records
 
 **Supported (image-level morphology, this release):**
 
-- `area`, `area_fraction`, `equivalent_radius` and `log_area` clear the size budget on the de-duplicated hold-outs and support predictive, image-level morphology claims (associational, within-release, by species and known condition).
+- `equivalent_radius` and `log_area` clear the size budget on the de-duplicated hold-outs. `area_fraction` still supports approximate low-to-high coverage sorting and cross-sectional indexing, but its 14.3% held-out relative SD exceeds the #60 target; see the completed #66 audit in `notes/area_fraction_precision.md`.
+- `area_fraction` can also index low-to-high area-coverage levels for cross-sectional models of other features. The current table has 125 rows, so a full-release inference and QA pass is needed before treating its ranks as the dataset-wide coverage distribution.
 - `perimeter`, `edge_roughness`, `circularity` and `solidity` are published with their (larger) boundary budget; they describe shape only at the fidelity the boundary metrics allow and are not size proxies.
 - `mean_intensity` and the intensity summaries are density proxies, comparable within a condition block only.
 
 **Not supported (Gate C, #60 § 9):**
 
-- any growth curve, elapsed time, rate per unit time, dish identity or timelapse membership — there is no capture interval and no demonstrated frame order;
-- any hyphal-tip, nuclear or branching claim — the #31 candidate protrusions are unvalidated radial excursions with a high false-event rate, and no resolution or persistence evidence maps them to biological structures;
+- any temporal growth curve, elapsed time, rate per unit time, dish identity or timelapse membership — there is no capture interval and no demonstrated frame order. Area-fraction rank is a coverage coordinate, not chronology;
+- any hyphal-tip, nuclear or branching claim — #62 assesses candidate stability under resampling and finds substantial mask disagreement; the colony masks are not independent annotations of biological tips;
 - any causal temperature or medium effect — medium is aliased with species, only 10 images are at 15 °C, and there is no dish identity or replication;
 - any physical growth rate in mm/day — a frame index is not a duration, and `to_physical_rate()` refuses the conversion.
 

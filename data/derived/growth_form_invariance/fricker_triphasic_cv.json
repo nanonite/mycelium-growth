@@ -1,0 +1,199 @@
+{
+  "dataset": "Fricker/Boddy fungal grazer series",
+  "outcome": "sqrt(mycelial area / D1 baseline area) - 1; dimensionless equivalent-radius change",
+  "n_series": 125,
+  "n_observations_including_baseline": 492,
+  "folds": 5,
+  "validation": "GroupKFold by complete replicate series; shape shared across data, extension rate varies by species \u00d7 grazer cell",
+  "candidate_forms": {
+    "no_growth": "zero change from the D1 baseline",
+    "linear_extension": "constant equivalent-radius extension from D1; no lag or saturation",
+    "lag_extension": "shared fitted lag since first linked image, then constant extension; no saturation",
+    "lag_extension_plateau": "shared fitted lag, constant extension, then a plateau; saturation can be beyond observed horizon"
+  },
+  "limitations": [
+    "D1 is an archive-relative origin; due the documented paper/archive interval discrepancy it is not asserted to be time since inoculation or biological growth onset.",
+    "The series end at the D8 label, so a plateau later than the observed window cannot be identified.",
+    "Equivalent radius is a mathematical transform of workbook area, not a calibrated radial-front measurement; these wood/soil colonies are not assumed circular.",
+    "Treatment allocation is undocumented; this is a predictive shape check, not causal treatment inference."
+  ],
+  "aggregate": {
+    "no_growth": {
+      "n_predictions": 492,
+      "grouped_cv_rmse_fractional_equivalent_radius": 0.4441273423237805,
+      "grouped_cv_mae_fractional_equivalent_radius": 0.2564255288502051
+    },
+    "linear_extension": {
+      "n_predictions": 492,
+      "grouped_cv_rmse_fractional_equivalent_radius": 0.22709839819905933,
+      "grouped_cv_mae_fractional_equivalent_radius": 0.11179187395036994
+    },
+    "lag_extension": {
+      "n_predictions": 492,
+      "grouped_cv_rmse_fractional_equivalent_radius": 0.22671097536864884,
+      "grouped_cv_mae_fractional_equivalent_radius": 0.11220190722698933
+    },
+    "lag_extension_plateau": {
+      "n_predictions": 492,
+      "grouped_cv_rmse_fractional_equivalent_radius": 0.22595665471634502,
+      "grouped_cv_mae_fractional_equivalent_radius": 0.11336615650706144
+    }
+  },
+  "folds_detail": [
+    {
+      "fold": 1,
+      "train_series": 100,
+      "test_series": 25,
+      "models": {
+        "no_growth": {
+          "lag_days_since_first_image": 0.0,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.41575791441718846,
+          "mae_fractional_equivalent_radius": 0.24200075495938075
+        },
+        "linear_extension": {
+          "lag_days_since_first_image": 0.0,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.19475023446695083,
+          "mae_fractional_equivalent_radius": 0.09818861957336435
+        },
+        "lag_extension": {
+          "lag_days_since_first_image": 0.25,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.19494974730187728,
+          "mae_fractional_equivalent_radius": 0.0996917775590163
+        },
+        "lag_extension_plateau": {
+          "lag_days_since_first_image": 0.5,
+          "saturation_day_since_first_image": 6.75,
+          "rmse_fractional_equivalent_radius": 0.19120790271484694,
+          "mae_fractional_equivalent_radius": 0.10205513602098465
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "train_series": 100,
+      "test_series": 25,
+      "models": {
+        "no_growth": {
+          "lag_days_since_first_image": 0.0,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.4595823845281016,
+          "mae_fractional_equivalent_radius": 0.2515685160604751
+        },
+        "linear_extension": {
+          "lag_days_since_first_image": 0.0,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.21088552221186704,
+          "mae_fractional_equivalent_radius": 0.11549336734090057
+        },
+        "lag_extension": {
+          "lag_days_since_first_image": 0.25,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.20974192024182728,
+          "mae_fractional_equivalent_radius": 0.11464297845821284
+        },
+        "lag_extension_plateau": {
+          "lag_days_since_first_image": 0.25,
+          "saturation_day_since_first_image": 6.75,
+          "rmse_fractional_equivalent_radius": 0.2071813352546853,
+          "mae_fractional_equivalent_radius": 0.1134847792586454
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "train_series": 100,
+      "test_series": 25,
+      "models": {
+        "no_growth": {
+          "lag_days_since_first_image": 0.0,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.47063294023970487,
+          "mae_fractional_equivalent_radius": 0.2566073870890349
+        },
+        "linear_extension": {
+          "lag_days_since_first_image": 0.0,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.2820403094037939,
+          "mae_fractional_equivalent_radius": 0.13398304688052276
+        },
+        "lag_extension": {
+          "lag_days_since_first_image": 0.25,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.28074276960991984,
+          "mae_fractional_equivalent_radius": 0.13337509562761224
+        },
+        "lag_extension_plateau": {
+          "lag_days_since_first_image": 0.25,
+          "saturation_day_since_first_image": 6.75,
+          "rmse_fractional_equivalent_radius": 0.2796461208957646,
+          "mae_fractional_equivalent_radius": 0.13277793551034903
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "train_series": 100,
+      "test_series": 25,
+      "models": {
+        "no_growth": {
+          "lag_days_since_first_image": 0.0,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.4450505068564923,
+          "mae_fractional_equivalent_radius": 0.26850125109663925
+        },
+        "linear_extension": {
+          "lag_days_since_first_image": 0.0,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.2344550559026286,
+          "mae_fractional_equivalent_radius": 0.11054277420937188
+        },
+        "lag_extension": {
+          "lag_days_since_first_image": 0.25,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.2349491497754969,
+          "mae_fractional_equivalent_radius": 0.11136793579236277
+        },
+        "lag_extension_plateau": {
+          "lag_days_since_first_image": 0.5,
+          "saturation_day_since_first_image": 6.75,
+          "rmse_fractional_equivalent_radius": 0.23457279245817644,
+          "mae_fractional_equivalent_radius": 0.11279643344543473
+        }
+      }
+    },
+    {
+      "fold": 5,
+      "train_series": 100,
+      "test_series": 25,
+      "models": {
+        "no_growth": {
+          "lag_days_since_first_image": 0.0,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.4274528690077859,
+          "mae_fractional_equivalent_radius": 0.26364648797080725
+        },
+        "linear_extension": {
+          "lag_days_since_first_image": 0.0,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.20288876216277074,
+          "mae_fractional_equivalent_radius": 0.10085260012510307
+        },
+        "lag_extension": {
+          "lag_days_since_first_image": 0.25,
+          "saturation_day_since_first_image": null,
+          "rmse_fractional_equivalent_radius": 0.20294551040759554,
+          "mae_fractional_equivalent_radius": 0.10203449419199508
+        },
+        "lag_extension_plateau": {
+          "lag_days_since_first_image": 0.5,
+          "saturation_day_since_first_image": 6.75,
+          "rmse_fractional_equivalent_radius": 0.2068865243321153,
+          "mae_fractional_equivalent_radius": 0.10583070644004126
+        }
+      }
+    }
+  ]
+}

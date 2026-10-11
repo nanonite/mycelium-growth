@@ -1,6 +1,6 @@
 # Dataset inventory
 
-Checked 2026-10-02 by opening the downloaded files directly, without extracting them.
+Checked 2026-10-10 by opening the downloaded files and source metadata directly.
 All files passed md5 against the repository checksums (see `manifest.csv`).
 Licence is CC BY 4.0 for every item.
 
@@ -10,15 +10,19 @@ The question for each dataset: can we follow **one colony over time**?
 
 | Dataset | Organism / scale | Colonies × time | Time info | Colony ID | Ready-made measurements | Verdict |
 |---|---|---|---|---|---|---|
-| **Fricker grazers** (Zenodo 14931953) | 4 cord-forming basidiomycetes, wood block → soil tray, macroscopic | 777 images: 4 spp × 7–9 treatments × 5 reps × 4–7 days | ✅ day in filename + **EXIF capture time** (Nikon COOLPIX P80, 2009) | ✅ treatment + rep in filename | ✅ per-image network table (115 traits) incl. `mycelial_area`, `colony_perimeter`, `length_total`, `micron_per_pixel` | **Best longitudinal set.** Randomized grazer treatment |
-| **Podospora thallus** (Figshare 22666138 + 22140692 raw) | *P. anserina*, hyphal-resolution microscopy | 6 colonies (3 × M0, 3 × M2) × 69–85 frames | ⚠ frame index only; interval ~18 min per paper, not stored in files | ✅ one colony per movie | ❌ raw frames (~7000² px); needs segmentation | **Good for the growth-form + nutrient test**, n = 3 per medium |
+| **Fricker grazers** (Zenodo 14931953) | 4 named cord-forming basidiomycetes, wood block → soil tray, macroscopic | 777 images in 155 species × treatment × replicate series; seven day labels (1, 2, 4, 8, 16, 24, 38) occur across the archive | ✅ day in filename + **EXIF capture time** (Nikon COOLPIX P80, 2009); first interval differs from the paper's stated 2-day interval | ✅ treatment + rep in filename | ✅ per-image network table (115 traits) incl. `mycelial_area`, `colony_perimeter`, `length_total`, `micron_per_pixel` | **Best longitudinal set.** Treatment-group contrasts; random treatment allocation not documented in reviewed primary methods |
+| **Podospora thallus** (Figshare 22666138 + 22140692 raw) | *P. anserina*, hyphal-resolution microscopy | 6 colonies (3 × M0, 3 × M2) × 69–85 frames | ✅ 18 min/frame and 1.63 µm/source-pixel in the Figshare metadata; AVI 5 fps is playback only; first-frame origin is unknown | ✅ one colony per movie | ❌ raw frames (~7000² px); no masks or graph annotations | **Supports relative-time, hyphal-occupancy trajectories and an exploratory M0/M2 comparison**, n = 3 per medium |
 | **MyceliumSeg** (Zenodo 15224240) | 4 spp on agar, petri dish, macroscopic | 20,176 images, all on disk (IDs 00000001–00020176, contiguous) | ❌ **no EXIF in any of the 20,176** (full scan, #21); zip mtimes are export sessions (9 dates, files seconds apart) | ❌ shuffled sequential numbering | ✅ 567 masks; colony area via segmentation | **Cross-sectional only** unless dishes can be re-identified (see below) |
 | Podospora network 2019 (Figshare 9897056, 10626968) | *P. anserina*, microscopy | 1 colony × 82 frames (downsized AVI) + an 11-frame TIFF | ⚠ frame labels only | ✅ | ❌ | Small; supplementary |
-| Fricker networks (Zenodo 5725751) | 11 spp (Zygo/Asco/Basidio), macroscopic | 33 images = 11 spp × 3 reps, **one time point each** | single day (t08–t25) | ✅ | ⚠ `.mat` parameter files only | Snapshot only. Usable as a between-species prior on network traits, not on growth rate |
+| Fricker networks (Zenodo 5725751) | Micro- and macro-scale fungi across three taxonomic groups | 33 archived image/parameter pairs from 11 coded taxa, one snapshot per colony; the paper describes 12 taxa, and its author RDS has 36 real rows across 12 taxa with unbalanced counts and unmatched IDs | Labels occur across colonies, not within a colony | ✅ | ⚠ `.mat` files plus author-processed network tables | Cross-sectional, protocol-specific network-trait summaries only; not a temporal or MyceliumSeg morphology prior. See `notes/fricker_network_snapshots.md` |
 | Aureobasidium (Zenodo 14001310) | — | — | — | — | — | **No data**: the record holds only a conference book of abstracts |
 | Physarum (Zenodo 22868368) | slime mould (not a fungus), one camera over 6 dishes | 1 of 24 dishes on disk (001-dish0, 1,696 frames); full set 51,036 dish frames, 133 GB | ✅ per-frame `acquisition/timestamp_utc_ns`, 120–300 s interval | ✅ | ❌ camera pixels only; dish-circle registration + QC flags | Template for publishing own rig data (OME-Zarr v3 layout) |
 
 ## Details
+
+### Fricker network snapshots — `raw/fricker_networks/`
+- The Zenodo release staged here contains 33 JPEGs and 33 matching `.mat` parameter files across 11 coded taxa. The paper describes 12 taxa and three replicates per strain, but the pinned author analysis table contains 36 real rows with counts of 1, 3, or 4 per taxon. Four author-table IDs are absent from the Zenodo parameter archive, and one archive ID has no exact table match; see `notes/fricker_network_snapshots.md` and `data/derived/fricker_network_snapshots/`.
+- Microscopic Ascomycota/Zygomycetous samples and macroscopic Basidiomycota samples use different growth substrates, temperatures, times, magnifications, and image scales. Use the author's normalized traits only for cautious, study-specific network comparisons. There is no within-colony time series.
 
 ### Fricker / Boddy grazer series — `raw/fricker_grazers/`
 - `Hf.zip` 215 images, `Pi.zip` 253, `Pv.zip` 171 (+4 in `rejected/`), `Rb.zip` 138. JPG 3648×2736 (572) or
@@ -42,7 +46,14 @@ The question for each dataset: can we follow **one colony over time**?
   (the next-IFD pointer lands in zeros), so `tifffile` sees 2 pages; read the 15 content pages arithmetically:
   data at offset 3,789, stride 50,131,345, 10,584-byte trailer.
 - `podospora_net2019a`: 82-frame 1604×1708 AVI. `podospora_net2019b`: 11-frame RGB TIFF.
-- Spatial and temporal calibration is not in the files; take it from Ledoux et al. 2023 / Dikec et al. 2020.
+- The AVI files do not store acquisition timestamps, interval, or scale. Figshare 22666138
+  specifies 18 min between images and 1.63 µm/source-pixel for these exact nine-tile
+  mosaics; the 2023 paper independently states about 18 min and about 1 µm spatial
+  resolution. Use the Figshare calibration for the six movies; do not transfer the
+  2020 system's different calibration. Frame time is relative to the first available
+  image, not known time since germination. See
+  `data/raw/podospora_thallus/SOURCE.md` and
+  `notes/podospora_growth_model.md`.
 
 ### MyceliumSeg — `raw/myceliumseg/`
 - On disk: labeled-GL (457 train + 50 test), labeled-GS_PO_TS (3 × 10), labeled-MYG_PDA_TEMP (3 × 10), unlabeled-GL2
@@ -77,11 +88,13 @@ Phase-1 gate (#26) is **C** (decided — `notes/gate.md`) for MyceliumSeg: no re
 The plan's fallback anchor, **Fricker grazers**, has everything MyceliumSeg lacks:
 - real capture times
 - replicate identity
-- a randomized treatment
+- grazer-treatment labels (random allocation is not documented in the reviewed paper methods)
 - precomputed colony area and perimeter per image
 
-That makes it the natural first anchor for the longitudinal growth model. MyceliumSeg then serves cross-sectional and
-segmentation work, and *Podospora* serves as the growth-form / nutrient transport test.
+That makes it the natural first anchor for longitudinal modeling and treatment-group
+contrasts. A causal treatment estimate depends on assignment/exchangeability evidence.
+MyceliumSeg then serves cross-sectional and segmentation work, and *Podospora* serves as
+the growth-form / nutrient transport test.
 
 The per-dataset provenance audit that verifies every claim above (#61) is
 `notes/provenance.md`, with its machine-readable capability matrix in

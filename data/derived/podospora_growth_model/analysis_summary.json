@@ -1,0 +1,167 @@
+{
+  "dataset": "Podospora anserina M0/M2 six-movie triplicate dataset",
+  "n_movies": 6,
+  "n_frames_processed": 464,
+  "capture_interval_min": 18.0,
+  "time_origin": "relative to first AVI frame; not asserted to be ascospore germination",
+  "pixel_size_um": 1.63,
+  "analysis_resolution": "half-size grayscale; 3.26 um per resampled pixel",
+  "measurement": "bright, line-like Hessian ridge candidates above each frame's outer-corner background quantile; primary q=0.99, no component-size filter",
+  "primary_background_quantile": 0.99,
+  "common_condition_comparison_window_h": 20.0,
+  "model": "per-movie log foreground occupancy slope; M2-M0 slope contrast is a log per-hour multiplier ratio",
+  "growth_form_selection": "compare exponential occupancy (log area linear in time) with power-law occupancy using a 30% within-movie temporal tail holdout",
+  "nutrient_effect": {
+    "status": "ok",
+    "m2_n": 3,
+    "m0_n": 3,
+    "m2_mean_log_slope_per_h": 0.3123469527939386,
+    "m0_mean_log_slope_per_h": 0.2424521927934958,
+    "m2_minus_m0_log_slope_per_h": 0.06989476000044278,
+    "log_slope_difference_95ci": [
+      0.014363193551511777,
+      0.1254263264493738
+    ],
+    "per_hour_area_multiplier_ratio_m2_to_m0": 1.0723953164327473,
+    "per_hour_multiplier_ratio_95ci": [
+      1.0144668398521135,
+      1.13363164721534
+    ],
+    "exact_two_sided_permutation_p": 0.1,
+    "m2_movie_slopes": [
+      0.296888933642289,
+      0.3183461265783693,
+      0.3218057981611575
+    ],
+    "m0_movie_slopes": [
+      0.22629304409974846,
+      0.22185997797579504,
+      0.2792035563049439
+    ],
+    "interpretation": "exploratory contrast of image-derived occupancy slopes; three movies per condition"
+  },
+  "threshold_sensitivity": {
+    "0.99": {
+      "status": "ok",
+      "m2_n": 3,
+      "m0_n": 3,
+      "m2_mean_log_slope_per_h": 0.3123469527939386,
+      "m0_mean_log_slope_per_h": 0.24245219279349606,
+      "m2_minus_m0_log_slope_per_h": 0.06989476000044254,
+      "log_slope_difference_95ci": [
+        0.01436319355151143,
+        0.12542632644937363
+      ],
+      "per_hour_area_multiplier_ratio_m2_to_m0": 1.0723953164327469,
+      "per_hour_multiplier_ratio_95ci": [
+        1.0144668398521133,
+        1.1336316472153398
+      ],
+      "exact_two_sided_permutation_p": 0.1,
+      "m2_movie_slopes": [
+        0.2968889336422889,
+        0.3183461265783692,
+        0.3218057981611576
+      ],
+      "m0_movie_slopes": [
+        0.22629304409974862,
+        0.22185997797579532,
+        0.2792035563049442
+      ],
+      "interpretation": "exploratory contrast of image-derived occupancy slopes; three movies per condition"
+    },
+    "0.995": {
+      "status": "ok",
+      "m2_n": 3,
+      "m0_n": 3,
+      "m2_mean_log_slope_per_h": 0.326057296513218,
+      "m0_mean_log_slope_per_h": 0.2223373833077412,
+      "m2_minus_m0_log_slope_per_h": 0.10371991320547683,
+      "log_slope_difference_95ci": [
+        -0.03235212222089112,
+        0.23979194863184478
+      ],
+      "per_hour_area_multiplier_ratio_m2_to_m0": 1.1092897140002087,
+      "per_hour_multiplier_ratio_95ci": [
+        0.9681656094261152,
+        1.2709846927077522
+      ],
+      "exact_two_sided_permutation_p": 0.1,
+      "m2_movie_slopes": [
+        0.29058863062122686,
+        0.3309353330484101,
+        0.356647925870017
+      ],
+      "m0_movie_slopes": [
+        0.13351456171802423,
+        0.2533378655802759,
+        0.2801597226249234
+      ],
+      "interpretation": "exploratory contrast of image-derived occupancy slopes; three movies per condition"
+    },
+    "0.999": {
+      "status": "ok",
+      "m2_n": 3,
+      "m0_n": 3,
+      "m2_mean_log_slope_per_h": 0.3311375220993777,
+      "m0_mean_log_slope_per_h": 0.07311296841385119,
+      "m2_minus_m0_log_slope_per_h": 0.2580245536855265,
+      "log_slope_difference_95ci": [
+        -0.21350870079604822,
+        0.7295578081671013
+      ],
+      "per_hour_area_multiplier_ratio_m2_to_m0": 1.294370599802726,
+      "per_hour_multiplier_ratio_95ci": [
+        0.8077451320943347,
+        2.0741632268209114
+      ],
+      "exact_two_sided_permutation_p": 0.2,
+      "m2_movie_slopes": [
+        0.273788713359705,
+        0.3530785546855,
+        0.3665452982529281
+      ],
+      "m0_movie_slopes": [
+        -0.2565268659288915,
+        0.18771948568289992,
+        0.2881462854875452
+      ],
+      "interpretation": "exploratory contrast of image-derived occupancy slopes; three movies per condition"
+    },
+    "0.9995": {
+      "status": "ok",
+      "m2_n": 3,
+      "m0_n": 2,
+      "m2_mean_log_slope_per_h": 0.32737624289917666,
+      "m0_mean_log_slope_per_h": 0.19548842144205902,
+      "m2_minus_m0_log_slope_per_h": 0.13188782145711764,
+      "log_slope_difference_95ci": [
+        -0.10659423106338434,
+        0.3703698739776196
+      ],
+      "per_hour_area_multiplier_ratio_m2_to_m0": 1.1409803185783083,
+      "per_hour_multiplier_ratio_95ci": [
+        0.8988903407775833,
+        1.4482701930659387
+      ],
+      "exact_two_sided_permutation_p": 0.3,
+      "m2_movie_slopes": [
+        0.2701916141254058,
+        0.3456467558966885,
+        0.36629035867543563
+      ],
+      "m0_movie_slopes": [
+        0.1086044890016717,
+        0.28237235388244636
+      ],
+      "interpretation": "exploratory contrast of image-derived occupancy slopes; three movies per condition"
+    }
+  },
+  "limitations": [
+    "No human-labeled hyphal masks are released; ridge foreground is a candidate occupancy proxy.",
+    "Foreground pixels are not a validated count of hyphal length, branches, or apexes.",
+    "Movie replicates, not frames, are the independent units; n=3 per condition.",
+    "Relative capture time is known from frame order and Figshare metadata; first frame is not assumed to equal germination time.",
+    "The paper's published apex-count and apex-spread outcomes cannot be exactly reproduced from this foreground mask."
+  ]
+}

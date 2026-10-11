@@ -271,7 +271,8 @@ Consequences beyond this issue:
 this, every in-data route to Phase 1 is closed, so the gate is **C**, and the recommendation
 already made in `data/INVENTORY.md` stands: anchor the longitudinal growth model on the
 **Fricker/Boddy grazer series** (Zenodo 14931953), which ships real capture times, replicate
-identity, a randomized grazer treatment and per-image colony measurements. Keep MyceliumSeg for
+identity, grazer-treatment labels and per-image colony measurements. The reviewed primary
+methods document random weekly tray repositioning, not treatment allocation. Keep MyceliumSeg for
 cross-sectional size-by-condition work and segmentation, and *Podospora* for the growth-form /
 nutrient transport test.
 

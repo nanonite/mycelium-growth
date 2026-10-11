@@ -326,8 +326,9 @@ def radial_protrusions(
     outward bumps only -- a bay never raises the outermost radius -- and it is
     deterministic and resolution-locked like the other boundary features.
 
-    These are *candidate* protrusions.  They are not biological hyphal tips,
-    and no persistence, resolution or validation claim is made about them.
+    These are *candidate* protrusions.  They are not biological hyphal tips.
+    This detector alone does not assess cross-resolution stability or biological
+    validity; the bounded resampling analysis is documented under #62.
     """
     ys, xs = np.nonzero(mask)
     if len(xs) == 0:
@@ -1149,10 +1150,10 @@ def write_note(path: Path, evidence: Mapping[str, Any]) -> None:
         "biological hyphal tips. The false-event rate is high because the "
         "segmenter's boundary is only approximate (Boundary IoU 28.60%): it "
         "invents excursions the reference does not have and misses ones it "
-        "does. No persistence, resolution or validation claim is made, and no "
-        "tip, branching or nuclear count is reported from MyceliumSeg. The rate "
-        "is a property of the detector *and* the segmenter; it is reported so a "
-        "future, validated tip detector has a baseline to beat."
+        "does. This analysis does not assess scale stability; #62 evaluates "
+        "candidate stability under resampling, without temporal or biological "
+        "validation. No tip, branching or nuclear count is reported from "
+        "MyceliumSeg. The rate is a property of the detector *and* the segmenter."
     )
     add("")
     add(
@@ -1177,10 +1178,10 @@ def write_note(path: Path, evidence: Mapping[str, Any]) -> None:
     add("**Supported (image-level morphology, this release):**")
     add("")
     add(
-        "- `area`, `area_fraction`, `equivalent_radius` and `log_area` clear the "
-        "size budget on the de-duplicated hold-outs and support predictive, "
-        "image-level morphology claims (associational, within-release, by "
-        "species and known condition)."
+        "- `equivalent_radius` and `log_area` clear the size budget on the "
+        "de-duplicated hold-outs. `area` and `area_fraction` have low bias but "
+        "14.3% relative SD, above the #60 target; area-fraction ordering remains "
+        "useful as an approximate cross-sectional coverage coordinate (#66)."
     )
     add(
         "- `perimeter`, `edge_roughness`, `circularity` and `solidity` are "
@@ -1197,10 +1198,9 @@ def write_note(path: Path, evidence: Mapping[str, Any]) -> None:
         "demonstrated frame order;"
     )
     add(
-        "- any hyphal-tip, nuclear or branching claim — the candidate "
-        "protrusions are unvalidated radial excursions with a high false-event "
-        "rate, and no resolution or persistence evidence maps them to "
-        "biological structures;"
+        "- any hyphal-tip, nuclear or branching claim — #62 measures candidate "
+        "stability under resampling, but the colony masks are not independent "
+        "biological-tip annotations;"
     )
     add(
         "- any causal temperature or medium effect — medium is aliased with "

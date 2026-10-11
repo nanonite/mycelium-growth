@@ -1,0 +1,8 @@
+"parameter","value"
+"seed","20261010"
+"n_per_condition","12"
+"n_conditions","5"
+"n_dishes","60"
+"n_timepoints_per_dish","16"
+"time_points_days","0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30"
+"design","GL@15C;GL@25C;GS@25C;PO@25C;TS@25C"

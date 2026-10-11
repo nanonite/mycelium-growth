@@ -185,9 +185,11 @@ nix develop ../.. --command python test-infer.py CONFIG CHECKPOINT
 nix develop ../.. --command env PYTHONPATH=. python -c "import mmseg; print(mmseg.__file__)"
 ```
 
-Real inference and training need the trained checkpoints, which are not in this
-repository. To check that the stack can build and run the benchmark's models without
-them, use the smoke test below.
+The smoke test below trains a small image-to-mask model from the released labels and
+evaluates it on held-out masks. The full model is trained from the same image/mask
+pairs with the configured ImageNet-pretrained backbone; its generated checkpoint is
+kept under the ignored `work_dirs/` directory. Full-release inference requires that
+trained checkpoint. Run a smoke job first to check the training and evaluation path.
 
 ### SegFormer baseline reproduction
 
@@ -223,6 +225,49 @@ which this stack has, and (on the CPU shell) a CUDA-less torch, so
 `segformer_repro.py` starts them with a compatibility shim from
 `scripts/segformer_shim/` on `PYTHONPATH` - only its subprocesses see it.
 
+### Train on all released annotations
+
+The paper's labeled archives contain 567 image/mask records. Twenty records are
+exact duplicate images with identical masks, so the all-labeled trainer uses 547
+unique pairs and records each source mapping. It includes the benchmark test and
+condition masks in this final fit; use #28's separate baseline for independent
+benchmark metrics. The remaining release images have no manual masks.
+
+```bash
+nix develop .#gpu --command python scripts/segformer_all_labeled.py \
+  --tag all-unique --max-iters 50000 --batch-size 16 --workers 8
+```
+
+The final checkpoint and dataset/evidence manifest are written to
+`work_dirs/segformer-b0-repro/full-all-labeled-all-unique-20261008/`.
+This run completed 50,000 iterations after resuming from `iter_18750.pth`
+following a host interruption. Its checkpoint is `train/iter_50000.pth`; the
+final training loss was 0.0085, which is not a held-out score.
+
+### Infer and sort the full release
+
+`scripts/segformer_full_release.py` streams every image directly from the 11
+downloaded ZIP archives. It saves a native-resolution binary mask, provenance,
+pixel area, calibrated area where available, and `area_fraction` for each image.
+The output contains both a per-image coverage-sorted table and a version reduced
+to one representative per byte-identical image group. Off-scale rows remain in
+the export with a null calibrated fraction and an exclusion reason. This sort is
+coverage order, not elapsed time or growth order.
+If CUDA runs out of memory on an image, the script retries that image on CPU
+and records the fallback in `prediction_fallback`.
+
+```bash
+bash scripts/run_segformer_full_release_batched.sh
+```
+
+The resumable run writes `records.jsonl`, `area_fraction_sorted.csv`,
+`area_fraction_unique_sorted.csv`, `state.json`, and masks under
+`work_dirs/segformer-b0-repro/full-release-all-labeled-20261009/`. The new
+all-labeled checkpoint produces the masks; #28 remains the independent
+held-out benchmark reference. The wrapper restarts the inference process every
+20 minutes to clear accumulated CUDA memory; it resumes from saved masks and
+records after each batch or host restart.
+
 ### scikit-image for mask shape metrics
 
 The labelled masks are binary PNGs holding 0/1 as uint8, so binarise with `> 0` -
@@ -242,6 +287,34 @@ PY
 
 On the `labeled-GS_PO_TS` mask `00018428` (3456x4608) that reports one component, area
 1214257 px, perimeter 8431.9, eccentricity 0.184.
+
+### Model mask morphology across coverage
+
+The full-release models work from the saved masks and the deduplicated coverage table;
+they do not rerun segmentation. The first model predicts mask shape features from
+`area_fraction` in separate known-GL and unknown-species strata; it does not pool the
+unknown taxonomy with GL. The sequence prototype bins GL/MYG/25C images by coverage
+quantile and treats the bin rank as a **synthetic, unitless** `t_star` only.
+Those bins contain unrelated images, so the sequence model is a training-method
+experiment, not a temporal growth model.
+
+```bash
+nix develop --command python scripts/full_release_morphology.py run
+nix develop --command python scripts/coverage_model.py run
+nix develop --command python scripts/pseudo_time_model.py run
+nix develop --command python scripts/coverage_transport.py run
+nix develop --command python scripts/tip_event_resolution.py run
+python scripts/area_fraction_precision.py
+```
+
+Outputs are saved under `work_dirs/segformer-b0-repro/full-release-all-labeled-20261009/`.
+The feature extractor resumes from its JSONL cache after interruption. See
+`notes/coverage_model.md`, `notes/pseudo_time_model.md`, `notes/coverage_transport.md`,
+and `notes/tip_event_validation.md` for validation and scope.
+`notes/area_fraction_precision.md` reports the held-out area-fraction error breakdown,
+and `notes/dataset_model_capabilities.md` maps model targets to available datasets.
+Machine-readable predictions, metrics, and fitted model files stay in the work
+directory.
 
 ### exiftool
 

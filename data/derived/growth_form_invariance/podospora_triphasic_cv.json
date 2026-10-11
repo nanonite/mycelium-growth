@@ -1,0 +1,174 @@
+{
+  "dataset": "Podospora M0/M2 six-movie dataset",
+  "outcome": "q=.99 baseline-subtracted ridge-occupancy area; models scored on held-out log signal",
+  "shared_window_h": 20.0,
+  "time_origin": "first frame per movie; onset is a robust signal threshold and not biological germination",
+  "holdout": "within each movie, final 30% of post-onset observations; earlier 70% used to fit",
+  "triphasic_definition": "threshold-derived movie-relative onset, then linear growth in square-root area (equivalent-size proxy), capped at a fitted plateau time",
+  "caveats": [
+    "The equivalent-radius coordinate is derived from candidate ridge occupancy and is not literal hyphal-front displacement.",
+    "Saturation time beyond the observed window is not identifiable; the holdout only tests plateau predictions within the observed tail."
+  ],
+  "aggregate": {
+    "exponential_occupancy": {
+      "n_movies": 6,
+      "mean_holdout_rmse_log_signal": 0.30640486606595146,
+      "movies_best_or_tied": 5
+    },
+    "power_law_occupancy": {
+      "n_movies": 6,
+      "mean_holdout_rmse_log_signal": 0.8955699259111465,
+      "movies_best_or_tied": 0
+    },
+    "constant_equivalent_radius_extension": {
+      "n_movies": 6,
+      "mean_holdout_rmse_log_signal": 0.42095533789817074,
+      "movies_best_or_tied": 1
+    },
+    "onset_extension_plateau": {
+      "n_movies": 6,
+      "mean_holdout_rmse_log_signal": 0.8160166390473713,
+      "movies_best_or_tied": 0
+    }
+  },
+  "movies": [
+    {
+      "movie": "M0_1",
+      "condition": "M0",
+      "status": "ok",
+      "frames_in_shared_window": 67,
+      "onset_frame": 29,
+      "observed_signal_onset_after_first_frame_h": 8.7,
+      "active_frames": 38,
+      "train_frames": 26,
+      "holdout_frames": 12,
+      "holdout_rmse_log_signal": {
+        "exponential_occupancy": 0.36239556051374855,
+        "power_law_occupancy": 0.6062150368145253,
+        "constant_equivalent_radius_extension": 0.3063145792746638,
+        "onset_extension_plateau": 0.6080693482263088
+      },
+      "onset_extension_plateau": {
+        "plateau_time_after_onset_h": 6.577,
+        "radius_intercept_px_equivalent": 34.756,
+        "radius_slope_px_equivalent_per_h": 8.319,
+        "plateau_selected_before_training_end": true
+      }
+    },
+    {
+      "movie": "M0_2",
+      "condition": "M0",
+      "status": "ok",
+      "frames_in_shared_window": 67,
+      "onset_frame": 14,
+      "observed_signal_onset_after_first_frame_h": 4.2,
+      "active_frames": 53,
+      "train_frames": 37,
+      "holdout_frames": 16,
+      "holdout_rmse_log_signal": {
+        "exponential_occupancy": 0.08214636959577644,
+        "power_law_occupancy": 0.8828386761121212,
+        "constant_equivalent_radius_extension": 0.3728557711831578,
+        "onset_extension_plateau": 0.7273190325704764
+      },
+      "onset_extension_plateau": {
+        "plateau_time_after_onset_h": 10.803,
+        "radius_intercept_px_equivalent": 54.359,
+        "radius_slope_px_equivalent_per_h": 15.032,
+        "plateau_selected_before_training_end": false
+      }
+    },
+    {
+      "movie": "M0_3",
+      "condition": "M0",
+      "status": "ok",
+      "frames_in_shared_window": 67,
+      "onset_frame": 8,
+      "observed_signal_onset_after_first_frame_h": 2.4,
+      "active_frames": 59,
+      "train_frames": 41,
+      "holdout_frames": 18,
+      "holdout_rmse_log_signal": {
+        "exponential_occupancy": 0.46011542137838185,
+        "power_law_occupancy": 0.9418423477766393,
+        "constant_equivalent_radius_extension": 0.46878435957922976,
+        "onset_extension_plateau": 0.8966088149386616
+      },
+      "onset_extension_plateau": {
+        "plateau_time_after_onset_h": 12.006,
+        "radius_intercept_px_equivalent": 15.441,
+        "radius_slope_px_equivalent_per_h": 13.586,
+        "plateau_selected_before_training_end": false
+      }
+    },
+    {
+      "movie": "M2_1",
+      "condition": "M2",
+      "status": "ok",
+      "frames_in_shared_window": 67,
+      "onset_frame": 20,
+      "observed_signal_onset_after_first_frame_h": 6.0,
+      "active_frames": 47,
+      "train_frames": 32,
+      "holdout_frames": 15,
+      "holdout_rmse_log_signal": {
+        "exponential_occupancy": 0.3269956809537614,
+        "power_law_occupancy": 0.8571575834004773,
+        "constant_equivalent_radius_extension": 0.4012015829701219,
+        "onset_extension_plateau": 0.8137476220093928
+      },
+      "onset_extension_plateau": {
+        "plateau_time_after_onset_h": 9.315,
+        "radius_intercept_px_equivalent": 46.408,
+        "radius_slope_px_equivalent_per_h": 23.562,
+        "plateau_selected_before_training_end": false
+      }
+    },
+    {
+      "movie": "M2_2",
+      "condition": "M2",
+      "status": "ok",
+      "frames_in_shared_window": 67,
+      "onset_frame": 16,
+      "observed_signal_onset_after_first_frame_h": 4.8,
+      "active_frames": 51,
+      "train_frames": 35,
+      "holdout_frames": 16,
+      "holdout_rmse_log_signal": {
+        "exponential_occupancy": 0.32520979614951984,
+        "power_law_occupancy": 1.0667642940271895,
+        "constant_equivalent_radius_extension": 0.5101819193655515,
+        "onset_extension_plateau": 0.9505032815953673
+      },
+      "onset_extension_plateau": {
+        "plateau_time_after_onset_h": 10.2,
+        "radius_intercept_px_equivalent": 45.939,
+        "radius_slope_px_equivalent_per_h": 42.419,
+        "plateau_selected_before_training_end": true
+      }
+    },
+    {
+      "movie": "M2_3",
+      "condition": "M2",
+      "status": "ok",
+      "frames_in_shared_window": 67,
+      "onset_frame": 20,
+      "observed_signal_onset_after_first_frame_h": 6.0,
+      "active_frames": 47,
+      "train_frames": 32,
+      "holdout_frames": 15,
+      "holdout_rmse_log_signal": {
+        "exponential_occupancy": 0.2815663678045208,
+        "power_law_occupancy": 1.0186016173359267,
+        "constant_equivalent_radius_extension": 0.46639381501629956,
+        "onset_extension_plateau": 0.8998517349440214
+      },
+      "onset_extension_plateau": {
+        "plateau_time_after_onset_h": 9.315,
+        "radius_intercept_px_equivalent": 62.239,
+        "radius_slope_px_equivalent_per_h": 43.653,
+        "plateau_selected_before_training_end": false
+      }
+    }
+  ]
+}

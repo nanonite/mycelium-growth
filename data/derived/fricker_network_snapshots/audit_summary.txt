@@ -1,0 +1,8 @@
+pinned_author_repo_commit=df7f55a4fa7fbd76877cf9cbbbf9e4052b682b89
+zenodo_images=33
+zenodo_parameter_files=33
+author_real_rows=36
+author_real_taxa=12
+author_only_ids=C35(4)_t30;M(5)_t13_c;Pi 18C day 8 004;Rb_ctrl1_d8_5
+archive_only_ids=M(5)_t13
+all_nan_Mycelia_Vol_MST=TRUE

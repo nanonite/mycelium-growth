@@ -17,7 +17,7 @@ claim needs are all absent, and this audit adds nothing that rescues them
 (§ 4.1). The cross-sectional fallback of `notes/estimands.md` § 3 therefore
 stands unchanged for the anchor release, and dynamic and intervention models
 move to the nominated datasets: **Fricker/Boddy** for growth over real time and
-the randomized grazer effect, ***Podospora*** movies for per-frame growth form
+grazer-treatment contrasts (causal interpretation depends on assignment details), ***Podospora*** movies for per-frame growth form
 and the manipulated medium contrast, and a **controlled rig** for a
 species × medium causal design, with the *Physarum* scanner set as the
 publishing template (§ 5).
@@ -50,9 +50,9 @@ sources live in the CSV, per-file detail in `notes/sequence_inventory.json`.
 | dataset | ordered frames | specimen identity | capture interval | resolution | duplicates | condition labels |
 |---|---|---|---|---|---|---|
 | `myceliumseg` | **no** — id→mtime 0.489–0.547; colony size vs file order 0.483–0.552 | **no** — rim dot fills 720/720 angle bins; embedding pairs > 0.99 are byte-copies (#23) | **none** — 0/20,176 EXIF; zip mtimes are export sessions (#21) | 4608×3456 ×18,448; 1382×1037 ×1,728 | 133 items / 62 md5 groups; 71 redundant → 20,105 distinct | 18,487 known; 1,689 blank; **20 md5 label conflicts** (#23/#24) |
-| `fricker_grazers` | **yes** — filename day axis, EXIF agrees in 155/155 series, 0 conflicts | **yes** — species+treatment+replicate in every filename | **days** — 622 steps, median 3.8 d, range 0–14.2 d (filename day + EXIF, 2009) | 3648×2736 ×572; 2048×1536 ×205 | **4 byte-identical pairs** (Pi `ctrl2` d1≡d2); 3 rejected thumbnails | 9 randomized grazer treatments + day + replicate |
+| `fricker_grazers` | **yes** — filename day order agrees with EXIF in 155/155 series, no reversals | **yes** — species+treatment+replicate in every filename | **days** — 622 adjacent capture transitions; filename day gaps and source-paper schedule need reconciliation | 3648×2736 ×572; 2048×1536 ×205 | **4 byte-identical pairs** (Pi `ctrl2` d1≡d2) plus a fifth same-second pair; 3 rejected thumbnails | 9 grazer/control labels + day + replicate; random treatment allocation not documented in the primary methods |
 | `fricker_networks` | n/a — one image per colony; days differ *across* colonies | partial — taxon+replicate identifies the tray, which appears once | **none** — single day label per image (t08–t25) | 1,494×1,620 – 27,280×18,477 (scans) | 0 / 33 | taxon, replicate, day, some treatment |
-| `podospora_thallus` | **yes** — container order complete 6/6 movies | **yes** — one colony per movie | **none in files** — ~18 min from the papers; 5 fps is playback | 7,125×6,986 – 7,220×6,973 MJPEG | 0 / 464 frames | medium M0 (3) vs M2 (3), replicate 1–3 |
+| `podospora_thallus` | **yes** — container order complete 6/6 movies | **yes** — one colony per movie | **18 min/frame** in Figshare metadata; first-frame origin unknown; AVI 5 fps is playback | ~7,100×~7,000 MJPEG; Figshare calibration 1.63 µm/source-pixel | 0 / 464 frames | medium M0 (3) vs M2 (3), replicate 1–3 |
 | `podospora_m0_raw` | **yes** — contiguous pages; header 85 == arithmetic 85; adjacent < distant | **yes** — one colony (M0_1) | **none in files** — ~18 min, external (Ledoux et al. 2023) | 7,177×6,985 | 0 / 15 content pages; **70 pages zero-filled** | medium M0, one replicate |
 | `podospora_net2019a` | **yes** — 82 header frames == 82 stored chunks | **yes** — one network | **none in files** — 4 fps is playback | 1,604×1,708 | 0 / 82 frames | species only; medium not in the file |
 | `podospora_net2019b` | **yes** — adjacent pages differ less than distant ones (12.6 vs 17.6) | **yes** — one network (frames 50–60 of a run) | **none in files** — ImageJ header only | 2,524×1,986×3 | 0 / 11 pages | medium M2 (record title) |
@@ -64,19 +64,26 @@ sources live in the CSV, per-file detail in `notes/sequence_inventory.json`.
 | dataset | identifiable | blocked | role |
 |---|---|---|---|
 | `myceliumseg` | `image_morphology` (cross-sectional, associational) | `delta_per_ordered_step`, `physical_rate`, `intervention_effect` | segmentation, cross-sectional morphology, measurement-error calibration |
-| `fricker_grazers` | `image_morphology`, `delta_per_ordered_step` (per day), `physical_rate`, `intervention_effect` | — | **primary longitudinal + intervention anchor** |
+| `fricker_grazers` | `image_morphology`, `delta_per_ordered_step` (per observed elapsed day), `physical_rate`; treatment contrast, with `intervention_effect` conditional on assignment evidence | — | **primary longitudinal + treatment-contrast anchor** |
 | `fricker_networks` | `image_morphology` (snapshot) | change, rate, intervention | between-species prior on network traits |
-| `podospora_thallus` | `image_morphology`, `delta_per_ordered_step`, `intervention_effect` (M0 vs M2, n = 3 each, per-frame units) | `physical_rate` (interval external) | growth-form + nutrient transport test |
+| `podospora_thallus` | `image_morphology`, `delta_per_ordered_step`, `physical_rate` (relative to first frame), `medium_condition_association` (M0 vs M2, n = 3 each) | causal `intervention_effect` (assignment/exchangeability not established) | hyphal-occupancy trajectory + exploratory nutrient contrast; see `notes/podospora_growth_model.md` |
 | `podospora_m0_raw` | `image_morphology`, `delta_per_ordered_step` | rate, intervention | supplementary growth-form evidence |
 | `podospora_net2019a` | `image_morphology`, `delta_per_ordered_step` | rate, intervention | supplementary |
 | `podospora_net2019b` | `image_morphology`, `delta_per_ordered_step` | rate, intervention | supplementary |
 | `physarum_rig` | `image_morphology`, `delta_per_ordered_step`, `physical_rate` | `intervention_effect` (no randomized treatment; non-fungal) | rig design + publishing template |
 | `aureobasidium` | — | everything | unavailable |
 
-`physical_rate` on `fricker_grazers` means per **day** (the filename day axis,
-backed by EXIF); `delta_per_ordered_step` on the movies means per **frame**.
-Nothing in this matrix converts a per-frame change into a per-time rate — that
-guard is `to_physical_rate()` in the measurement contract.
+`physical_rate` on `fricker_grazers` means per **observed elapsed day** (EXIF
+capture times), while the filename day label is retained separately. The two
+clocks agree on order, but the first filename gap and the papers' descriptions
+of the baseline schedule do not agree exactly; see § 4.2 and
+`notes/fricker_grazers_analysis.md`. `delta_per_ordered_step` on a movie means
+per **frame**. For the six 2023 *Podospora* films, Figshare supplies the
+18-minute capture interval and 1.63 µm/source-pixel scale, so within-movie rates
+can be expressed per hour and in physical image units relative to the first
+frame. That does not establish elapsed time since germination or causal
+identification of the M0/M2 contrast. The interval, scale, and CC BY 4.0 licence
+are documented in `data/raw/podospora_thallus/SOURCE.md`.
 
 ---
 
@@ -106,9 +113,14 @@ release. Frame-indexed change stays *defined but not estimated*
   `DateTimeOriginal` (Nikon COOLPIX P80, capture dates 2009-02-24 →
   2009-10-25), and as the filename day increases the EXIF time never goes
   backwards — **155/155 series confirmed, 0 conflicts**.
-* **Interval:** 622 within-series steps, median **3.8 days**, range up to
-  **14.2 days** (Pi imaged out to day 38). The reported minimum of 0 days is
-  the defect below, not a same-day capture schedule.
+* **Interval:** all 777 JPEGs have EXIF capture time and form 622 adjacent
+  within-series transitions. One additional processed workbook has no linked
+  JPEG. For the transitions with increasing filename day labels, observed gap
+  medians are 0.923 days (label gap 1), 1.965 (gap 2), 4.028 (gap 4), 5.946
+  (gap 6), 7.889 (gap 8), and 14.208 (gap 14). There are no capture-time
+  reversals. The first gap differs from the original paper's stated 2-day
+  post-addition schedule and needs to remain explicit rather than silently
+  mapped to days since treatment.
 * **New finding — 4 byte-identical pairs:** `Pi_ctrl2_d1_{1..4}.jpg` ≡
   `Pi_ctrl2_d2_{1..4}.jpg` (same md5 *and* same EXIF second). The fifth `ctrl2`
   replicate's two files differ in bytes but share the same EXIF second, so all
@@ -118,30 +130,55 @@ release. Frame-indexed change stays *defined but not estimated*
   are named in `notes/sequence_inventory.json`
   (`duplicate_groups_detail`) and must be dropped under the estimands § 7
   sequence rule before any change is computed.
-* Resolutions are two-tier: 3648×2736 (572) and 2048×1536 (205, all Pi) —
+* One processed workbook (`Pv_ctrl1_d4_4`) has no original JPEG/EXIF match.
+  Resolutions are two-tier: 3648×2736 (572) and 2048×1536 (205, all Pi) —
   keep the scale node per image when measuring.
-* Treatments (`coll`, `mill`, `mite`, `nema`, `wl1`, `wl2`, `enchy`, two
-  controls) were **randomized**, so `intervention_effect` needs no adjustment
-  beyond species and block.
+* The 2011 methods report that trays were **randomly repositioned weekly**.
+  They do not report random allocation of trays to grazer treatments. The
+  available files support repeated-measures models and species-stratified
+  treatment-group contrasts; causal `intervention_effect` claims remain
+  conditional on assignment/exchangeability evidence not present in the
+  described methods.
+* The original paper reports photographs before grazer addition and then at
+  2, 4, 8, 16, 24, 38, 52, 66, and 80 days. The later reanalysis reports
+  baseline plus 2, 4, 8, 16, and 32 days. This Zenodo subset has filename day
+  labels 1, 2, 4, 8, 16, 24, and 38, with EXIF gaps generally matching label
+  differences, except the label-1 to label-2 interval. Preserve filename label
+  and EXIF elapsed time as separate fields.
 
 ### 4.3 `fricker_networks` — cross-species snapshots
 
-33 images, 33 distinct colonies (each tray appears exactly once — verified by
-name grouping), day labels t08–t25 spread *across* colonies rather than within
-them, 0 duplicate images, and 28 distinct resolutions from 1,494×1,620 to
-27,280×18,477 (scans of whole trays). Usable as a between-species prior on
-network traits, never as growth: there is no second observation of any colony.
+The staged Zenodo release has 33 JPEGs and 33 matching parameter files across
+11 coded taxa, three samples per code; each colony appears once, so there is no
+within-colony sequence. The paper describes 12 taxa and three replicates per
+strain. However, the pinned author-published analysis RDS has 36 real-network
+rows across 12 taxa with counts 1, 3, or 4 per taxon, four IDs absent from the
+Zenodo parameter archive, and one archive ID without an exact table match.
+Labels occur across colonies rather than within a colony. Microscopic
+Ascomycota/Zygomycetous hyphae and macroscopic Basidiomycota cords were imaged
+under different substrate, temperature, time, and pixel-scale regimes. The
+dataset supports cautious study-specific cross-sectional summaries of its
+author-defined network traits, but not growth rates or a generic prior for
+MyceliumSeg's segmentation and area outcomes. See
+`notes/fricker_network_snapshots.md` and the reproducible audit script.
 
-### 4.4 `podospora_thallus` — ordered, identified, manipulated; interval external
+### 4.4 `podospora_thallus` — ordered, identified, calibrated; interval external to AVI
 
 Six MJPEG movies (85/85/81/74/70/69 = **464 frames**), and the container is
 internally complete everywhere: header frame count == stored `movi` chunks in
 **6/6** movies, 0 duplicate frame bytes, ~7,125×6,986–7,220×6,973 per movie.
-Filenames give medium (M0 vs M2) and replicate — a manipulated nutrient
-contrast with n = 3 per medium that MyceliumSeg cannot provide. The capture
-interval (~18 min) is **not in the files**: the AVI's 5 fps is an encoder
-playback rate. Any physical rate must cite the papers (Ledoux et al. 2023 /
-Dikec et al. 2020) and be labelled external.
+Filenames give medium (M0 vs M2) and replicate, with n = 3 movies per medium.
+The Figshare description for this exact six-movie release specifies 18 min
+between images, 1.63 µm per source pixel, bright-field acquisition at 27 °C,
+and nine-tile mosaics. The Figshare record is CC BY 4.0. These values are
+external to the AVI; its 5 fps is playback only. At the stated cadence, the
+movies span 20.4–25.2 h between the first and last frame. The time of the first
+frame relative to germination is not specified, so rates can be reported per
+hour relative to that frame, but not as lag since germination. The 2023 paper
+independently describes roughly 18-minute sampling and about 1 µm spatial
+resolution. The M0/M2 comparison is descriptive because the reviewed methods
+do not document randomized condition assignment. See
+`data/raw/podospora_thallus/SOURCE.md` and `notes/podospora_growth_model.md`.
 
 ### 4.5 `podospora_m0_raw` — 85 advertised pages, 15 frames with content
 
@@ -192,9 +229,9 @@ the § 5 table of `notes/gate.md`, now with provenance verified:
 
 | Need | dataset | Why it qualifies (provenance column) | Do first |
 |---|---|---|---|
-| Growth over real time | `fricker_grazers` | day axis + EXIF capture times, 155/155 order confirmed, interval median 3.8 d | drop the 4 duplicated `ctrl2` day pairs; join the per-image network traits (115 columns incl. `mycelial_area`) |
-| Randomized intervention effect | `fricker_grazers` | randomized grazer treatments, replicate identity in the filename | same de-duplication; stratify by species and day |
-| Growth form at hyphal scale + manipulated nutrient contrast | `podospora_thallus` | container order complete, one colony per movie, M0 vs M2 triplicates | take the capture interval from the papers and label it external; M0_1 counts as 15 frames (§ 4.5) |
+| Growth over real time | `fricker_grazers` | filename day axis + EXIF capture times, 155/155 order confirmed; observed elapsed intervals | exclude/handle five same-session `ctrl2` day pairs; preserve both time fields and join the per-image network traits |
+| Grazer-treatment contrast | `fricker_grazers` | treatment labels and replicate identity in filenames; assignment procedure is not documented in the reviewed 2011 methods | report species-stratified contrasts; make causal interpretation conditional on assignment/exchangeability evidence |
+| Growth form at hyphal scale + M0/M2 contrast | `podospora_thallus` | container order complete, one colony per movie, Figshare interval/scale, M0 vs M2 triplicates | fit occupancy trajectories relative to first frame; retain descriptive interpretation; M0_1 raw TIFF counts as 15 content frames only (§ 4.5) |
 | Species × medium causal contrast (breaks the MyceliumSeg aliasing) | **controlled rig** (RPi + LED timelapse, `/mnt/sharedOs/archive/mycelium-workspace`) | *we* set dish identity, fixed interval, randomized position, logged temperature | model on the `physarum_rig` provenance bundle; pre-register the rate ratio (PLAN.md Phase 5) |
 | Open time-lapse to publish | the rig | the field's main gap | Physarum's OME-Zarr layout is the template |
 

@@ -45,14 +45,18 @@ within-release, by species and known condition. The release records no
 plate-level sampling design and the paper describes collecting images "with
 distinctive edge morphology" without documenting an inclusion rule, so plate
 representativeness is unknown and no plate-population inference is supported.
-Nothing here estimates a species population, a treatment effect or a growth
-curve.
+Nothing here estimates a species population, a treatment effect or a temporal
+growth curve. Image-level morphology can still be modeled against `area_fraction`
+as an area-coverage coordinate (§ 3).
 
 **Selection bias (#35).** The release's Methods / Data collection section
 *describes* the collected set — "We collected 20,176 mycelium images with
 distinctive edge morphology" (Yuan et al. 2025,
 doi:10.1038/s41597-025-06265-1) — but documents **no** edge-morphology inclusion
-rule, and ships no per-image dish, time, order or stage link (full record:
+rule. The public [Zenodo data record](https://zenodo.org/records/15224240)
+lists ten data ZIP archives and no separate metadata file; the archive inventory
+contains no per-image dish, capture-time, acquisition-order or growth-stage
+link (full record:
 `notes/assumptions.md` §5; machine-readable: `SELECTION_BIAS` in
 `scripts/measurement_contract.py`). So neither half of the independence
 assumption is settled: morphology-based selection is **undocumented** (the
@@ -119,6 +123,16 @@ dimensionless descriptors Phase 3 asks for. `mean_intensity` is a density proxy
 only: dark incubation and fixed exposure are per-block facts, so it is stratified
 by block alone and never compared across blocks.
 
+**Analysis by area coverage.** The existing `area_fraction` estimand can index images
+from low to high dish coverage. Within known species, condition and scale strata,
+model other image-level features against that fraction (for example edge shape, texture
+or a learned image embedding). This is a cross-sectional relationship in the selected
+release. The ordering is area coverage, not acquisition order, elapsed time, or a
+same-dish growth trajectory; area fraction itself is not a meaningful outcome against
+its own rank. The segmenter is trained separately to predict the mycelium mask from
+the image; `area_fraction` is calculated downstream from mask area and dish area, not
+used as a segmentation training target.
+
 ## 4. Conditional frame-level estimand
 
 **`delta_log_area_per_frame`** — `ln(A_{f+1}/1 mm²) − ln(A_f/1 mm²)` for
@@ -145,7 +159,7 @@ It is *conditional*, and the condition is evidence, not an assumption:
   measurement error, not a change.
 
 If order cannot be demonstrated, the cross-sectional estimand of § 3 stands on
-its own and is labelled associational — never a growth curve.
+its own and is labelled associational — never a temporal growth curve.
 
 ## 5. Units
 
@@ -225,8 +239,8 @@ is a separate deliverable: this note fixes the bar, not the measurement of it.
 
 1. A per-time rate (mm/day, log/day, events/hour) computed from per-frame change
    without a measured capture interval. `to_physical_rate()` raises instead.
-2. Calling a MyceliumSeg sequence a growth curve, or inferring elapsed time from
-   file numbering or zip mtimes.
+2. Calling a MyceliumSeg sequence a temporal growth curve, or inferring elapsed time
+   or a same-dish trajectory from file numbering, zip mtimes or area-fraction rank.
 3. Causal temperature or medium effects (Gate C): medium is aliased with
    species, only 10 images are at 15 °C, and there is no dish identity or
    replication count.

@@ -1,0 +1,8 @@
+stratum,n_images,n_image_pairs,n_tied_pairs_excluded,n_concordant_pairs,n_discordant_pairs,pairwise_order_accuracy,kendall_tau_no_ties
+all_calibrated_holdouts,88,3828,0,3736,92,0.9759665621734587,0.9519331243469175
+GL/MYG/25C|label_clean,40,780,0,748,32,0.958974358974359,0.9179487179487179
+GL/MYG/25C|label_conflict,10,45,0,43,2,0.9555555555555556,0.9111111111111111
+GS/MYG/25C|label_conflict,10,45,0,43,2,0.9555555555555556,0.9111111111111111
+PO/PDA/25C|label_conflict,9,36,0,35,1,0.9722222222222222,0.9444444444444444
+TS/PDA/25C|label_conflict,9,36,0,35,1,0.9722222222222222,0.9444444444444444
+GL/MYG/15C|label_clean,10,45,0,45,0,1.0,1.0

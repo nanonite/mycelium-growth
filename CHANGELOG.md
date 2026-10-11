@@ -7,6 +7,72 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- Fit the #38 synthetic dish-growth observations with `ulam` under the #39
+  priors (#40). All 14 truth-bearing fixed parameters fall within their 95%
+  posterior intervals; 95.0% of dish rates and 93.3% of dish lags are covered.
+  Record curve error, convergence diagnostics, RStan/CmdStan compatibility,
+  artifacts and the unbounded-likelihood limitation in
+  `notes/ulam_parameter_recovery.md` and
+  `data/derived/growth_parameter_recovery/`. This fit remains synthetic and
+  does not estimate growth from MyceliumSeg.
+- Implement prior predictive checks for the latent radial-growth model (#39):
+  10,000 draws, bounded 0–45 mm trajectories, rate/lag summaries and wall-contact
+  times through day 60. The candidate priors span week-scale to several-week
+  plate filling; assumptions and outputs are in `notes/prior_predictive_growth.md`
+  and `data/derived/growth_prior_predictive/`. Track the unbounded Normal
+  observation-likelihood refinement for future measured radii as #69.
+- Implement the known-parameter dish-growth simulator in `R/sim.R` (#38) and
+  save a reproducible 60-dish, 960-observation example under
+  `data/derived/dish_growth_simulation/`. The generating values and assumptions
+  are documented in `notes/simulated_growth_data.md`; the scenario is synthetic
+  and is not fitted to or inferred from MyceliumSeg.
+- Assess the cross-dataset growth-form assumption (#37) with a series-held-out
+  Fricker/Boddy lag/extension/plateau comparison and a within-movie *Podospora*
+  tail holdout. The common lag → constant extension → saturation form is not
+  supported as invariant: the Fricker gain over linear extension is negligible,
+  and the *Podospora* plateau model predicts worse than exponential occupancy.
+  Biological lag and late saturation remain unidentified; see
+  `notes/growth_form_invariance.md` and `data/derived/growth_form_invariance/`.
+- Fit an exploratory image-derived ridge-occupancy model to all six *Podospora*
+  M0/M2 movies (#47): verified Figshare capture cadence/scale/licence, compared
+  exponential and power-law forms on later-frame holdouts, estimated per-movie slopes
+  and a replicate-level nutrient association, and recorded threshold sensitivity and
+  mask limitations in `notes/podospora_growth_model.md`. This is not a validated
+  semantic segmentation or a causal nutrient estimate.
+- Fit a dataset-specific Fricker/Boddy repeated-measures model (#68): paired log
+  changes from linked D1 images, fungus-by-grazer trajectories on EXIF elapsed
+  time, held-out-series shape comparison, series-bootstrap rate intervals, and
+  baseline-adjusted D8-label contrasts. Keep the 15 D2-start series separate,
+  exclude five same-session Pi control rows, and preserve associational treatment
+  interpretation because allocation is undocumented. Results are in
+  `notes/fricker_series_model.md` and `data/derived/fricker_grazers/`.
+- Close #35 as unresolvable from the current MyceliumSeg release. The evidence statuses
+  remain morphology selection undocumented and time/frame dependence untestable; closure
+  records the limit of available data and does not assert selection independence. The
+  segmentation fit uses image/mask pairs only and does not establish species-specific
+  performance.
+- Clarify the independent model tracks after #35: the per-image segmentation model
+  is trained from labeled image/mask pairs and evaluated without dish/time metadata;
+  the model predicts the mycelium mask only. Full-release inference can produce
+  `area_fraction` afterward for cross-sectional modeling of other features across
+  area-coverage levels. Such models describe the selected release and do not turn
+  area rank into elapsed time or a same-dish trajectory. Temporal growth models remain
+  available on datasets with linked specimens and real times. The Gate C, estimand,
+  measurement and inference notes now state this distinction; #41 is re-scoped to
+  morphology by area coverage and #42 to temporal alternatives on linked sequences.
+- Set the minimum MyceliumSeg dataset deliverable to a reproducible image-to-mask
+  segmenter trained on released annotations and evaluated on held-out masks. Run a
+  fresh GPU smoke training/evaluation in the `issue35-minimum-v2` work directory; the
+  two-iteration run validates the pipeline only, while the existing 50,000-iteration
+  #28 checkpoint remains the evaluated baseline.
+- Add a separate final-fit path for all available MyceliumSeg annotations. It verifies
+  and collapses 20 duplicate image/mask records to 547 unique supervised pairs, keeps
+  the #28 benchmark checkpoint untouched, and records that the all-data fit has no
+  independent holdout score. The all-labeled loader/training preflight passed. After a
+  host interruption at iteration 21,400, the 50,000-iteration fit resumed from the
+  latest saved checkpoint at iteration 18,750 and completed. The final checkpoint and
+  environment/data evidence are in the tagged work directory; the final training loss
+  is 0.0085, not a held-out quality metric.
 - Assess the "distinctive edge morphology" selection assumption under Gate C
   (#35) — `notes/assumptions.md` §5 records the two unresolved statuses:
   morphology-based selection is **undocumented** (the paper's Methods / Data
@@ -16,7 +82,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   direction is unknown), and dependence on latent time/frame is **untestable**
   (no dish identity, no timestamps, no ordered sequences; periodic
   fixed-position acquisition is process-level context, not per-image linkage),
-  with no evidence for temporal independence invented. Testing either needs the
+  with no evidence for temporal independence invented. The public Zenodo v1.0
+  record lists ten data ZIP archives and no separate metadata file; the local
+  archive inventory has no per-image dish, capture-time, acquisition-order or
+  stage link. Testing either needs the
   documented inclusion rule, the candidate / included / excluded image frame,
   and linked dish/time or stage metadata. Cross-sectional interpretation is
   bounded to the selected release; the Gate C prohibition on causal
@@ -111,6 +180,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 
 ### Changed
+- E7: Own-rig intervention experiment (#49)
+- Run experiment + publish (OME-Zarr, CC BY 4.0, Physarum template) (#53)
+- Pre-register predicted rate ratio from E5 (#52)
+- Rig calibration: fixed lighting, interval, px→mm (#51)
+- Design: species × medium (e.g. oyster on PDA and MYG), randomized positions, temp logging (#50)
+- Define observable growth estimands and a data-capability DAG (#32)
+- E3: Measurement pipeline (#27)
+- E2: MyceliumSeg metadata triage (go/no-go gate) (#19)
+- E0: Setup (#2)
+- Build and validate generative models for observable growth dynamics (#36)
+- Bounded observation likelihood for measured colony radius (#69)
+- Parameter recovery: fit ulam to simulated data (#40)
+- Fricker grazer: model longitudinal outcomes + estimate treatment contrasts (#45)
+- Map supported model targets across datasets before transport (#67)
+- Resolve MyceliumSeg area-fraction precision gap (#66)
+- Validate candidate tip-like boundary events at available resolution (#62)
+- Hold out species/conditions; predict morphology across area_fraction (#44)
+- Prototype a sequence model on MyceliumSeg area-rank pseudo-steps (#42)
+- Explore area-rank pseudo-time as a mask-sequence training surrogate (#65)
+- Fit MyceliumSeg morphology across area_fraction; predictive checks (#41)
+- ASSUMPTION: selection dependence (morphology undocumented; time/frame untestable) (#35)
 - Count eligible G. lucidum 15°C images for cross-sectional analysis (#34)
 - Write DAG in R/dag.R; check adjustmentSets for T→k (#33)
 - Shape metrics (area, r_eq, perimeter, roughness, density) → data/measurements.csv (#30)

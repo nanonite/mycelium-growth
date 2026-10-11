@@ -1,0 +1,8 @@
+"parameter","value"
+"seed","20261011"
+"n_draws","10000"
+"time_start_days","0"
+"time_end_days","60"
+"time_step_days","1"
+"max_radius_mm","45"
+"n_conditions","5"

@@ -1,0 +1,7 @@
+movie,condition,replicate,width,height,frame_count,playback_rate,capture_interval_min,capture_interval_source,pixel_size_um,license
+M0_1,M0,1,7129,6995,85,5/1,18.0,Figshare article 22666138 description,1.63,CC BY 4.0
+M0_2,M0,2,7177,6985,85,5/1,18.0,Figshare article 22666138 description,1.63,CC BY 4.0
+M0_3,M0,3,7183,6903,81,5/1,18.0,Figshare article 22666138 description,1.63,CC BY 4.0
+M2_1,M2,1,7178,6974,74,5/1,18.0,Figshare article 22666138 description,1.63,CC BY 4.0
+M2_2,M2,2,7125,6986,70,5/1,18.0,Figshare article 22666138 description,1.63,CC BY 4.0
+M2_3,M2,3,7220,6973,69,5/1,18.0,Figshare article 22666138 description,1.63,CC BY 4.0

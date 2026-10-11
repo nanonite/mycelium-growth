@@ -1,0 +1,2 @@
+"n_observations","n_dishes","latent_radius_rmse_mm","latent_truth_95_coverage","k_dish_truth_95_coverage","tau_dish_truth_95_coverage","max_rhat","n_parameters_rhat_over_1_01","min_ess_bulk","min_ess_tail","divergent_transitions","treedepth_limit_hits"
+960,60,0.178712082641284,0.953125,0.95,0.933333333333333,1.0111972663762,4,506.567780566907,779.932559596883,0,1

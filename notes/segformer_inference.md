@@ -108,18 +108,22 @@ ones as null, with `area_exclusion` naming the reason — the inclusion rule of
 `reference_mask_area_px` and `predicted_over_reference_area` as a smoke sanity
 check; the bias/SD measurement-error model is **#31**, not this task.
 
-## 4. The exploratory smoke test
+## 4. Area-fraction rank and the exploratory smoke test
 
 `explore_records()` sorts the inferred `area_fraction` **inside provenance-safe
 `(archive, block)` strata** — never across archives or scale blocks, because a
 byte copy or a mislabelled folder would otherwise look like a real difference.
+The current 125-image output uses this rank for smoke-test inspection. After
+full-release inference, duplicate handling and label/scale QA, the same area
+fraction can serve as an area-coverage coordinate for cross-sectional models of
+other features. It is not an acquisition-time or same-dish sequence.
 Inside each stratum it reports:
 
 * the full sorted order with ranks;
 * **gap-detected bands**: a break sits where the neighbour gap exceeds
   `gap_factor` (default 4) times the median positive gap.  With fewer than two
   positive gaps no break is claimed — for a small sample the honest answer is
-  one band.  This is a descriptive sort, not a clustering model;
+  one band.  These gap bands are a descriptive smoke check, not a clustering model;
 * **duplicate groups** (shared md5), with whether the predicted mask hashes are
   identical — the byte-copy check;
 * **consecutive-id runs** — maximal runs of adjacent release ids.  These are an
@@ -199,17 +203,20 @@ data-processing pipeline**, not a biological finding:
 * a duplicate group is one observation, not two, and must be reduced to its
   representative before any uncertainty is computed (#60 § 7).
 
-Nothing in the sorted order may be read as elapsed time, dish identity,
-timelapse membership, growth rate, or a biological hyphal tip.
+The sorted order is meaningful as coverage order. It does not identify elapsed
+time, dish identity, timelapse membership, a same-dish trajectory, a growth rate,
+or a biological hyphal tip.
 
 ## 5. What this supports and what it does not
 
 Supported: predicted masks and image-level morphology (area, area fraction,
-equivalent radius, log area) for the hold-outs and the sample, each row carrying
-its archive, duplicate status, condition label, block, frame-order status and
-time-unit status; a held-out smoke comparison against the true masks.
+equivalent radius, log area) for the hold-outs and the 125-image sample, each row
+carrying its archive, duplicate status, condition label, block, frame-order status
+and time-unit status; a held-out smoke comparison against the true masks. After
+full-release inference and QA, area-coverage models may use area fraction to
+predict other image features within the selected release.
 
-Not supported (Gate C, `notes/gate.md`): any growth curve, elapsed time, rate,
+Not supported (Gate C, `notes/gate.md`): any temporal growth curve, elapsed time, rate,
 dish identity, timelapse membership, causal temperature/medium effect, or
 biological tip event.  Boundary IoU is weak by construction (published 28.60%)
 and HD95/ASSD are in pixels (#28), so mask QA carries both caveats and the

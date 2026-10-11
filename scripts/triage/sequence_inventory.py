@@ -1133,13 +1133,16 @@ def rows_from_details(details: dict[str, dict]) -> list[dict[str, str]]:
             resolution_source="JPEG SOF headers",
             duplicates=dup_cell(d["duplicates"]),
             duplicate_rule="md5 over kept images; one image per (series, day)",
-            condition_labels=(f"randomized grazer treatments: "
+            condition_labels=(f"grazer-treatment labels (allocation procedure not "
+                              f"documented in reviewed primary methods): "
                               f"{', '.join(d['treatments'])}; day; replicate; "
                               f"{d['images_rejected']} rejected thumbnails "
                               "excluded"),
             estimands_identifiable=("image_morphology;delta_per_ordered_step;"
-                                    "physical_rate;intervention_effect"),
-            estimands_blocked="",
+                                    "physical_rate"),
+            estimands_blocked=("intervention_effect: treatment allocation or "
+                               "exchangeability not documented in reviewed "
+                               "primary methods"),
             evidence="data/INVENTORY.md; Zenodo 14931953; "
                      "notes/provenance.md",
         ))
@@ -1190,20 +1193,21 @@ def rows_from_details(details: dict[str, dict]) -> list[dict[str, str]]:
             specimen_identity="yes",
             identity_basis=("one colony per movie; medium M0/M2 + replicate "
                             "in the filename"),
-            capture_interval="none (in files)",
-            interval_source=("~18 min per frame from the papers, not stored "
-                             "in the AVI; 5 fps is playback rate"),
+            capture_interval="18 min/frame (relative to first frame)",
+            interval_source=("Figshare 22666138 description; first-frame "
+                             "origin relative to germination unknown; 5 fps is playback"),
             resolution="; ".join(resolutions),
-            resolution_source="AVI strf BITMAPINFOHEADER",
+            resolution_source=("AVI strf BITMAPINFOHEADER; 1.63 um/source-pixel "
+                               "from Figshare 22666138"),
             duplicates=dup_cell(d["duplicates"]),
             duplicate_rule="md5 of compressed frame bytes, pooled over movies",
             condition_labels=("medium M0 (3 movies) vs M2 (3 movies), "
                               "replicate 1-3"),
             estimands_identifiable=("image_morphology;delta_per_ordered_step;"
-                                    "intervention_effect"),
-            estimands_blocked="physical_rate",
-            evidence=("Figshare 22666138; data/INVENTORY.md; "
-                      "notes/provenance.md"),
+                                    "physical_rate;medium_condition_association"),
+            estimands_blocked="causal_intervention_effect",
+            evidence=("Figshare 22666138; Ledoux et al. 2023; "
+                      "notes/podospora_growth_model.md"),
         ))
 
     if (d := details.get("podospora_m0_raw")) is not None:
@@ -1432,7 +1436,12 @@ def main(argv: list[str] | None = None) -> int:
         movies.append(movie)
     record("podospora_thallus",
            {"movies": movies,
-            "duplicates": _merge_movie_dups(movies)} if movies else None)
+            "duplicates": _merge_movie_dups(movies),
+            "metadata_source": "Figshare 22666138 description",
+            "capture_interval_minutes_external_to_avi": 18,
+            "pixel_size_um_external_to_avi": 1.63,
+            "time_origin": "first AVI frame; relation to ascospore germination unspecified",
+            "license": "CC BY 4.0"} if movies else None)
 
     path = args.raw_dir / "podospora_m0_raw" / "M0_1.tif"
     record("podospora_m0_raw",

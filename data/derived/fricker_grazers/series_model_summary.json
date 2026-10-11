@@ -1,0 +1,65 @@
+{
+  "model": "species-by-grazer within-series log-relative trajectory",
+  "model_equation": "log(Y_it / Y_i_D1) = beta_species,grazer * EXIF_elapsed_days_it + error_it",
+  "interpretation": "dataset-specific descriptive/predictive rates; not causal treatment effects",
+  "input": "data/derived/fricker_grazers/network_series.csv",
+  "source_records": 778,
+  "baseline_linked_series_core_treatments": 125,
+  "baseline_linked_series_all_archive_treatments": 135,
+  "core_series_with_any_records": 140,
+  "day2_start_series_without_d1_baseline": 15,
+  "same_session_pi_ctrl2_day2_rows_excluded": 5,
+  "same_session_pi_ctrl2_files": [
+    "Pi_ctrl2_d2_1",
+    "Pi_ctrl2_d2_2",
+    "Pi_ctrl2_d2_3",
+    "Pi_ctrl2_d2_4",
+    "Pi_ctrl2_d2_5"
+  ],
+  "bootstrap_resamples_per_group": 5000,
+  "bootstrap_seed": 68045,
+  "outcomes": {
+    "mycelial_area": {
+      "trajectory_observations_including_baseline": 492,
+      "baseline_linked_series": 125,
+      "postbaseline_observations_scored": 367
+    },
+    "total_length": {
+      "trajectory_observations_including_baseline": 492,
+      "baseline_linked_series": 125,
+      "postbaseline_observations_scored": 367
+    },
+    "volume": {
+      "trajectory_observations_including_baseline": 492,
+      "baseline_linked_series": 125,
+      "postbaseline_observations_scored": 367
+    },
+    "tip_count": {
+      "trajectory_observations_including_baseline": 492,
+      "baseline_linked_series": 125,
+      "postbaseline_observations_scored": 367
+    },
+    "mean_width": {
+      "trajectory_observations_including_baseline": 492,
+      "baseline_linked_series": 125,
+      "postbaseline_observations_scored": 367
+    },
+    "edge_count": {
+      "trajectory_observations_including_baseline": 492,
+      "baseline_linked_series": 125,
+      "postbaseline_observations_scored": 367
+    },
+    "loop_count": {
+      "trajectory_observations_including_baseline": 483,
+      "baseline_linked_series": 125,
+      "postbaseline_observations_scored": 358
+    }
+  },
+  "outputs": [
+    "data/derived/fricker_grazers/series_trajectory_cv.csv",
+    "data/derived/fricker_grazers/series_growth_rates.csv",
+    "data/derived/fricker_grazers/baseline_adjusted_d8_contrasts.csv",
+    "data/derived/fricker_grazers/day2_start_series.csv"
+  ],
+  "treatment_allocation_review": "The primary paper reports weekly random tray repositioning; it does not document randomized treatment allocation. Contrasts remain associational."
+}

@@ -1,7 +1,7 @@
 {
   "caveats": [
     "MyceliumSeg is cross-sectional: no ordered frames, no dish identity, no capture interval (Gate C, notes/provenance.md).",
-    "Area, log-area and equivalent radius are the primary size features; the #31 error model puts their bias and spread inside the #60 size budget.",
+    "Equivalent radius and log-area meet the #60 size budget. Area and area_fraction have low bias but 14.3% relative SD, so their target is unmet; area_fraction remains an approximate cross-sectional coverage coordinate (#66).",
     "Perimeter, edge roughness, circularity and solidity are boundary-derived and secondary: #31 puts their error well outside the size budget (published Boundary IoU 28.60%, #28), so they carry the boundary budget and are not size proxies.",
     "Mean intensity and the intensity summaries are density proxies only: dark incubation and fixed exposure are per-block facts, so they are comparable within a condition block, never across.",
     "The test and conditions hold-outs are not independent: ten PDA conditions images are byte copies of ten labeled-GL test images (#23), so de-duplication removes the conditions copies before any summary."

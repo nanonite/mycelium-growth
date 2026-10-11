@@ -9,14 +9,16 @@
 **Decision.** The released MyceliumSeg files do not identify dishes and do not date
 images, and no route inside the release recovers either. Therefore:
 
-* **Near-term use of MyceliumSeg is segmentation, cross-sectional morphology, and
-  frame-indexed measurements — nothing else.**
+* **Near-term use includes standalone segmentation, cross-sectional morphology,
+  morphology modeled across area-coverage levels, and validated frame-indexed
+  measurements.** This analysis is image-level and does not supply
+  chronology or elapsed time.
 * **Do not fit causal temperature effects, causal medium effects, or physical
   growth-rate models (mm/day, lag time, saturation) to MyceliumSeg.**
 * **Time-resolved and intervention claims fall back to the Fricker/Boddy grazer
   series, the *Podospora* movies, or a controlled rig** (§ Fallback).
 * **This decision must be complete before any MyceliumSeg output is interpreted as a
-  growth curve** (§ Preconditions).
+  temporal growth curve** (§ Preconditions).
 
 This is a decision record, not a request to discard MyceliumSeg: it stays the anchor
 dataset for segmentation, measurement-error calibration, and cross-sectional
@@ -45,9 +47,9 @@ Two facts follow directly, and they are the whole basis of this gate:
    export time and growth progression. A frame index is therefore an *index*, not a
    time coordinate.
 
-The only remaining route to true metadata is the authors (PLAN.md "Do now": email Yuan
-et al. — Weizhen Liu / Yongping Fu). That is outside the release and is not assumed
-here.
+The only remaining route to true metadata would be the authors. Issue #70 was
+closed by user decision because the required information is unavailable to the
+user; no email was sent. Gate C remains in force unless verifiable metadata arrive.
 
 ---
 
@@ -67,8 +69,9 @@ All in-data routes to A or B were tested and failed (#21–#23), so the gate is 
 
 | Estimand | Status | Why |
 |---|---|---|
-| Segmentation quality, mask/area statistics, measurement error | **Allowed** | Labeled masks exist; error is estimated on hold-outs (de-duplicate first) |
+| Standalone mycelium mask segmentation; downstream mask/area statistics and measurement error | **Allowed** | Train from released image/mask pairs and evaluate on held-out masks; area fraction is calculated after segmentation and needs no time or dish sequence |
 | Cross-sectional morphology by condition — area fraction, equivalent radius, perimeter, roughness, calibrated mm² | **Allowed, associational** | Condition labels and per-block scale exist; no time or dish needed |
+| Other morphology features modeled across low-to-high `area_fraction` levels | **Allowed, associational** | Area fraction is an image-level coverage coordinate; it does not assign time, dish identity or sequence order |
 | Frame-indexed change (Δ per frame, boundary-event counts) | **Allowed where order is validated** (#61), reported in **change-per-frame** units | Order within an image id is an assumption to be validated, not a capture interval |
 | Radial growth rate (mm/day), lag τ, saturation at 45 mm | **Not identifiable — do not fit** | Requires dish + time; neither exists |
 | Causal temperature effect (15 vs 25 °C) | **Not identified — do not fit** | Only 10 images at 15 °C, no dish identity, no replication count, no time axis; at most a cross-sectional association |
@@ -97,24 +100,31 @@ below are unaffected. Full record: `notes/assumptions.md` §5.
 
 ## 4. Permitted near-term work
 
-1. **Segmentation** with the benchmark environment, evaluated on labeled hold-outs
-   after de-duplicating (across archives *and* within `unlabeled-GS_PO_TS.zip`).
+1. **Standalone segmentation:** train an image-to-mask model from the released
+   image/mask pairs to mark the mycelium region inside the dish; evaluate on labeled
+   hold-outs after de-duplicating (across archives *and* within
+   `unlabeled-GS_PO_TS.zip`). The model predicts masks only; it makes no growth claim.
 2. **Cross-sectional morphology:** image-level and mask-level distributions of area,
    area fraction, equivalent radius, perimeter, roughness and intensity, calibrated
    with `data/triage/calibration.csv`, reported as associations with species and
    known condition — with species and medium kept separate in interpretation because
    they are aliased.
-3. **Frame-indexed measurements:** change per frame and boundary-event counts, only
+3. **Coverage-state morphology:** after full-release segmentation and QA, rank or bin
+   de-duplicated images by area fraction within known species/condition/scale strata;
+   model other morphology features against coverage. Treat this as a cross-section of
+   the selected release, not a chronology or same-dish trajectory.
+4. **Frame-indexed measurements:** change per frame and boundary-event counts, only
    for sequences whose order is independently validated, and only in per-frame units.
-4. **Provenance discipline:** every row keeps archive, image id, duplicate status,
+5. **Provenance discipline:** every row keeps archive, image id, duplicate status,
    condition source (folder-derived vs derived), the calibration constant and its
    `fit_status`, and whether a physical time interval is known (it is not).
 
 **Prohibited regardless of how the numbers look:** fitting causal temperature or
 medium effects; fitting physical growth-rate models; calling any sequence of
-MyceliumSeg images a growth curve; inferring elapsed time from file numbering, zip
-mtimes, or apparent ordering; reporting candidate boundary events as biological
-hyphal tips.
+MyceliumSeg images a temporal growth curve; inferring elapsed time or same-dish
+trajectories from file numbering, zip mtimes, or area-fraction rank; reporting candidate
+boundary events as biological hyphal tips. These limits do not prohibit segmentation
+training or a cross-sectional model of morphology versus area coverage.
 
 ---
 
@@ -123,20 +133,23 @@ hyphal tips.
 | Need | Go to | Why it works |
 |---|---|---|
 | Longitudinal growth with real time | **Fricker/Boddy grazer series** (Zenodo 14931953, 10.2 GB) | Explicit capture times, replicate identity, processed network data + R code; use area/extent over time (cord-forming, not circular) |
-| Randomized intervention effect | **Fricker/Boddy** again | The grazer treatment was randomized, so the causal estimand needs no adjustment beyond species and block |
-| Manipulated nutrient contrast at hyphal scale | ***Podospora anserina* movies** (Figshare 22666138; 9897056, 10626968) | ~18 min frames, M2 vs M0 medium triplicates — a contrast MyceliumSeg cannot provide (licence to be verified) |
+| Grazer-treatment contrast | **Fricker/Boddy** again | Treatment labels and replicate-linked time series are available; the 2011 methods say trays were repositioned randomly each week, but do not document randomized treatment allocation, so causal interpretation requires additional assignment/exchangeability evidence |
+| M0/M2 nutrient-condition contrast at hyphal scale | ***Podospora anserina* movies** (Figshare 22666138) | Three movies per condition; Figshare specifies 18 min/frame, 1.63 µm/source-pixel, and CC BY 4.0. The movie comparison is descriptive because treatment assignment is not documented; see `notes/podospora_growth_model.md`. |
 | Species × medium causal contrast under our own control | **Controlled rig** (RPi camera + LED timelapse, `/mnt/sharedOs/archive/mycelium-workspace`) | Cross species × medium (e.g. oyster on both PDA and MYG) breaks the confound; randomize dish position, log temperature, fixed-interval imaging, pre-register the predicted rate ratio; publishing template: Harrington & Harrington *Physarum* scanner set (Zenodo 22868368) |
 
-In parallel, **email the MyceliumSeg authors** for dish/time metadata (long lead time,
-do not block on it). If dish identity and a capture interval are supplied, this gate is
-re-opened and the record amended — that would move the project to A or B, and only then
-does a MyceliumSeg growth curve become a legitimate target.
+The author-metadata route (#70) was closed by user decision because the required
+information is unavailable to the user; no email was sent. If dish identity and a
+capture interval are supplied in the future, this gate can be reopened and the record
+amended — that would move the project to A or B, and only then does a MyceliumSeg
+growth curve become a legitimate target.
 
 ---
 
 ## 6. Preconditions before interpreting MyceliumSeg output as a growth curve
 
-All five must be true. Today, none is.
+These preconditions apply to temporal growth curves. They are not preconditions for
+training/evaluating a segmenter or modeling morphology across area-coverage levels. All
+five must be true for a temporal interpretation. Today, none is.
 
 - [ ] Capture interval known for the images in question (not file numbering, not zip mtime)
 - [ ] Dish identity known, with a per-condition replicate count
@@ -144,9 +157,9 @@ All five must be true. Today, none is.
 - [ ] Condition labels verified (the 20 mislabelled images fixed or dropped)
 - [ ] Measurement error from the labeled masks attached to every derived quantity
 
-Until every box is ticked, MyceliumSeg results are written up as segmentation,
-cross-sectional morphology, or frame-indexed change — associational, never causal, and
-never "growth rate".
+Until every box is ticked, MyceliumSeg results may include segmentation,
+cross-sectional morphology, area-coverage relationships, or validated frame-indexed
+change — associational, never a temporal growth rate.
 
 ---
 

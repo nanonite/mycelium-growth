@@ -463,7 +463,9 @@ def unsupported_sampling_claims(text: str) -> list[str]:
 # release*; it does not document an image-selection inclusion rule based on edge
 # morphology.  The same section describes process-level, periodic fixed-position
 # acquisition ("we periodically placed mycelial petri dishes at a fixed position
-# for image acquisition") but ships no per-image dish, time, order or stage link.
+# for image acquisition").  The public Zenodo v1.0 record lists ten data ZIPs
+# and no separate metadata file; the local archive inventory has no per-image
+# dish, capture-time, acquisition-order or stage link.
 #
 # So neither half of assumption #35 -- selection is independent of latent growth
 # features and frame/time -- can be settled from the source or the release, and
@@ -498,7 +500,9 @@ SELECTION_BIAS: dict[str, Any] = {
     ),
     "source": (
         "Yuan et al. 2025, Methods/Data collection, "
-        "doi:10.1038/s41597-025-06265-1; in-repo: PLAN.md section 0, "
+        "doi:10.1038/s41597-025-06265-1; Zenodo v1.0 data record "
+        "doi:10.5281/zenodo.15224240 (ten data ZIPs, no separate metadata file); "
+        "in-repo: PLAN.md section 0, "
         "notes/estimands.md section 1, notes/gate.md section 1"
     ),
     "claims": {

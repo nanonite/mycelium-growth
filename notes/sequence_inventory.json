@@ -5007,6 +5007,10 @@
    ]
   },
   "podospora_thallus": {
+   "metadata_source": "Figshare 22666138 description; 18 min/frame, 1.63 um/source-pixel, 27 C, nine-tile mosaic, CC BY 4.0",
+   "capture_interval_minutes_external_to_avi": 18,
+   "pixel_size_um_external_to_avi": 1.63,
+   "time_origin": "first AVI frame; relation to ascospore germination unspecified",
    "movies": [
     {
      "file": "M0_1.avi",

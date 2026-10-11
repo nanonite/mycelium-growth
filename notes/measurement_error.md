@@ -57,7 +57,7 @@ Errors are predicted-minus-reference. For linear features the relative error `(p
 | `circularity` | boundary | 90 | -3.256 | 33.280 | -0.144 | 24.686 | **unmet** |
 | `solidity` | boundary | 90 | -14.255 | 23.449 | -0.323 | 24.266 | **unmet** |
 
-Reading: area and equivalent radius are the reliable quantities — the segmenter is near-unbiased on the median with a spread well inside the size budget. Perimeter and the boundary-derived shape features carry a much larger, heavy-tailed error (the published Boundary IoU is 28.60%, #28), so they clear the looser boundary budget only on the median and fail it on the SD for the roughest images. `log_area` is the quantity a future model would actually fit, and its error is small and roughly symmetric.
+Reading: equivalent radius and `log_area` meet the #60 size target. `area_px`, `area_mm2`, and `area_fraction` have low bias but 14.3% relative SD, above the 10% target, so their size-target verdict is **unmet**. The area-fraction ranking remains useful as a cross-sectional coverage coordinate, but individual percentages should be treated as approximate. Follow-up #66 finds the relative error concentrated in the lowest-coverage quartile; see `notes/area_fraction_precision.md`. Perimeter and the boundary-derived shape features carry much larger, heavy-tailed error (published Boundary IoU is 28.60%, #28); their SD exceeds the looser boundary target.
 
 ## 4. Duplicate sensitivity
 
@@ -108,7 +108,7 @@ The candidate detector is a radial boundary excursion (outermost radius per 5-de
 | Per-image false-event rate, median | 1.000 |
 | Per-image false-event rate, max | 1.000 |
 
-These are **candidate** radial excursions of the mask boundary, not biological hyphal tips. The false-event rate is high because the segmenter's boundary is only approximate (Boundary IoU 28.60%): it invents excursions the reference does not have and misses ones it does. No persistence, resolution or validation claim is made, and no tip, branching or nuclear count is reported from MyceliumSeg. The rate is a property of the detector *and* the segmenter; it is reported so a future, validated tip detector has a baseline to beat.
+These are **candidate** radial excursions of the mask boundary, not biological hyphal tips. The false-event rate is high because the segmenter's boundary is only approximate (Boundary IoU 28.60%): it invents excursions the reference does not have and misses ones it does. This #31 analysis does not test scale stability. Follow-up #62 resampled the same paired masks from 300 to 4608 px: 73/112 predicted-mask candidates and 25/34 reference-mask candidates were detected at all five widths, while predicted/reference false-event fractions remained 0.728–0.812. This is algorithmic scale stability and disagreement with colony masks, not temporal persistence or biological validation; see `notes/tip_event_validation.md`. No tip, branching or nuclear count is reported from MyceliumSeg.
 
 The rate is not a threshold artifact. The table re-runs the detector and matcher over a grid of prominence thresholds and matching angles; the false-event rate stays high across the whole grid, so no candidate protrusion from this segmenter is a reliable tip.
 
@@ -128,13 +128,13 @@ The rate is not a threshold artifact. The table re-runs the detector and matcher
 
 **Supported (image-level morphology, this release):**
 
-- `area`, `area_fraction`, `equivalent_radius` and `log_area` clear the size budget on the de-duplicated hold-outs and support predictive, image-level morphology claims (associational, within-release, by species and known condition).
+- `equivalent_radius` and `log_area` clear the size budget on the de-duplicated hold-outs. Area and area fraction have low bias but 14.3% relative SD, so their #60 precision target is unmet; they remain useful for approximate within-release area coverage ordering.
 - `perimeter`, `edge_roughness`, `circularity` and `solidity` are published with their (larger) boundary budget; they describe shape only at the fidelity the boundary metrics allow and are not size proxies.
 
 **Not supported (Gate C, #60 § 9):**
 
 - any growth curve, elapsed time, rate per unit time, dish identity or timelapse membership — there is no capture interval and no demonstrated frame order;
-- any hyphal-tip, nuclear or branching claim — the candidate protrusions are unvalidated radial excursions with a high false-event rate, and no resolution or persistence evidence maps them to biological structures;
+- any hyphal-tip, nuclear or branching claim — #62 tests candidate stability under resampling, but the labels are colony masks rather than independent hyphal-tip annotations, so no biological mapping is established;
 - any causal temperature or medium effect — medium is aliased with species, only 10 images are at 15 °C, and there is no dish identity or replication;
 - any physical growth rate in mm/day — a frame index is not a duration, and `to_physical_rate()` refuses the conversion.
 

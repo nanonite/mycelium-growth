@@ -3,7 +3,7 @@
   "caveats": [
     "MyceliumSeg is cross-sectional: no ordered frames, no dish identity, no capture interval (Gate C, notes/provenance.md).",
     "A frame index is not a duration and the file numbering is shuffled: no elapsed time, growth rate, timelapse membership or dish identity may be read from the sorted area order.",
-    "Area ordering inside an archive/block stratum is an exploratory inspection only; coherent bands may be acquisition, selection or condition artefacts, not biological growth.",
+    "Area-fraction rank is a valid cross-sectional coverage coordinate for modeling other image features after full-release inference and QA; the current 125-image bands are exploratory smoke checks. Area rank does not supply acquisition time, dish identity or a temporal trajectory, and patterns may reflect selection or condition.",
     "Boundary features are weak by construction (published Boundary IoU 28.60%, #28): no boundary event here is a biological hyphal tip.",
     "The labeled hold-out comparison is a smoke sanity check of the masks; the bias/SD measurement-error model is #31, not this task."
   ],

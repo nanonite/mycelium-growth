@@ -1,0 +1,5 @@
+"chain","sampling_iterations","divergent_transitions","treedepth_limit_hits","max_treedepth_observed","mean_accept_stat"
+1,1000,0,0,11,0.986370028663149
+2,1000,0,0,10,0.980695319891053
+3,1000,0,1,12,0.988741483753598
+4,1000,0,0,11,0.988873114881246

@@ -1,0 +1,73 @@
+{
+  "inventory": "data/derived/fricker_grazers/network_series.csv",
+  "timing_audit": "data/derived/fricker_grazers/timing_audit.json",
+  "timing": {
+    "images_with_linked_capture_time": 777,
+    "result_workbooks": 778,
+    "adjacent_dated_transitions": 622,
+    "missing_jpeg_for_workbook": [
+      "Pv_ctrl1_d4_4"
+    ],
+    "same_timestamp_transitions": [
+      "Pi_ctrl2_d1_1 -> Pi_ctrl2_d2_1",
+      "Pi_ctrl2_d1_2 -> Pi_ctrl2_d2_2",
+      "Pi_ctrl2_d1_3 -> Pi_ctrl2_d2_3",
+      "Pi_ctrl2_d1_4 -> Pi_ctrl2_d2_4",
+      "Pi_ctrl2_d1_5 -> Pi_ctrl2_d2_5"
+    ],
+    "same_filename_day_transitions": [],
+    "capture_time_reversals": [],
+    "intervals_by_filename_day_gap": {
+      "1": {
+        "n": 135,
+        "min_days": 0.0,
+        "median_days": 0.9231944444444444,
+        "max_days": 1.2474537037037037
+      },
+      "2": {
+        "n": 152,
+        "min_days": 0.9853819444444445,
+        "median_days": 1.964861111111111,
+        "max_days": 2.114351851851852
+      },
+      "4": {
+        "n": 152,
+        "min_days": 3.8270601851851853,
+        "median_days": 4.027708333333333,
+        "max_days": 5.20869212962963
+      },
+      "6": {
+        "n": 3,
+        "min_days": 5.848229166666667,
+        "median_days": 5.945648148148148,
+        "max_days": 5.945763888888889
+      },
+      "8": {
+        "n": 150,
+        "min_days": 5.921168981481482,
+        "median_days": 7.889253472222222,
+        "max_days": 8.982951388888889
+      },
+      "14": {
+        "n": 30,
+        "min_days": 14.192002314814815,
+        "median_days": 14.2078125,
+        "max_days": 14.21712962962963
+      }
+    },
+    "resolution_counts": {
+      "2048x1536": 205,
+      "3648x2736": 572
+    }
+  },
+  "models": {
+    "primary_observations_for_temporal_cv": 537,
+    "primary_series_for_temporal_cv": 140,
+    "series_with_verified_day1_baseline": 125,
+    "temporal_origin": "first linked image within each series; first filename day retained",
+    "temporal_models": "data/derived/fricker_grazers/temporal_model_comparison.csv",
+    "treatment_effect_rows": 49,
+    "treatment_effects": "data/derived/fricker_grazers/treatment_day8_effects.csv",
+    "treatment_effects_by_species": "data/derived/fricker_grazers/treatment_day8_effects_by_species.csv"
+  }
+}

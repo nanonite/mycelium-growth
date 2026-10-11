@@ -45,37 +45,38 @@ M1=$(sub "$E3" -l measurement "Reproduce SegFormer baseline (MyceliumSeg-benchma
 M2=$(sub "$E3" -l measurement "Inference on unlabeled images → masks")
 M3=$(sub "$E3" -l measurement "Shape metrics (area, r_eq, perimeter, roughness, density) → data/measurements.csv")
 M4=$(sub "$E3" -p high -l measurement "Measurement-error model: bias + SD of area/radius on test set")
+M5=$(sub "$E3" -l measurement "Full-release inference: masks and per-image area_fraction for coverage analysis")
 blk "$M1" "$D2"; blk "$M1" "$PY_ENV"; blk "$M2" "$M1"; blk "$M2" "$D4"; blk "$M3" "$M2"; blk "$M3" "$T5"; blk "$M4" "$M1"
+blk "$M5" "$M1"; blk "$M5" "$D4"
 
 # ── E4 Estimand & DAG ────────────────────────────────────────────────
 E4=$(epic "E4: Estimand & DAG" -d "PLAN.md Phase 3. Primary estimand: effect of 15 vs 25C on G. lucidum radial extension rate.")
 G1=$(sub "$E4" -l causal "Write DAG in R/dag.R; check adjustmentSets for T→k")
 G2=$(sub "$E4" -l causal "Count G. lucidum 15C dishes/images (power for primary estimand)")
-A3=$(sub "$E4" -l assumption "ASSUMPTION: 'distinctive edge morphology' image selection is not time-dependent" -d "If falsified, growth-curve shape is biased; need selection model.")
+A3=$(sub "$E4" -l assumption "ASSUMPTION: selection dependence (morphology undocumented; time/frame untestable)" -d "Selection independence from observed morphology is undocumented; dependence on latent time/frame is untestable under Gate C. The paper describes images with distinctive edge morphology but gives no inclusion rule. Interpret morphology summaries as selected-release only. Testing needs the documented inclusion rule, candidate/included/excluded frame, and linked dish/time or stage metadata; those inputs alone do not identify a selection model.")
 blk "$G1" "$R_ENV"; blk "$G2" "$GATE"; blk "$A3" "$T2"
 
 # ── E5 Generative growth model ───────────────────────────────────────
-E5=$(epic "E5: Generative growth model" -d "PLAN.md Phase 4. Lag → linear radial extension → saturation at 45 mm; varying effects per dish.")
+E5=$(epic "E5: Generative growth model" -d "PLAN.md Phase 4. Cross-sectional morphology by area coverage in MyceliumSeg; area-rank pseudo-sequence training prototype is exploratory and not chronology; biological temporal lag/rate/saturation models require linked sequences.")
 A2=$(sub "$E5" -p high -l assumption "ASSUMPTION: growth form lag → constant extension → saturation (Trinci) is invariant across datasets" -d "Core transport hypothesis. If falsified, revisit transport ladder.")
 S1=$(sub "$E5" -l model "R/sim.R: simulate dishes from known parameters")
 S2=$(sub "$E5" -l model "Prior predictive checks (0–45 mm, realistic days)")
 S3=$(sub "$E5" -l model "Parameter recovery: fit ulam to simulated data")
-S4=$(sub "$E5" -p high -l model "Fit real MyceliumSeg data; diagnostics + posterior predictive per dish")
-S5=$(sub "$E5" -l model "Compare alternatives (logistic, Gompertz, ODE) with PSIS/WAIC")
+S4=$(sub "$E5" -p high -l model "Fit MyceliumSeg morphology across area_fraction; diagnostics + predictive checks")
+S5=$(sub "$E5" -l model "Prototype a sequence model on MyceliumSeg area-rank pseudo-steps" -d "Use unlabeled full-release images within GL/MYG/25C/scale1, set unitless t* from area-coverage quantiles, aggregate mask-shape features into bins, and predict next-bin feature changes. Compare rolling and recursive forecasts with persistence and a direct t* trend. This prototypes a training pipeline only: unrelated images do not form chronology, a same-dish trajectory, physical growth rate, or causal process. Record whether the model adds value over baselines; a negative result is valid.")
 blk "$S1" "$G1"; blk "$S2" "$S1"; blk "$S3" "$S2"
-blk "$S4" "$S3"; blk "$S4" "$M3"; blk "$S4" "$M4"; blk "$S4" "$A1"; blk "$S4" "$G2"
-blk "$S5" "$S4"; blk "$A2" "$S5"
+blk "$S4" "$M3"; blk "$S4" "$M4"; blk "$S4" "$M5"
 
 # ── E6 Transport ─────────────────────────────────────────────────────
 E6=$(epic "E6: Transport to other datasets" -d "PLAN.md Phase 5 ladder. Score by out-of-sample predictive error using pooled priors.")
-X1=$(sub "$E6" -l transport "Hold out GS/PO/TS within MyceliumSeg; predict with species partial pooling")
-X2=$(sub "$E6" -l transport "Fricker grazer: refit growth form + estimate randomized grazer effect")
+X1=$(sub "$E6" -l transport "Hold out GS/PO/TS within MyceliumSeg; predict morphology across area_fraction")
+X2=$(sub "$E6" -l transport "Fricker grazer: model longitudinal outcomes + estimate treatment contrasts")
 X3=$(sub "$E6" -l transport "Fricker network: species-level variation prior (if time-resolved)")
 X4=$(sub "$E6" -l transport "Podospora: growth form at hyphal scale + multiplicative nutrient (M2 vs M0) effect")
 X5=$(sub "$E6" -p low -l transport "MDPI 110-species set (if access granted)")
-blk "$X1" "$S4"; blk "$X2" "$S4"; blk "$X2" "$D5"; blk "$X3" "$S4"; blk "$X3" "$D6"
-blk "$X4" "$S4"; blk "$X4" "$D7"; blk "$X5" "$S4"
-for x in $X1 $X2 $X3 $X4 $X5; do blk "$x" "$A2"; done
+blk "$X1" "$S4"; blk "$X2" "$S5"; blk "$X2" "$D5"; blk "$X3" "$S5"; blk "$X3" "$D6"
+blk "$X4" "$S5"; blk "$X4" "$D7"; blk "$X5" "$S5"
+for x in $X2 $X3 $X4 $X5; do blk "$x" "$A2"; done
 
 # ── E7 Own rig experiment ────────────────────────────────────────────
 E7=$(epic -p low "E7: Own-rig intervention experiment" -d "Break species×medium confound with RPi timelapse (archive/mycelium-workspace). Publish on Zenodo.")

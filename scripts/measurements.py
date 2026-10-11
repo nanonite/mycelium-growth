@@ -473,10 +473,10 @@ def write_note(path: Path, evidence: Mapping[str, Any]) -> None:
     add("**Supported (image-level morphology, this release):**")
     add("")
     add(
-        "- `area`, `area_fraction`, `equivalent_radius` and `log_area` clear "
-        "the size budget on the de-duplicated hold-outs and support predictive, "
-        "image-level morphology claims (associational, within-release, by "
-        "species and known condition)."
+        "- `equivalent_radius` and `log_area` clear the size budget on the "
+        "de-duplicated hold-outs. `area_fraction` remains an approximate "
+        "cross-sectional coverage coordinate, but its 14.3% relative SD is "
+        "above the #60 target (#66)."
     )
     add(
         "- `perimeter`, `edge_roughness`, `circularity` and `solidity` are "
@@ -499,8 +499,8 @@ def write_note(path: Path, evidence: Mapping[str, Any]) -> None:
     add(
         "- any hyphal-tip, nuclear or branching claim — the #31 candidate "
         "protrusions are unvalidated radial excursions with a high false-event "
-        "rate, and no resolution or persistence evidence maps them to "
-        "biological structures;"
+        "rate. #62 measures candidate stability under resampling, but the "
+        "colony masks are not independent biological-tip annotations;"
     )
     add(
         "- any causal temperature or medium effect — medium is aliased with "

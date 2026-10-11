@@ -1,0 +1,50 @@
+# Dataset model capabilities and transport order (#67)
+
+**Purpose.** Translate the provenance audit (#61) and the available measurements into the model targets each dataset can actually identify. This is a model-capability map, not a claim that one growth form applies everywhere.
+
+**Machine-readable companion:** `data/triage/model_capability_matrix.csv`.
+
+## Summary and recommended order
+
+1. **MyceliumSeg is complete for its current role:** image-to-mask segmentation and cross-sectional morphology by predicted area coverage. It has no demonstrated specimen identity or capture chronology. The held-out area-fraction SD is 14.3%, above the precision target, with the largest relative error in the lowest-coverage images (#66). The coverage rank remains useful but approximate.
+2. **Fricker/Boddy grazer series (#45 and #68 complete).** It is the strongest available fungal time-series dataset: replicate identities, filename day labels corroborated in order by EXIF, 155 series, and existing image/network measurements. The first grouped-CV comparison and the dataset-specific baseline-relative, species-by-grazer trajectory model are documented in `notes/fricker_grazers_analysis.md` and `notes/fricker_series_model.md`. The latter holds out complete series, compares EXIF-time and filename-day forms, and estimates baseline-adjusted D8-label associations. Treatment assignment is not documented in the reviewed 2011 methods, so causal interpretation remains conditional. Do not assume circular radial growth: these colonies are wood-associated and cord-forming.
+3. ***Podospora* movies (#47 complete).** All six M0/M2 movies were fit using a deterministic bright-ridge occupancy proxy. The exploratory exponential occupancy form beat a power law on a within-movie temporal holdout in all six movies. The M2 slope was higher than M0, but there are only three movies per condition, the exact two-sided label-permutation diagnostic is p=0.10, the contrast varies with threshold, and assignment is not documented. This is not a validated semantic mask or a causal nutrient estimate; see `notes/podospora_growth_model.md`.
+4. **Cross-dataset growth-form assessment (#37 complete).** Held-out checks do not support treating lag → extension → saturation as invariant: the Fricker triphasic curve barely improves RMSE and has worse MAE than linear extension, while the *Podospora* plateau form predicts worse than exponential occupancy. Biological lag and saturation remain unidentified; see `notes/growth_form_invariance.md`.
+
+The dataset-specific queue is complete through #37: #67 → #45/#68 → #47 → #37. The Fricker network snapshot assessment (#46) is complete: the study supports cautious, study-specific summaries of author-defined network traits, but not temporal growth or a transferable prior for MyceliumSeg segmentation and area outcomes. Its staged Zenodo bundle and author analysis table also have a sample-ID and replication mismatch; see `notes/fricker_network_snapshots.md`.
+
+## Capability matrix
+
+| Dataset | Observation unit and current evidence | Model targets supported by the available design | Limits / prerequisites |
+|---|---|---|---|
+| **MyceliumSeg** | 20,105 distinct images; 547 unique human-labeled image/mask pairs; additional unlabeled images; no linked dishes or ordered frames | Image-to-mask segmentation; image-level area/shape measurement; cross-sectional morphology as a function of area coverage | No time series, within-dish change, or intervention effects. Area-fraction relative SD is 14.3% on #31 hold-outs; low-coverage relative errors are larger. Selection rule is undocumented; label conflicts must be handled. |
+| **Fricker/Boddy grazer series** | 777 images in 155 species × treatment × replicate series; filename day labels and EXIF order agree in all series; 622 adjacent capture transitions; per-image network/image features | #45 first-pass shape comparison and #68 species-by-grazer, baseline-relative repeated-measures trajectories; grouped prediction holds out full series; baseline-adjusted D8-label contrasts | Primary paper reports baseline then days 2, 4, 8, 16, 24, 38, 52, 66, and 80; later reanalysis reports baseline then 2, 4, 8, 16, and 32; archive labels and EXIF do not fully reconcile at the first interval. Fifteen analyzed series lack a D1 baseline, and five `Pi_ctrl2` day-1/day-2 pairs share a capture second. Assignment randomization is not documented in reviewed methods. Two image resolutions require per-image scale handling. Wood and cords do not imply circular radial-front dynamics. |
+| **Fricker network snapshots (#46 complete)** | Zenodo has 33 image/parameter pairs from 11 coded taxa; the pinned author RDS has 36 real rows across 12 taxa, with one species at n=1, two at n=4, and four unmatched sample IDs plus one archive-only ID | Cross-sectional descriptive comparisons among the sampled strains for the authors' network traits; at most a weak prior for comparable measurements within these protocols | No within-colony change, growth rate, or intervention model. Microscopic vs macroscopic scale is aligned with taxonomic group and different cultivation/imaging conditions. Not transferable to MyceliumSeg's image-to-mask or area-fraction outcomes. |
+| ***Podospora anserina* thallus movies** | Six complete movies, 464 frames total; filenames identify M0/M2 and replicate, three replicates per medium; Figshare supplies 18 min/frame and 1.63 µm/source-pixel | **Complete (#47):** within-movie ridge-occupancy trajectories; exponential vs power-law holdout comparison; replicate-level M2/M0 occupancy-slope contrast | Deterministic ridge proxy is unvalidated and threshold-sensitive; no human hyphal masks; n=3 per medium; assignment is not documented; first-frame origin is not germination. Contrast is exploratory, not causal. |
+| ***Podospora* M0 raw stack** | 85 advertised pages but only the first 15 contain image data; the last 70 are blank | At most, within-run image change over the 15 content frames if frame order is accepted | No nutrient comparison or physical rate from the blank pages; interval and scale remain external. Do not treat this as an 85-frame series. |
+| ***Podospora* 2019 network files** | An 82-frame AVI and an 11-page TIFF, one colony each; adjacent-frame evidence is consistent with order, but no interval is embedded | Single-run descriptive network change, conditional on confirming frame order | One colony per file cannot identify a population treatment effect; AVI fps is playback, not capture time. |
+| **Physarum scanner rig** | One of 24 release archives currently staged: 1,696 timestamped frames for one dish, ~300-second intervals, source hashes and per-frame scale | End-to-end segmentation/measurement benchmarking; single-dish temporal dynamics and timestamp-aware pipeline validation | Non-fungal and no randomized treatment; useful for method development, not fungal biological transport. More archives are not currently staged. |
+| **Aureobasidium** | Zenodo record contains a conference book of abstracts, no image data | None until image data are obtained | Not a usable model dataset in the current workspace. |
+| **MDPI 110-species time-lapse (#48 closed)** | Reported as 26,451 images at 30-minute intervals, but not publicly available | No active project model; excluded by user decision because obtaining access is not worth the burden | Not currently available; no request was sent. |
+| **Controlled own-rig experiment** | Planned, no data yet | With randomized species × medium, fixed intervals, dish identity, and temperature logging: image segmentation, temporal growth, and intervention models | Requires design, calibration, collection, and preregistration before model fitting. |
+| **AMF demo / mycelyso / Phytophthora** | Demo/network package or non-fungal organisms | AMF network-mechanism exploration; non-fungal data may test tooling | Not substitutes for fungal colony growth series; demo subset and taxonomic differences limit transport claims. |
+
+## Model decision for the next dataset
+
+The Fricker snapshot review (#46) does not add a growth-model refinement to
+the MyceliumSeg or time-series pipeline. For any future model using its
+network traits, first reconcile the 33-pair Zenodo release with the 36-row
+author table and retain the study's separate scale regimes.
+
+The Fricker #45/#68 analyses use the observables already attached to the series, especially colony area/extent and network features. The series-aware fit compares linear elapsed-time and flexible day-factor predictions; see `notes/fricker_series_model.md`. The *Podospora* #47 fit uses a distinct ridge-occupancy outcome; see `notes/podospora_growth_model.md`. The #37 comparison found no basis for accepting an invariant mechanism; treatment contrasts remain associational because treatment allocation is undocumented.
+
+MyceliumSeg can contribute an image-level segmentation component only if the Fricker images need new colony masks and that model transfers after validation. Its area-coverage morphology model is not itself a temporal prior. The completed #37 assessment compares Fricker and *Podospora* predictive behavior without treating their distinct measurements as one biological mechanism.
+
+## Evidence
+
+- `notes/provenance.md` (#61), especially §§ 4–5: sequence identity, time, interval, scale, duplicates, treatments, and fallback order.
+- `notes/area_fraction_precision.md` (#66): held-out MyceliumSeg area-fraction error and rank agreement.
+- `notes/fricker_grazers_analysis.md` (#45) and `notes/fricker_series_model.md` (#68): source-paper cadence, EXIF audit, dataset-specific repeated-measures model, held-out-series comparison, and treatment-contrast caveats.
+- `notes/podospora_growth_model.md` (#47): six-movie ridge-occupancy model, temporal holdout comparison, M0/M2 replicate contrast, threshold sensitivity, and limitations.
+- `notes/growth_form_invariance.md` (#37): series-held-out Fricker and within-movie *Podospora* checks of lag, extension, and plateau forms.
+- `PLAN.md` Phase 5: transport ladder and the reordered dataset-specific sequence.

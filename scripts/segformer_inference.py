@@ -119,9 +119,11 @@ CAVEATS = (
         "read from the sorted area order."
     ),
     (
-        "Area ordering inside an archive/block stratum is an exploratory "
-        "inspection only; coherent bands may be acquisition, selection or "
-        "condition artefacts, not biological growth."
+        "Area-fraction rank is a valid cross-sectional coverage coordinate for "
+        "modeling other image features after full-release inference and QA; the "
+        "current 125-image bands are exploratory smoke checks. Area rank does not "
+        "supply acquisition time, dish identity or a temporal trajectory, and "
+        "patterns may reflect selection or condition."
     ),
     (
         "Boundary features are weak by construction (published Boundary IoU "
@@ -580,8 +582,8 @@ def explore_records(
     """Sort by area fraction inside provenance-safe ``(archive, block)`` strata.
 
     Returns blocks with their sorted rows, gap-detected bands, duplicate groups
-    and consecutive-id runs.  Every grouping is labelled exploratory and the
-    output carries the caveats above; nothing here may be read as time.
+    and consecutive-id runs.  The area rank is a coverage coordinate;
+    gap-detected bands are exploratory QA only.  Nothing here may be read as time.
     """
     assert_no_inferred_time(records)
     blocks: dict[tuple[str, str], list[Mapping[str, Any]]] = defaultdict(list)
