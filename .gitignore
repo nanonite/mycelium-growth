@@ -33,3 +33,10 @@ dist/
 
 # Machine-local Codex settings
 .codex/config.toml
+
+# Source PDFs and generated binary analysis artifacts stay local.
+*.pdf
+*.png
+*.npz
+*.rds
+markdown/SHA256E-s218601106--a911c819c0d98c0fccb1b20f1014c63830c2d34f9bbf7afaa49c05b6ea636bc7.md
